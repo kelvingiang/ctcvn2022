@@ -3,6 +3,7 @@
 function getTranslate()
 {
     $data = array(
+        'THE COUNCIL OF TAIWANSE CHAMBERS OF COMMERCE IN VIETNAM' => '越南台灣商會聯合總會',
         'language' => 'English Profile',
         'Featured Project' => 'Dự án tiêu biểu',
         'News' => 'Tin Mới',

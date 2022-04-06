@@ -15,19 +15,19 @@ class Admin_Controller_Slider
     function create()
     {
         $labels = array(
-            'name' => __('幻燈片  1000 x 400 '),
-            'singular_name' => __('幻燈片'),
-            'add_new' => __('New'),
-            'add_new_item' => __('New'),
+            'name' => __('Slider') . '1000 x 400',
+            'singular_name' => __('Slider'),
+            'add_new' => __('Add'),
+            'add_new_item' => __('Add'),
             'edit_item' => __('Edit'),
-            'new_item' => __('New'),
+            'new_item' => __('Add'),
             'all_items' => __('All'),
             'view_item' => __('View'),
             'search_items' => __('Search'),
-            'not_found' => __('搜不到任何資料'),
-            'not_found_in_trash' => __('回收桶是空.'),
+            'not_found' => __('Could not find any information'),
+            'not_found_in_trash' => __('Recycle bin is empty'),
             'parent_item_colon' => '',
-            'menu_name' => __('幻燈片')
+            'menu_name' => __('Slider')
         );
         $args = array(
             'labels' => $labels,

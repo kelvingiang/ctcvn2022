@@ -71,6 +71,30 @@
                </div>
 
            <?php } ?>
+           <script>
+               jQuery(document).ready(function() {
+                   jQuery('.language-item').on("click", function() {
+                       var language = jQuery(this).attr("data-id");
+
+                       jQuery.ajax({
+                           url: '<?php echo get_template_directory_uri() . '/ajax/change_languages.php' ?>',
+                           dataType: 'json',
+                           type: 'post',
+                           data: {
+                               type: language
+                           },
+                           success: function(res) {
+                               if (res.status === 'ok') {
+                                   //window.location = location.href;
+                                   //location.reload();
+                                   // window.location = 'http://localhost/digiwin';
+                                   window.location = '<?php echo get_option('home') ?>';
+                               }
+                           }
+                       });
+                   });
+               })
+           </script>
            </body>
 
            </html>

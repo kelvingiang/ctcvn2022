@@ -3,7 +3,7 @@
 function getTranslate()
 {
     $data = array(
-        'language' => '中文檔案',
+        'THE COUNCIL OF TAIWANSE CHAMBERS OF COMMERCE IN VIETNAM' => '越南台灣商會聯合總會',
         'Branch Ha Noi' => '河內分會',
         // phan trang login
         'User Login' => '會員登入',

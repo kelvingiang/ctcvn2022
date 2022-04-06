@@ -14,7 +14,7 @@ class Admin_Metabox_Language
         $id = 'admin-metabox-language';
         $title = __('Language');
         $callback = array($this, 'display');
-        add_meta_box($id, $title, $callback, array('post', 'event', 'slider'));
+        add_meta_box($id, $title, $callback, array('post', 'event', 'slide'));
     }
 
     public function display($post)

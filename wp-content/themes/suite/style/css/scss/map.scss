@@ -7,12 +7,10 @@
     }
 }
 
-.map-space {
-    background-color: #ffffff; /* Used if the image is unavailable */
+#map-space {
     display: flex;
     justify-content: center;
     .map {
-        background-color: #ccc;
         background-repeat: no-repeat, repeat;
         background-image: url("../../../suite/images/mapvietnam/vietnam-map.png");
         height: 940px;

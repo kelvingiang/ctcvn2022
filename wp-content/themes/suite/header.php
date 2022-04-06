@@ -58,38 +58,31 @@
     </div>
 
     <div class="my-container">
-        <div id="header-logo">
-            <div class="logo ">
-                <a href="<?php echo home_url() ?>">
-                    <img src="<?php echo PART_IMAGES . 'logo.jpg' ?>" alt="ctcvn_logo" title="ctcvn_logo" />
-                </a>
-            </div>
+        <?php get_template_part('templates/template', 'head-logo') ?>
 
-        </div>
         <?php if (!is_page('check-in') && !is_page('check_in')) { ?>
             <div>
-                <?php get_template_part('templates/template', 'language') ?>
-                <?php get_template_part('templates/template', 'menu') ?>
-
+                <?php //get_template_part('templates/template', 'menu') 
+                ?>
             </div>
             </hr>
             <div>
                 <?php //get_template_part('templates/template', 'brach-logo'); 
                 ?>
             </div>
+        <?php } ?>
     </div>
-<?php } ?>
-</div>
-<div>
-    <div style="margin: 0px 10px 0px 10px">
-
-        <?php
-        //  if (is_page()) {
-        // get_template_part('templates/template', 'advertising');
-        //  }
-        ?>
     </div>
     <div>
-        <?php //get_template_part('templates/template', 'xml'); 
-        ?>
-    </div>
+        <div style="margin: 0px 10px 0px 10px">
+
+            <?php
+            //  if (is_page()) {
+            // get_template_part('templates/template', 'advertising');
+            //  }
+            ?>
+        </div>
+        <div>
+            <?php //get_template_part('templates/template', 'xml'); 
+            ?>
+        </div>

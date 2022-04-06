@@ -1,4 +1,4 @@
-<div class="map-space">
+<div id="map-space">
     <div class="map">
         <div class="branch hanoi">
             <img class="branch-img" src="<?php echo PART_IMAGES . 'mapvietnam/hanoi.png'  ?>" />
