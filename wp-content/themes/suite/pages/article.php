@@ -80,7 +80,7 @@ if (empty($errNew)) {
         $txt_cate = $_POST['cate'];
         $txt_title = $_POST['txt_title'];
         $txt_content = $_POST['editor'];
-        $err_new_content = '請刪除含有色情的字眼! ';
+        $err_new_content = '請刪除含有色情的字眼..! ';
     }
 }
 //}
