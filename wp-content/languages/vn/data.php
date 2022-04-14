@@ -78,5 +78,22 @@ function getTranslate()
         'Call phone ask Price' => 'Gọi',
     );
 
-    return array_merge($data, $dataNew);
+
+    $mapBranch = array(
+        'Branch Ha Noi' => 'Phân Hội Hà Nội',
+        'Branch Hai Phong' => 'Phân Hội Hải Phòng',
+        'Branch Thai Binh' => 'Phân Hội Thái Bình',
+        'Branch Ha Tinh' => 'Phân Hội Hà Tĩnh',
+        'Branch Bac Ninh' => 'Phân Hội Bắc Ninh',
+        'Branch Da Nang' => 'Phân Hội Đà Nẳng',
+        'Branch Lam Dong' => 'Phân Hội Lâm Đồng',
+        'Branch Dong Nai' => 'Phân Hội Đồng Nai',
+        'Branch Binh Duong' => 'Phân Hội Bình Dương',
+        'Branch Vung Tau' => 'Phân Hội Vũng Tàu',
+        'Branch Ho Chi Minh' => 'Phân Hội TpHCM',
+        'Branch Tan Thuan' => 'Phân Hội Tân Thuận',
+        'Branch Tay Ninh' => 'Phân Hội Tây Ninh',
+        'Branch Long An' => 'Phân Hội Long An',
+    );
+    return array_merge($data, $dataNew, $mapBranch);
 }

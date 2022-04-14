@@ -4,7 +4,7 @@ function getTranslate()
 {
     $data = array(
         'THE COUNCIL OF TAIWANSE CHAMBERS OF COMMERCE IN VIETNAM' => '越南台灣商會聯合總會',
-        'Branch Ha Noi' => '河內分會',
+
         // phan trang login
         'User Login' => '會員登入',
         'Login' => '登入',
@@ -140,5 +140,23 @@ function getTranslate()
         'Export Data' => '報到資料導出',
         'Check In Setting' => '報到設定',
     );
-    return array_merge($data, $dataNew, $dataOnline);
+
+    $mapBranch = array(
+        'Branch Ha Noi' => '河內分會',
+        'Branch Hai Phong' => '海防分會',
+        'Branch Thai Binh' => '太平分會',
+        'Branch Ha Tinh' => '河靜分會',
+        'Branch Bac Ninh' => '北寧分會',
+        'Branch Da Nang' => '峴港分會',
+        'Branch Lam Dong' => '林同分會',
+        'Branch Dong Nai' => '同奈分會',
+        'Branch Binh Duong' => '平陽分會',
+        'Branch Vung Tau' => '頭頓分會',
+        'Branch Ho Chi Minh' => '胡志明分會',
+        'Branch Tan Thuan' => '新順分會',
+        'Branch Tay Ninh' => '西寧分會',
+        'Branch Long An' => '隆安分會',
+    );
+
+    return array_merge($data, $dataNew, $dataOnline, $mapBranch);
 }

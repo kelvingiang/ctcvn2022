@@ -4,5 +4,5 @@ _data/
 _database/
 nbproject/
 
-wp-content/themes/suite/counter/
+wp-content/themes/suite/counter/**
 

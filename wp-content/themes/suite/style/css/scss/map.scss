@@ -1,9 +1,145 @@
 @keyframes example {
-    from {
-        color: rgba(255, 251, 251, 1);
+    0% {
+        color: rgb(4, 103, 253);
     }
-    to {
-        color: rgba(63, 63, 63, 1);
+    50% {
+        color: #ccc;
+    }
+    100% {
+        color: rgb(255, 154, 2);
+    }
+}
+
+@keyframes zoomScaleIn {
+    0% {
+        transform: scale(0, 0);
+        transform-origin: bottom right;
+    }
+    100% {
+        transform: scale(1, 1);
+        transform-origin: bottom right;
+    }
+}
+
+@keyframes zoomScaleOut {
+    0% {
+        transform: scale(1.1, 1.1);
+        transform-origin: bottom right;
+    }
+    100% {
+        transform: scale(0, 0);
+        transform-origin: bottom right;
+    }
+}
+
+@keyframes zoomScaleIn2 {
+    0% {
+        transform: scale(0, 0);
+        transform-origin: bottom left;
+    }
+    100% {
+        transform: scale(1, 1);
+        transform-origin: bottom left;
+    }
+}
+
+@keyframes zoomScaleOut2 {
+    0% {
+        transform: scale(1.1, 1.1);
+        transform-origin: bottom left;
+    }
+    100% {
+        transform: scale(0, 0);
+        transform-origin: bottom left;
+    }
+}
+
+@mixin branch($imgTop, $imgLeft, $linkTop, $linkLeft, $respondTop, $respondLeft, $textDelay) {
+    position: absolute;
+    top: $imgTop;
+    left: $imgLeft;
+
+    @include Respond(xs) {
+        top: $respondTop;
+        left: $respondLeft;
+    }
+
+    .branch-link {
+        position: absolute;
+        top: $linkTop;
+        left: $linkLeft;
+
+        font-size: 1.5rem;
+        font-weight: bold;
+        white-space: nowrap;
+        text-decoration: none;
+
+        animation-name: example;
+        animation-duration: 2s;
+        animation-delay: $textDelay;
+        animation-iteration-count: infinite;
+
+        &:hover {
+            color: red;
+            //transition-duration: 1s;
+            //font-size: 1.8rem;
+            animation-name: on-animation;
+            font-weight: bold;
+
+            & + .branch-img {
+                position: relative;
+                z-index: 10;
+                opacity: 1;
+                transition: transform 1s;
+                transform: scale(1, 1);
+            }
+        }
+    }
+
+    .branch-img {
+        opacity: 0;
+        transform: scale(0.4, 0.4);
+        @include Respond(xs) {
+            width: 77%;
+        }
+    }
+
+    .branch-content {
+        // opacity: 0;
+        position: absolute;
+        left: -180px;
+        top: -120px;
+        background-color: rgba(204, 204, 204, 0.6);
+        width: 200px;
+        height: 150px;
+        border-radius: 5px;
+        border: 1px #999 solid;
+        z-index: 50;
+    }
+
+    .branch-content-left {
+        left: 0px;
+        top: -120px;
+    }
+
+    .show {
+        animation-name: zoomScaleIn;
+        animation-duration: 1s;
+    }
+
+    .close {
+        animation-name: zoomScaleOut;
+        animation-duration: 0.5s;
+    }
+
+    .showRight {
+        animation-name: zoomScaleIn2;
+        animation-duration: 1s;
+    }
+
+    .closeRight {
+        animation-name: zoomScaleOut2;
+        animation-duration: 0.5s;
     }
 }
 
@@ -11,106 +147,70 @@
     display: flex;
     justify-content: center;
     .map {
-        background-repeat: no-repeat, repeat;
-        background-image: url("../../../suite/images/mapvietnam/vietnam-map.png");
-        height: 940px;
-        width: 600px;
-        background-position: center; /* Center the image */
-        background-repeat: no-repeat; /* Do not repeat the image */
-        background-size: cover; /* Resize the background image to cover the entire container */
-        position: relative;
-
         @include Respond(xs) {
             height: 700px;
             width: 500px;
         }
 
-        .hanoi {
-            position: absolute;
-            top: 11.8%;
-            left: 31.5%;
-
-            @include Respond(xs) {
-                top: 11.6%;
-                left: 30%;
-            }
-
-            .branch-img {
-                width: 100%;
-                @include Respond(xs) {
-                    width: 77%;
-                }
-            }
-
-            .branch-link {
-                position: absolute;
-                top: 40%;
-                left: 20%;
-
-                font-size: 1.2rem;
-                color: rgb(255, 255, 255);
-                font-weight: bold;
-                white-space: nowrap;
-                text-decoration: none;
-
-                animation-name: example;
-                animation-duration: 1s;
-                animation-iteration-count: infinite;
-
-                &:hover {
-                    animation-name: off-animation;
-                    transform: scale(1.2, 1.2);
-                    color: #ffffff;
-                }
-            }
-        }
-
-        .hai-phong {
-            position: absolute;
-            top: 15.2%;
-            left: 42.5%;
-
-            @include Respond(xs) {
-                top: 11.6%;
-                left: 30%;
-            }
-
-            .branch-img {
-                width: 100%;
-                @include Respond(xs) {
-                    width: 77%;
-                }
-            }
-
-            .branch-link {
-                position: absolute;
-                top: 40%;
-                left: 20%;
-
-                font-size: 1.2rem;
-                color: rgb(255, 255, 255);
-                font-weight: bold;
-                white-space: nowrap;
-                text-decoration: none;
-
-                animation-name: example;
-                animation-duration: 1s;
-                animation-iteration-count: infinite;
-
-                &:hover {
-                    animation-name: off-animation;
-                    transform: scale(1.2, 1.2);
-                    color: #ffffff;
-                }
-            }
-        }
-
         .branch {
             transition: transform 1s;
             transform-origin: center center;
-            &:hover {
-                transform: scale(1.2, 1.2);
-            }
+        }
+
+        .bac-ninh {
+            @include branch(9%, 34%, 37%, 180%, 18.2%, 40.5%, 2.5s);
+        }
+
+        .ha-noi {
+            @include branch(10%, 29.5%, 50%, 150%, 11.6%, 30%, 1s);
+        }
+
+        .hai-phong {
+            @include branch(14%, 37%, 42%, 88%, 11.6%, 30%, 1.5s);
+        }
+
+        .thai-binh {
+            @include branch(15%, 34%, 50%, 80%, 18.2%, 40.5%, 2s);
+        }
+
+        .ha-tinh {
+            @include branch(30%, 27%, 25.2%, 71%, 18.2%, 40.5%, 2.5s);
+        }
+
+        .da-nang {
+            @include branch(45%, 53%, 34%, 76%, 18.2%, 40.5%, 3s);
+        }
+
+        .lam-dong {
+            @include branch(72%, 51%, 43.2%, 139.5%, 18.2%, 40.5%, 3.5s);
+        }
+
+        .dong-nai {
+            @include branch(76%, 45.5%, 38.2%, 163%, 18.2%, 40.5%, 4s);
+        }
+
+        .binh-duong {
+            @include branch(77%, 41%, 33.2%, -210%, 18.2%, 40.5%, 4.5s);
+        }
+
+        .tay-ninh {
+            @include branch(74%, 36%, 18.2%, -155.5%, 18.2%, 40.5%, 5s);
+        }
+
+        .ho-chi-minh {
+            @include branch(77%, 40%, 41%, 159%, 18.2%, 40.5%, 5.5s);
+        }
+
+        .tan-thuan {
+            @include branch(77%, 40%, 57%, 128%, 18.2%, 40.5%, 7s);
+        }
+
+        .vung-tau {
+            @include branch(81%, 45.5%, 80.2%, 64.2%, 60%, 40.5%, 6s);
+        }
+
+        .long-an {
+            @include branch(80%, 33.5%, 28.2%, -130.2%, 60%, 40.5%, 6.5s);
         }
     }
 }
