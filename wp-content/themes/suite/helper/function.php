@@ -25,6 +25,8 @@ require_once(DIR_CODES . 'function-upload.php');
 //=====2022=====================
 require_once(DIR_CODES . 'function-menu.php');
 require_once(DIR_CODES . 'meta-recruit.php');
+require_once(DIR_CODES . 'function-slider.php');
+require_once(DIR_CODES . 'function-wp-query.php');
 
 /* ======  GET  HINH THEO PATH ========= */
 

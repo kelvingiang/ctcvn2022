@@ -3,7 +3,7 @@
            <?php if (!is_page('check-in')) { ?>
                <div id="back-top-wrapper">
                    <a id="back-top">
-                       <img src="<?php echo PART_IMAGES . 'up.png'; ?>" />
+                       <i class="fa fa-chevron-circle-up" aria-hidden="true"></i>
                    </a>
                </div>
                <?php wp_footer(); ?>
@@ -94,7 +94,56 @@
                        });
                    });
                })
+
+
+               // back to top
+               jQuery(function() {
+                   jQuery(window).scroll(function() {
+                       if (jQuery(this).scrollTop() > 100) {
+                           jQuery("#back-top").fadeIn("fast");
+                       } else {
+                           jQuery("#back-top").fadeOut(1500);
+                       }
+                   });
+                   // scroll body to 0px on click
+                   jQuery("#back-top").click(function() {
+                       jQuery("body,html").stop(false, false).animate({
+                               scrollTop: 0,
+                           },
+                           1000
+                       );
+                       return false;
+                   });
+               });
            </script>
+
+
+           <!--  KHOI TAO VIEC CHAY SLIDER -->
+           <script type="text/javascript" language="javascript">
+               jQuery(document).ready(function() {
+                   jQuery('.box_skitter_large').skitter({
+                       thumbs: false,
+                       theme: 'Minimalist',
+                       numbers_align: 'center',
+                       numbers: false,
+                       progressbar: false,
+                       dots: false,
+                       navigation: false,
+                       preview: false,
+                       interval: 8000 // thoi gian chuyen hinh]
+                   });
+               });
+
+
+
+               window.onscroll = function() {
+                   menuAnimation();
+                   if (document.querySelector('.img-item')) {
+                       presidentAnimation();
+                   }
+               }
+           </script>
+
            </body>
 
            </html>

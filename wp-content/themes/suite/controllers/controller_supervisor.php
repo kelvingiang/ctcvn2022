@@ -80,9 +80,9 @@ class Admin_Controller_Supervisor
                     //  set_post_thumbnail_size(50, 50); // 50 pixels wide by 50 pixels tall, resize mode
                 }
                 break;
-            case 'order':
-                echo get_post_meta($post->ID, '_metabox_order_by', true);
-                break;
+                // case 'order':
+                //     //  echo get_post_meta($post->ID, '_metabox_order', true);
+                //     break;
             case 'name':
                 echo get_the_content();
                 break;

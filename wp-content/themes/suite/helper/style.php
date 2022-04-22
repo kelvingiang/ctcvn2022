@@ -1,6 +1,7 @@
 <?php
 
-function style_header_scripts() {
+function style_header_scripts()
+{
     if ($GLOBALS['pagenow'] != 'wp-login.php' && !is_admin()) {
         //==== PHAN CLIENT================================================================ 
         wp_register_style('main-style', THEME_PART . '/style/css/main.css', 'all');
@@ -10,7 +11,7 @@ function style_header_scripts() {
         wp_enqueue_style('awesome-style');
 
 
-//=======================================================================================
+        //=======================================================================================
 
 
 
@@ -72,7 +73,7 @@ function style_header_scripts() {
         wp_register_script('jquery-jcarousellite', THEME_PART . '/js/jquery.jcarousellite-1.0.1.js', array('jquery'));
         wp_enqueue_script('jquery-jcarousellite');
 
-//    moi them cho 29/04 
+        //    moi them cho 29/04 
         wp_register_script('jquery-fancybox', THEME_PART . '/js/jquery.fancybox.pack.js', array('jquery'));
         wp_enqueue_script('jquery-fancybox');
 
@@ -86,7 +87,7 @@ function style_header_scripts() {
         wp_register_script('custom-script', THEME_PART . '/js/admin/custom.js', array('jquery'));
         wp_enqueue_script('custom-script');
     }
-// ==ADD CHO CA ADMIN VA CLIENT=========================================================
+    // ==ADD CHO CA ADMIN VA CLIENT=========================================================
     wp_register_style('jquery-ui-css', THEME_PART . '/style/jquery-ui.min.css', 'all');
     wp_enqueue_style('jquery-ui-css');
 
@@ -95,6 +96,3 @@ function style_header_scripts() {
 }
 
 add_action('init', 'style_header_scripts');
-
-
-

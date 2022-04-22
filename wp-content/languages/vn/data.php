@@ -70,6 +70,7 @@ function getTranslate()
         'Contact via Email' => 'Liên Hệ Qua Email',
         'No Products found.' => 'Không tìm thấy sản phẩm',
         'Orther Project' => 'Dự án khác',
+        'The Council of Taiwanese Chambers Regulation' => 'Nội Quy Của Hiệp Hội',
     );
     $dataNew = array(
         'Orther Article' => 'Bài viết khác',

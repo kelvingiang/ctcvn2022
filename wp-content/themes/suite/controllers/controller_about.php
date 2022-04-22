@@ -18,7 +18,7 @@ class Admin_Controller_About
         $menu_slug = 'tw_about'; // TEN slug TEN DUY NHAT KO DC TRUNG VOI TRANG KHAC GAN TREN THANH DIA CHI OF MENU
         // THAM SO THU 5 GOI DEN HAM HIEN THI GIAO DIEN TRONG MENU
         $icon = PART_ICON . 'staff-icon.png';  // THAM SO THU 6 LA LINK DEN ICON DAI DIEN
-        $position = 17; // VI TRI HIEN THI TRONG MENU
+        $position = 3; // VI TRI HIEN THI TRONG MENU
 
         add_menu_page($page_title, $menu_title, $capability, $menu_slug, array($this, 'dispatchActive'), $icon, $position);
     }

@@ -3,7 +3,7 @@
         <img src="<?php echo PART_IMAGES . 'logoctcvn.png' ?>" alt="ctcvn_logo" title="ctcvn_logo" />
     </a>
     <label class="company-name-cn"><?php _e('THE COUNCIL OF TAIWANSE CHAMBERS OF COMMERCE IN VIETNAM') ?></label>
-    <label class="company-name-en">THE COUNCIL OF TAIWANSE CHAMBERS OF COMMERCE IN VIETNAM</label>
+    <label class="company-name-en">THE COUNCIL OF TAIWANESE CHAMBERS OF COMMERCE IN VIETNAM</label>
 
     <?php get_template_part('templates/template', 'head-language') ?>
     <?php get_template_part('templates/template', 'head-menu') ?>
@@ -27,7 +27,7 @@
         }
     }
 
-    function checkAnimation() {
+    function menuAnimation() {
         // LAY TAT CA CAC DOI TUONG CO CLASS LA .show-on-scroll
         //var animationElements = document.querySelectorAll('.show-on-scroll')
         // CHAY VONG LAP DE THEM CLASS
@@ -36,5 +36,5 @@
         });
     }
 
-    window.onscroll = checkAnimation;
+    //window.onscroll = checkAnimation;
 </script>

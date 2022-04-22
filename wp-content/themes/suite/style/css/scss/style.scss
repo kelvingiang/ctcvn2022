@@ -5,6 +5,9 @@ root {
 #moblie {
   display: none;
 }
+.row {
+  margin: 0 !important;
+}
 
 .mai-space {
   position: absolute;
@@ -283,48 +286,53 @@ box_skitter {
 }
 
 .info-bg {
-  background-color: #ededed;
+  // background-color: #ededed;
   padding: 3px 10px 10px;
   border-radius: 0 0 5px 5px;
   word-break: break-all;
   word-wrap: break-word;
-  padding: 3rem;
   color: #333;
   letter-spacing: 0.2rem;
   font-size: 1.5rem;
 }
 
-.my_list_title {
-  height: 35px;
-  background-color: #286090;
-  color: white;
-  margin-top: 5px;
-  padding: 0px;
-  font-weight: bold;
-  border-radius: 3px 3px 0px 0px;
-  cursor: pointer;
-  letter-spacing: 2px;
-  label {
-    padding-top: 5px;
-    padding-left: 10px;
-    font-size: 16px;
+.president-list {
+  border: {
+    radius: 0.5rem;
   }
-}
 
-.my_list_content {
-  display: none;
-  .my_list {
-    color: #515151;
-    font-size: 15px;
-    letter-spacing: 2px;
-    border: 1px #d8d8d8 solid;
-    border-radius: 0px 0px 4px 4px;
-    padding: 0px 2px;
-    margin: 1px;
-    margin-bottom: 2px;
-    margin-left: -1px !important;
-    width: 100%;
-    padding-top: 8px;
+  margin-bottom: 1rem;
+  border: #b0b1b1 1px solid;
+  padding: -2px;
+  overflow: hidden;
+
+  h4.branch-name {
+    margin: 0;
+    padding: 1.5rem;
+    background-color: #01415e;
+    color: #f8f3f3dc;
+    cursor: pointer;
+
+    font: {
+      size: 2rem;
+      weight: bold;
+    }
+    &:hover {
+      background-color: #01415ee5;
+      color: #fcfcfc;
+    }
+  }
+
+  &-item {
+    display: none;
+    .my_list {
+      color: #515151;
+      font-size: 15px;
+      letter-spacing: 2px;
+      border-bottom: 1px #969696 solid;
+      width: 100%;
+      padding-top: 8px;
+    }
   }
 }
 
@@ -352,23 +360,24 @@ box_skitter {
     right: 1%;
     margin-left: 580px;
     display: none;
-    img {
-      width: 4rem;
-      opacity: 0.4;
+    i {
+      font-size: 3rem;
+      opacity: 0.3;
+      color: #cc6804;
+      cursor: pointer;
       &:hover {
         opacity: 1;
-        cursor: pointer;
       }
     }
   }
 }
 
-.my-container {
-  background-color: #fff;
-  padding-bottom: 5px;
-  width: 100%;
-  margin: 0 auto;
-}
+// .my-container {
+//   background-color: #fff;
+//   padding-bottom: 5px;
+//   width: 90%;
+//   margin: 0 auto;
+// }
 
 .my-link {
   color: $linkNormal;
@@ -530,46 +539,6 @@ input[type="password"] {
   }
 }
 //================================================
-.schedule_month {
-  height: 30px;
-  background-color: #286090;
-  color: white;
-  margin-top: 20px;
-  padding: 5px;
-  font-weight: bold;
-}
-
-.schedule_item {
-  color: #515151;
-  font-size: 15px;
-  background-color: #fff;
-  letter-spacing: 2px;
-  border: 1px #d8d8d8 solid;
-  border-radius: 3px;
-  padding: 5px 2px;
-  margin-bottom: 2px;
-  margin-left: -1px !important;
-  width: 100%;
-  cursor: pointer;
-  background-image: url("../images/down-arrows-16x16.png");
-  background-repeat: no-repeat;
-  background-position: 99% 10px;
-
-  label {
-    font-weight: bold;
-  }
-
-  .schedule_text {
-    font-size: 13px !important;
-    margin-top: 5px;
-  }
-
-  .schedule_hide {
-    display: none;
-    height: 170px;
-    /*overflow:  auto;*/
-  }
-}
 
 //==================================================================
 

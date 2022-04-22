@@ -1,5 +1,4 @@
-<?php ob_start();  // neu bao loi PHP Warning: Cannot modify header information ??headers already sent by             
-?>
+<?php ob_start(); ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 
@@ -57,32 +56,5 @@
         <img src="<?php echo PART_IMAGES . 'loading_pr2.gif' ?>" style=" width: 150px" />
     </div>
 
-    <div class="my-container">
-        <?php get_template_part('templates/template', 'head-logo') ?>
-
-        <?php if (!is_page('check-in') && !is_page('check_in')) { ?>
-            <div>
-                <?php //get_template_part('templates/template', 'menu') 
-                ?>
-            </div>
-            </hr>
-            <div>
-                <?php //get_template_part('templates/template', 'brach-logo'); 
-                ?>
-            </div>
-        <?php } ?>
-    </div>
-    </div>
     <div>
-        <div style="margin: 0px 10px 0px 10px">
-
-            <?php
-            //  if (is_page()) {
-            // get_template_part('templates/template', 'advertising');
-            //  }
-            ?>
-        </div>
-        <div>
-            <?php //get_template_part('templates/template', 'xml'); 
-            ?>
-        </div>
+        <?php get_template_part('templates/template', 'head-logo') ?>

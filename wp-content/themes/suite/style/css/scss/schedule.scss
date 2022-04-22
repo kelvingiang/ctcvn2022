@@ -1,0 +1,67 @@
+$scheduleMainColor: #286090;
+
+.schedule_month {
+    height: 30px;
+    background-color: $scheduleMainColor;
+    color: white;
+    margin-top: 20px;
+    padding: 5px;
+    font-weight: bold;
+    border-radius: 0.3rem 0.3rem 0 0;
+}
+
+.schedule-item {
+    color: #515151;
+    font-size: 15px;
+    background-color: #fff;
+    letter-spacing: 2px;
+    border-bottom: 1px #d8d8d8 solid;
+
+    padding: 5px 2px;
+    margin-bottom: 2px;
+    margin-left: -1px !important;
+    width: 100%;
+    cursor: pointer;
+
+    .schedule-title {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        label {
+            color: $scheduleMainColor;
+            font-size: 2rem;
+        }
+        i {
+            color: rgb(239, 239, 239);
+            font-size: 2rem;
+            margin-top: 0.5rem;
+        }
+    }
+    .schedule-text {
+    }
+
+    .schedule-hide {
+        display: none;
+
+        /*overflow:  auto;*/
+    }
+
+    .schedule-show {
+        // display: block;
+        display: none;
+
+        // animation-name: scheduleAnimation;
+        // animation-duration: 2s;
+        // animation-delay: 0s;
+        // animation-iteration-count: 1;
+    }
+}
+// @keyframes scheduleAnimation {
+//     0% {
+//         height: 0px;
+//     }
+//     100% {
+//         height: 100%;
+//     }
+// }

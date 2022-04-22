@@ -101,7 +101,7 @@ class DT_Online_counter
         fwrite($open1, "$my");
         fclose($open1);
         $count = $count;
-        $maxu = $maxu + 200;
+        $maxu =  (int)$maxu + 200;
 
         return $count;
     }

@@ -17,9 +17,9 @@ class Admin_Controller_Check_In_Setting
         $menu_title = __('Check In Setting');
         $capability = 'manage_categories';
         $menu_slug = 'checkinsetting';
-        $icon = PART_ICON . '/staff-icon.png';  // THAM SO THU 6 LA LINK DEN ICON DAI DIEN
+        // $icon = PART_ICON . '/staff-icon.png';  // THAM SO THU 6 LA LINK DEN ICON DAI DIEN
         $position = 18;
-        add_submenu_page($parent_slug, $page_title, $menu_title, $capability, $menu_slug, array($this, 'dispatchActive'), $icon, $position);
+        add_submenu_page($parent_slug, $page_title, $menu_title, $capability, $menu_slug, array($this, 'dispatchActive'), $position);
     }
 
     public function dispatchActive()

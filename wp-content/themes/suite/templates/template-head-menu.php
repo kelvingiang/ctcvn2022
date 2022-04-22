@@ -1,6 +1,8 @@
 <?php
 if (isset($_SESSION['login'])) {
     $login_type = $_SESSION['login_type'];
+} else {
+    $login_type = 0;
 }
 ?>
 <style>
@@ -23,7 +25,7 @@ if (isset($_SESSION['login'])) {
         case 'en':
             suite_menu('company-menu-en');
             break;
-        case 'en':
+        case 'vn':
             suite_menu('company-menu-vn');
             break;
     }

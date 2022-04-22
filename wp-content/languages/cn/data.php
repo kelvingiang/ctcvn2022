@@ -112,6 +112,7 @@ function getTranslate()
         'Page of' => '頁, 的第',
         'Page' => '頁',
         'Can not find any data' => '搜集不到任何資料',
+        'The Council of Taiwanese Chambers Regulation' => '越南台灣商會聯合總會章程',
     );
 
 
