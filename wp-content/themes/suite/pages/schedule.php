@@ -89,8 +89,10 @@ get_footer();
             jQuery('.schedule-hide').slideUp('fast');
             jQuery('.schedule-show').slideDown('slow');
 
-            jQuery('.schedule-item').css('background-color', 'white');
-            jQuery(this).css('background-color', 'rgb(239, 239, 239)');
+            jQuery('.schedule-item').css('background-color', '');
+            jQuery('.schedule-show').parent('.schedule-item').css('background-color', 'rgba(239, 239, 239,1)');
+
+            // jQuery(this).css('background-color', 'rgb(239, 239, 239)');
 
         });
     });

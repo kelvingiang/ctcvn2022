@@ -22,6 +22,9 @@ $scheduleMainColor: #286090;
     margin-left: -1px !important;
     width: 100%;
     cursor: pointer;
+    &:hover {
+        background-color: rgba(239, 239, 239, 0.5);
+    }
 
     .schedule-title {
         display: flex;
