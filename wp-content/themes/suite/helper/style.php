@@ -24,8 +24,8 @@ function style_header_scripts()
         wp_register_style('superfish-style', THEME_PART . '/style/superfish.css', 'all');
         wp_enqueue_style('superfish-style');
 
-        wp_register_style('flexisel-style', THEME_PART . '/style/flexisel-style.css', 'all');
-        wp_enqueue_style('flexisel-style');
+        // wp_register_style('flexisel-style', THEME_PART . '/style/flexisel-style.css', 'all');
+        // wp_enqueue_style('flexisel-style');
 
         /* srtye cua silder */
         wp_register_style('skitter-styles', THEME_PART . '/style/skitter.styles.css', 'all');

@@ -22,9 +22,10 @@ $labelColor: #666;
         flex-direction: column;
         border: 1px solid rgb(199, 198, 198);
         border-radius: 1rem;
-        padding: 2rem;
+        padding: 0rem;
         align-items: center;
         background-color: rgb(243, 241, 241);
+        width: 30%;
 
         // animation-name: supervisor-show;
         // animation-duration: 1s;
@@ -54,17 +55,17 @@ $labelColor: #666;
 .past-presidents {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
     &-item {
-        width: 20%;
+        width: 23%;
         display: flex;
         flex-direction: column;
         border: 1px solid rgb(199, 198, 198);
         border-radius: 1rem;
-        margin: 2rem;
         align-items: center;
         background-color: rgb(243, 241, 241);
+        margin-bottom: 2rem;
 
         h3 {
             color: $titleColor;

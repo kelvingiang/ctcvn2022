@@ -51,15 +51,17 @@ class Admin_Controller_Advertising
     {
 
         unset($columns['home']);
-        unset($columns['order']);
         unset($columns['language']);
         unset($columns['postdate']);
         unset($columns['category']);
         unset($columns['date']);
+        unset($columns['order']);
+        unset($columns['author']);
         // an cot ngay mac dinh
         // them cot vao bang 
         $columns['title']; // cho an cot title mac dinh;
         $columns['logo_image'] = __('Image');
+        $columns['order'] = __('Order');
         $columns['email_col'] = __('Web site');
         $columns['postdate'] = __('Date');
 

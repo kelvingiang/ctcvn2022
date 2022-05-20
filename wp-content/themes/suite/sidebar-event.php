@@ -1,10 +1,10 @@
 <?php
 
 //if (is_page()!= 'register') {
-    // phan login 
- get_template_part('templates/template', 'login');
+// phan login 
+//get_template_part('templates/template', 'login');
 
- get_template_part('templates/template', 'anotherevent');
+get_template_part('templates/template', 'another-event');
 //}
 //if (is_active_sidebar('main-sidebar')) {
   //  dynamic_sidebar('main-sidebar');

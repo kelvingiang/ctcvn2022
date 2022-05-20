@@ -19,6 +19,7 @@ function suite_menu($slug)
         'container_class' => 'primary-menu', // class cua mennu
         'items_wrap' => '<ul id="%1$s" class="%2$s sf-menu">%3$s</ul>'
     );
+
     wp_nav_menu($menu);
 }
 

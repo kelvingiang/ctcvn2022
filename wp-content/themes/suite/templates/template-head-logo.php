@@ -6,7 +6,8 @@
     <label class="company-name-en">THE COUNCIL OF TAIWANESE CHAMBERS OF COMMERCE IN VIETNAM</label>
 
     <?php get_template_part('templates/template', 'head-language') ?>
-    <?php get_template_part('templates/template', 'head-menu') ?>
+    <?php get_template_part('templates/template', 'head-menu')
+    ?>
 </div>
 
 <?php get_template_part('templates/template', 'head-scroll') ?>

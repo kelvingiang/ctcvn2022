@@ -12,7 +12,7 @@ $objMember = current(get_posts($arr));
 if ($objMember) {
     $getMeta = get_post_meta($objMember->ID); // lay gia tri tu metabox 
 
-    $user = $getMeta['m_user'][0]; 
+    $user = $getMeta['m_user'][0];
     $fullname = $getMeta['m_fullname'][0];
     $address = $getMeta['m_address'][0];
     $lastname = $getMeta['m_lastname'][0];
@@ -23,7 +23,7 @@ if ($objMember) {
     $sex = $getMeta['m_sex'][0];
     $company = $getMeta['m_company'][0];
     $email = $getMeta['m_email'][0];
-   // $_SESSION['email'] = $getMeta['m_email'][0];
+    // $_SESSION['email'] = $getMeta['m_email'][0];
     $phone = $getMeta['m_phone'][0];
     $tax_company = $getMeta['m_tax_company'][0];
     $tax_code = $getMeta['m_tax_code'][0];
@@ -34,7 +34,8 @@ $m_error = '';
 if (!empty($_POST)) {
 
     // $error = cac loi khi nhap lieu
-    function add($error) {
+    function add($error)
+    {
         if (empty($error)) {
             // dua va session thiet where lay du lieu
             $objNewOrder = array(
@@ -64,11 +65,11 @@ if (!empty($_POST)) {
             update_post_meta($id, 'm_tax_address', esc_attr($_POST['m_tax_address']));
             wp_redirect($_SERVER['REQUEST_URI']);
 
-           // unset($_SESSION['email']);
+            // unset($_SESSION['email']);
         }
     }
 
-//========= action =======================================================================
+    //========= action =======================================================================
 
     if (isset($_POST['m_fullname'])) {
         $txt_fullname = $_POST['m_fullname'];
@@ -188,173 +189,235 @@ if (!empty($_POST)) {
         if (!empty($checkEmail)) {
             $m_error = $checkEmail['error'];
             $err_email = $checkEmail['mess'];
-        }// kiem tra va gan error tra ve
+        } // kiem tra va gan error tra ve
     }
     //   die();
     add($m_error);
-//////======================================================
-    
+    //////======================================================
+
 
 }
 ?>
 <div id="register-content">
-    <form id="f-porfile"  name="f-profile" method="post" action="">
+    <form id="f-porfile" name="f-profile" method="post" action="">
         <div class='head-title'>
-            <div class="title">
-                <h2 class="head"> <?php _e('Profile', 'suite'); ?> </h2>
-            </div>
+            <h2 class="head"> <?php _e('Profile'); ?> </h2>
         </div>
+
         <div>
-               <!--<a href="<?php // echo home_url('/change-password/')                 ?>">Changed Password</a></div> -->
-            <a href="#" class="btn btn-primary"  data-toggle="modal" data-target="#changPass"><?php _e('Change Password', 'suite'); ?></a> 
-            <a id="editInfo" class="btn btn-primary"  ><?php _e('Edit Profile', 'suite'); ?></a>
+            <!--<a href="<?php // echo home_url('/change-password/')                 
+                            ?>">Changed Password</a></div> -->
+            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#changPass"><?php _e('Change-Password'); ?></a>
+            <!-- <a id="editInfo" class="btn btn-primary"><?php // _e('Edit Profile'); 
+                                                            ?></a> -->
         </div>
-        <hr/>
+
+        <hr />
         <div class="row row-modify">
-            <div class="col-md-4 col-sm-3 col-xs-12"><label class="label-title " for="m_user"><?php _e('User Name', 'suite'); ?>  : </label> </div>
-            <div  class="col-md-8 col-sm-9 col-xs-12"><label style="margin-left: 10px; color: #999999"> <?php echo $user ?></label></div>
-        </div>
-        <div class="row row-modify">
-            <div  class="col-md-4 col-sm-3 col-xs-12"><label class="label-title" for="m_fullname"><?php _e('Full Name', 'suite'); ?></label></div>
-            <div  class="col-md-8 col-sm-9 col-xs-12">
-                <input type="text" required   name="m_fullname" id="m_fullname"  class="memberInfo"value="<?php echo $fullname ?>" />
-                <label class="mess" id="mes-fullname"><?php echo $err_fullname ?></label>
+            <div class="col-md-4 col-sm-3 col-xs-12">
+                <label class="label-title"><?php _e('User Name'); ?> : </label>
+            </div>
+            <div class="col-md-8 col-sm-9 col-xs-12">
+                <label style="margin-left: 10px; color: #999999"> <?php echo $user ?></label>
             </div>
         </div>
 
         <div class="row row-modify">
-            <div class='col-md-4 col-sm-3 col-xs-12'><label class="label-title"><?php _e('Full Name English', 'suite'); ?></label></div>
-            <div class='col-md-8 col-sm-9 col-xs-12' >
-                <input type="text"  required   class="memberInfo" style='width:30%' oninvalid="this.setCustomValidity('<?php _e('Requied', 'suite'); ?>')"  onchange="this.setCustomValidity('')"   name="m_lastname" id="m_lastname" value="<?php echo $lastname ?>" />  , 
-                <input type="text" required    class="memberInfo" style= 'width:25%'  oninvalid="this.setCustomValidity('<?php _e('Requied', 'suite'); ?>')"  onchange="this.setCustomValidity('')"  name="m_midename" id="m_midename" value="<?php echo $midename ?>" />  - 
-                <input type="text"   required   class="memberInfo" style= 'width:30%' oninvalid="this.setCustomValidity('<?php _e('Requied', 'suite'); ?>')"  onchange="this.setCustomValidity('')"   name="m_firstname" id="m_firstname" value="<?php echo $firstname ?>" />
+            <div class="col-md-4 col-sm-3 col-xs-12">
+                <label class="label-title"><?php _e('Full Name'); ?></label>
+            </div>
+            <div class="col-md-8 col-sm-9 col-xs-12">
+                <input type="text" required name="m_fullname" id="m_fullname" class="memberInfo" value="<?php echo $fullname ?>" />
+                <label class="mess" id="mes-fullname">
+                    <?php echo $err_fullname ?>
+                </label>
+            </div>
+        </div>
+
+        <div class="row row-modify">
+            <div class='col-md-4 col-sm-3 col-xs-12'><label class="label-title"><?php _e('Full Name English'); ?></label></div>
+            <div class='col-md-8 col-sm-9 col-xs-12'>
+                <input type="text" required class="memberInfo" style='width:30%' oninvalid="this.setCustomValidity('<?php _e('Requied'); ?>')" onchange="this.setCustomValidity('')" name="m_lastname" id="m_lastname" value="<?php echo $lastname ?>" /> ,
+                <input type="text" required class="memberInfo" style='width:25%' oninvalid="this.setCustomValidity('<?php _e('Requied'); ?>')" onchange="this.setCustomValidity('')" name="m_midename" id="m_midename" value="<?php echo $midename ?>" /> -
+                <input type="text" required class="memberInfo" style='width:30%' oninvalid="this.setCustomValidity('<?php _e('Requied'); ?>')" onchange="this.setCustomValidity('')" name="m_firstname" id="m_firstname" value="<?php echo $firstname ?>" />
                 <label class="mess" id="mes-fullname"><?php echo $err_englishName ?></label>
             </div>
         </div>
 
         <div class="row row-modify">
-            <div class='col-md-4 col-sm-3 col-xs-12'><label class="label-title" for="m_birthdate"><?php _e('Birth Of Date', 'suite'); ?> </label></div>
+            <div class='col-md-4 col-sm-3 col-xs-12'>
+                <label class="label-title" for="m_birthdate"><?php _e('Birth Of Date'); ?> </label>
+            </div>
             <div class='col-md-8 col-sm-9 col-xs-12'>
-                <input type="text" required class=" MyDate memberInfo" maxlength="10"  name="m_birthdate" id="m_birthdate"value="<?php echo $birthdate ?>">
+                <input type="text" required class=" MyDate memberInfo" maxlength="10" name="m_birthdate" id="m_birthdate" value="<?php echo $birthdate ?>">
                 <label class="mess" id="mes-fullname"><?php echo $err_birthdate ?></label>
             </div>
-        </div> 
+        </div>
 
         <div class="row row-modify">
-            <div class='col-md-4 col-sm-3 col-xs-12'><label class="label-title" for="m_sex"><?php _e('Sex', 'suite'); ?> </label></div>
+            <div class='col-md-4 col-sm-3 col-xs-12'><label class="label-title" for="m_sex"><?php _e('Sex'); ?> </label></div>
             <div class='col-md-8 col-sm-9 col-xs-12'>
                 <select id="m_sex" name="m_sex" class="selectmenu" style="width: 180px">
-                    <option value="1" <?php if ($sex == '1') echo ' selected="selected"'; ?>><?php _e('Male', 'suite'); ?></option>
-                    <option value="2" <?php if ($sex == '2') echo ' selected="selected"'; ?>><?php _e('Female', 'suite'); ?></option>
+                    <option value="1" <?php if ($sex == '1') echo ' selected="selected"'; ?>>
+                        <?php _e('Male'); ?>
+                    </option>
+                    <option value="2" <?php if ($sex == '2') echo ' selected="selected"'; ?>>
+                        <?php _e('Female'); ?>
+                    </option>
                 </select>
             </div>
         </div>
+
         <div class="row row-modify">
-            <div  class="col-md-4 col-sm-3 col-xs-12"><label class="label-title" for="m_address"><?php _e('Address', 'suite'); ?> </label></div>
-            <div  class="col-md-8 col-sm-9 col-xs-12">
-                <input type="text" required placeholder="nhap dia chi" name="m_address" id="m_address" class="memberInfo" style=' width: 80%' value="<?php echo $address ?>"/>
+            <div class="col-md-4 col-sm-3 col-xs-12">
+                <label class="label-title" for="m_address"><?php _e('Address'); ?> </label>
+            </div>
+            <div class="col-md-8 col-sm-9 col-xs-12">
+                <input type="text" required placeholder="nhap dia chi" name="m_address" id="m_address" class="memberInfo" value="<?php echo $address ?>" />
                 <label class="mess" id="mes-address"><?php echo $err_address ?></label>
             </div>
         </div>
+
         <?php if ($_SESSION['login_type'] !== 'apply') { ?>
             <div class="row row-modify">
-                <div  class="col-md-4 col-sm-3 col-xs-12"><label class="label-title" for="m_company"><?php _e('Company', 'suite'); ?></label></div>
-                <div  class="col-md-8 col-sm-9 col-xs-12">
-                    <input type="text" required  name="m_company" id="m_company" class="memberInfo" value ="<?php echo $company ?>" />
+                <div class="col-md-4 col-sm-3 col-xs-12">
+                    <label class="label-title" for="m_company"><?php _e('Company'); ?></label>
+                </div>
+                <div class="col-md-8 col-sm-9 col-xs-12">
+                    <input type="text" required name="m_company" id="m_company" class="memberInfo" value="<?php echo $company ?>" />
                     <label class="mess" id="mes-company"><?php echo $err_company ?></label>
                 </div>
             </div>
 
             <div class="row row-modify">
-                <div  class="col-md-4 col-sm-3 col-xs-12"><label class="label-title" for="m_position"><?php _e('Position', 'suite'); ?></label></div>
-                <div  class="col-md-8 col-sm-9 col-xs-12">
-                    <input type="text" required  name="m_position" id="m_position" class="memberInfo" value ="<?php echo $position ?>" />
+                <div class="col-md-4 col-sm-3 col-xs-12">
+                    <label class="label-title"><?php _e('Position'); ?></label>
+                </div>
+                <div class="col-md-8 col-sm-9 col-xs-12">
+                    <input type="text" required name="m_position" id="m_position" class="memberInfo" value="<?php echo $position ?>" />
                     <label class="mess" id="mes-postion"><?php echo $err_position ?></label>
                 </div>
             </div>
         <?php } ?>
+
         <div class="row row-modify">
-            <div  class="col-md-4 col-sm-3 col-xs-12"><label class="label-title" for="m_email"><?php _e('Email', 'suite'); ?></label></div>
-            <div  class="col-md-8 col-sm-9 col-xs-12">
-                <input type="email"  required placeholder="nhap email"  name="m_email" id="m_email " class="memberInfo" value="<?php echo $email ?>"/>
+            <div class="col-md-4 col-sm-3 col-xs-12">
+                <label class="label-title" for="m_email"><?php _e('E-mail'); ?></label>
+            </div>
+            <div class="col-md-8 col-sm-9 col-xs-12">
+                <input type="email" required name="m_email" id="m_email " class="memberInfo" value="<?php echo $email ?>" />
                 <label class="mess" id="mes-email"><?php echo $err_email; ?></label>
             </div>
         </div>
 
         <div class="row row-modify">
-            <div  class="col-md-4 col-sm-3 col-xs-12"><label class="label-title" for="m_phone"><?php _e('Phone', 'suite'); ?> </label></div>
-            <div  class="col-md-8 col-sm-9 col-xs-12">
-                <input type="text" required  pattern="^[0-9 \-]+$"  maxlength="20"  placeholder="nhap so dien thoai "  name="m_phone" id="m_phone" class="memberInfo type-phone" value="<?php echo $phone ?>"/> 
+            <div class="col-md-4 col-sm-3 col-xs-12">
+                <label class="label-title" for="m_phone"><?php _e('Phone'); ?> </label>
+            </div>
+            <div class="col-md-8 col-sm-9 col-xs-12">
+                <input type="text" required pattern="^[0-9 \-]+$" maxlength="20" name="m_phone" id="m_phone" class="memberInfo type-phone" value="<?php echo $phone ?>" />
                 <label class="mess" id="mes-phone"><?php echo $err_phone ?></label>
             </div>
         </div>
         <hr>
-     
-        <?php if ($getMeta['m_member'][0] == 'on') { ?> 
-            <label style=" color: red; font-weight: bold; font-size: 13px"><?php echo $tax_code == '' ? '請 填 上 紅 發 票 的 資 料' : '' ?></label>
-            <div class="row row-modify">
-                <div  class="col-md-4 col-sm-3 col-xs-12"><label class="label-title" for="m_tax_company"><?php _e('Tax Company', 'suite'); ?> </label></div>
-                <div  class="col-md-8 col-sm-9 col-xs-12">
-                    <input type="text"  name="m_tax_company" id="m_tax_company" class="memberInfo" value="<?php echo $tax_company == '' ? $company : $tax_company ?>"/> 
-                </div>
-            </div> 
-            <div class="row row-modify">
-                <div  class="col-md-4 col-sm-3 col-xs-12"><label class="label-title" for="m_tax_code"><?php _e('Tax Code', 'suite'); ?> </label></div>
-                <div  class="col-md-8 col-sm-9 col-xs-12">
-                    <input type="text"  pattern="^[0-9 \-]+$"  maxlength="20"  placeholder="Tax Code"  name="m_tax_code" id="m_tax_code" class="memberInfo type-phone" value="<?php echo $tax_code ?>"/> 
-                </div>
-            </div> 
-            <div class="row row-modify">
-                <div  class="col-md-4 col-sm-3 col-xs-12"><label class="label-title" for="m_tax_address"><?php _e('Tax Address', 'suite'); ?> </label></div>
-                <div  class="col-md-8 col-sm-9 col-xs-12">
-                    <input type="text"  name="m_tax_address" id="m_tax_address" class="memberInfo" value="<?php echo $tax_address == '' ? $address : $tax_address ?>"/> 
-                </div>
-            </div> 
-        <?php } ?>
 
-        <div class="row changInfo">
-            <div  style="text-align: center">
-                <input id="btn_reset_new" type="reset" class="btn btn-primary" value="<?php _e('Cancel', 'suite'); ?>" onclick="javascript:window.location = '<?php echo home_url('/register/') ?>';" />
-                <input type="submit" class="btn btn-primary"  name="m_submit" id="m_submit" value="<?php _e('Submit', 'suite'); ?>" />
-                <input type="reset"  class="btn btn-primary"  name="m_reset" id="m_reset" value="<?php _e('Reset', 'suite'); ?>" />
+        <?php if ($getMeta['m_member'][0] == 'on') { ?>
+            <label style=" color: red; font-weight: bold; font-size: 13px" <?php echo $tax_code == '' ? '請 填 上 紅 發 票 的 資 料' : '' ?> </label>
+                <div class="row row-modify">
+                    <div class="col-md-4 col-sm-3 col-xs-12">
+                        <label class="label-title" for="m_tax_company"><?php _e('Tax Company'); ?> </label>
+                    </div>
+                    <div class="col-md-8 col-sm-9 col-xs-12">
+                        <input type="text" name="m_tax_company" id="m_tax_company" class="memberInfo" value="<?php echo $tax_company == '' ? $company : $tax_company ?>" />
+                    </div>
+                </div>
+                <div class="row row-modify">
+                    <div class="col-md-4 col-sm-3 col-xs-12">
+                        <label class="label-title" for="m_tax_code"><?php _e('Tax Code'); ?> </label>
+                    </div>
+                    <div class="col-md-8 col-sm-9 col-xs-12">
+                        <input type="text" pattern="^[0-9 \-]+$" maxlength="20" placeholder="Tax Code" name="m_tax_code" id="m_tax_code" class="memberInfo type-phone" value="<?php echo $tax_code ?>" />
+                    </div>
+                </div>
+                <div class="row row-modify">
+                    <div class="col-md-4 col-sm-3 col-xs-12">
+                        <label class="label-title" for="m_tax_address"><?php _e('Tax Address'); ?> </label>
+                    </div>
+                    <div class="col-md-8 col-sm-9 col-xs-12">
+                        <input type="text" name="m_tax_address" id="m_tax_address" class="memberInfo" value="<?php echo $tax_address == '' ? $address : $tax_address ?>" />
+                    </div>
+                </div>
+            <?php } ?>
+
+            <div class="row changInfo">
+                <div class="btn-space" style="margin-top: 2rem"">
+
+            <!-- <button type=" reset" id="btn_reset_new" class="btn-my" onclick="javascript:window.location = '<?php echo home_url('/register/') ?>';">
+                    <?php _e('Cancel'); ?>
+                    </button> -->
+
+                    <button type="submit" class="btn-my" name="m_submit" id="m_submit">
+                        <?php _e('Submit_'); ?>
+                    </button>
+
+                    <button type="reset" class="btn-my" name="m_reset" id="m_reset">
+                        <?php _e('Reset'); ?>
+                    </button>
+
+
+                </div>
             </div>
-        </div>
     </form>
 </div>
 
 
 <!-- =================================================== change password -->
-<div  id="changPass" class="modal fade" role="dialog">
+<div id="changPass" class="modal fade" role="dialog">
     <div class="modal-dialog">
-        <form id="f_changepass"  method="post" action="">
+        <form id="f_changepass" method="post" action="">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close"  data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title"> <?php _e('Change Password', 'suite'); ?> </h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"> <?php _e('Change-Password'); ?> </h4>
                     <div style=" clear: both"></div>
                 </div>
                 <div class="modal-body">
                     <div class='row'>
-                        <div class='col-md-3'><label class="label-title"><?php _e('Old Password', 'suite') ?></label></div> 
-                        <div class='col-md-9'><input type="password" required oninvalid="this.setCustomValidity('<?php _e('Requied', 'suite'); ?>')"  onchange="this.setCustomValidity('')" placeholder="<?php _e('Old Password', 'suite') ?>"  id="o_pass" name="o_pass" required /> <label  id="lblOldPass" ></label> </div>
+                        <div class='col-md-3'>
+                            <label class="label-title"><?php _e('Old-Password') ?></label>
+                        </div>
+                        <div class='col-md-9'>
+                            <input type="password" required oninvalid="this.setCustomValidity('<?php _e('Requied'); ?>')" onchange="this.setCustomValidity('')" placeholder="<?php _e('Old Password') ?>" id="o_pass" name="o_pass" required /> <label id="lblOldPass"></label>
+                        </div>
                     </div>
                     <div class='col-md-12' style='height: 10px'></div>
                     <div class='row'>
-                        <div class='col-md-3'><label class="label-title"><?php _e('New Password', 'suite') ?></label></div> 
-                        <div class='col-md-9'><input type="password" required  oninvalid="this.setCustomValidity('<?php _e('Requied', 'suite'); ?>')"  onchange="this.setCustomValidity('')" placeholder="<?php _e('New Password', 'suite') ?>" id="n_pass" name="n_pass" required /> <label id="lblNewPass" ></label></div>
+                        <div class='col-md-3'>
+                            <label class="label-title"><?php _e('New-Password') ?></label>
+                        </div>
+                        <div class='col-md-9'>
+                            <input type="password" required oninvalid="this.setCustomValidity('<?php _e('Requied'); ?>')" onchange="this.setCustomValidity('')" placeholder="<?php _e('New-Password') ?>" id="n_pass" name="n_pass" required /> <label id="lblNewPass"></label>
+                        </div>
                     </div>
                     <div class='col-md-12' style='height: 10px'></div>
                     <div class='row'>
-                        <div class='col-md-3'><label class="label-title"><?php _e('Comfirm New Password', 'suite') ?></label></div> 
-                        <div class='col-md-9'><input type="password" required oninvalid="this.setCustomValidity('<?php _e('Requied', 'suite'); ?>')"  onchange="this.setCustomValidity('')" placeholder="<?php _e('Comfirm New Password', 'suite') ?>" id="n_passf" name="n_passf" required /><label id="lblNewPassf"></label></div>
+                        <div class='col-md-3'>
+                            <label class="label-title"><?php _e('Confirm-Password') ?></label>
+                        </div>
+                        <div class='col-md-9'>
+                            <input type="password" required oninvalid="this.setCustomValidity('<?php _e('Requied'); ?>')" onchange="this.setCustomValidity('')" placeholder="<?php _e('Confirm-Password') ?>" id="n_passf" name="n_passf" required /><label id="lblNewPassf"></label>
+                        </div>
                     </div>
                     <div><label id="strChangePassMessage"></label> </div>
-                    <div>    </div>
+                    <div> </div>
                 </div>
                 <a href="../../../../../../../C:/Users/web/Desktop/template-profile.php"></a>
                 <div class="modal-footer">
-                    <input type="button" class="btn btn-primary"  data-dismiss="modal" value="<?php _e('Cancel', 'suite'); ?>" name="btn_cancel" id="btn_cancel"/>
-                    <input type="submit" class="btn btn-primary" value="<?php _e('Submit', 'suite'); ?>" name="btn_submit" id="btn_submit"/>
+                    <div class="btn-space" style="margin-top: 2rem">
+                        <input type="submit" class="btn-my" value="<?php _e('Submit_'); ?>" name="btn_submit" id="btn_submit" />
+                        <input type="button" class="btn-my" data-dismiss="modal" value="<?php _e('Cancel_'); ?>" name="btn_cancel" id="btn_cancel" />
+
+                    </div>
                 </div>
             </div>
         </form>
@@ -363,15 +426,15 @@ if (!empty($_POST)) {
 
 <style type="text/css">
     .ui-datepicker-year {
-       /*display: none;*/
+        /*display: none;*/
     }
 </style>
 
 <!-- cac ky tu key code cho phep nhap  -->
 <script type="text/javascript">
-    jQuery(document).ready(function () {
+    jQuery(document).ready(function() {
 
-        jQuery('#n_passf').on('keyup', function () {
+        jQuery('#n_passf').on('keyup', function() {
             if (jQuery('#n_pass').val() !== jQuery('#n_passf').val()) {
                 jQuery('#lblNewPassf').html('Not Matching').css('color', 'red');
                 jQuery('#btn_submit').prop("disabled", true);
@@ -381,17 +444,18 @@ if (!empty($_POST)) {
             }
         });
 
-        jQuery('#f_changepass').submit(function (e) {
+        jQuery('#f_changepass').submit(function(e) {
             //    var objInfo = objchangeData; // lay gia tri dc chuyen sang tu file yeu cau
             jQuery.ajax({
                 url: '<?php echo get_template_directory_uri() . '/ajax/changepass.php' ?>', //objInfo.url,  
                 type: 'post',
                 data: jQuery(this).serialize(),
                 dataType: 'json',
-                success: function (data) {  // set ket qua tra ve  data tra ve co thanh phan status va message
+                success: function(data) { // set ket qua tra ve  data tra ve co thanh phan status va message
                     if (data.status === 'done') {
                         //    location.reload(); //load lai trang
-                        //   window.location.replace("<?php // echo add_query_arg(array('action' => 'logout'), home_url());          ?>");
+                        //   window.location.replace("<?php // echo add_query_arg(array('action' => 'logout'), home_url());          
+                                                        ?>");
                         window.location.replace("<?php echo home_url('/logout/'); ?>");
                         // wp_redirect( home_url());//  add_query_arg(array('action' => 'logout'), $_SERVER['REQUEST_URI']);
                     } else if (data.status === 'error') {
@@ -399,7 +463,7 @@ if (!empty($_POST)) {
                         jQuery('#lblOldPass').text(data.oldPass).css('color', 'red');
                     }
                 },
-                error: function (xhr) {
+                error: function(xhr) {
                     console.log(xhr.reponseText);
                 }
             });
@@ -407,7 +471,7 @@ if (!empty($_POST)) {
 
         });
 
-// thiet lap cac style cho input info
+        // thiet lap cac style cho input info
         //    $('.memberInfo').prop("disabled", true).addClass('hide-info');
         //     $('.changInfo').hide();
 
@@ -423,7 +487,7 @@ if (!empty($_POST)) {
         }
 
         // khi click edit
-        jQuery('#editInfo').click(function () {
+        jQuery('#editInfo').click(function() {
             jQuery('.memberInfo').prop("disabled", false);
             jQuery('.memberInfo').removeClass('hide-info');
             jQuery('.changInfo').show('fast');
@@ -431,4 +495,3 @@ if (!empty($_POST)) {
 
     });
 </script>
-

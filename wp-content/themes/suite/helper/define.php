@@ -26,6 +26,8 @@ define('DIR_IMAGES_QRCODE_REGISTER', DIR_IMAGES . 'qrcode_register' . DS);
 
 /* === PART TRUC TIEP  ====== */
 
+define('HOME_LINK', 'http://localhost/ctcvn2022/');
+
 define('PART_FILE', THEME_PART . '/file/');
 define('PART_CLASS', THEME_PART . '/class/');
 define('PART_ICON', THEME_PART . '/icon/');
@@ -38,3 +40,7 @@ define('PART_IMAGES_APPLY', THEME_PART . '/images/apply/');
 define('PART_IMAGES_VOTE', THEME_PART . '/images/vote/');
 define('PART_IMAGES_GUESTS', THEME_PART . '/images/guests/');
 define('PART_IMAGES_MEMBER', THEME_PART . '/images/member/');
+
+define('COUNT_POST_NEWEST', 2);
+define('COUNT_POST_ANOTHER', 3);
+define('COUNT_POST_MORE', 2);

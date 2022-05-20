@@ -136,7 +136,7 @@ class DT_Online_counter
             $data .= fread($file_count, 4096);
         fclose($file_count);
         list($today, $yesterday, $total, $date, $days) = explode("%", $data);
-        echo $total;
+        return $total;
     }
 
     public function avg()

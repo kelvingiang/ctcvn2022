@@ -96,5 +96,55 @@ function getTranslate()
         'Branch Tay Ninh' => 'Phân Hội Tây Ninh',
         'Branch Long An' => 'Phân Hội Long An',
     );
-    return array_merge($data, $dataNew, $mapBranch);
+
+    $tuyendung = array(
+        'Upload Image' => 'UpLoad Hình Ảnh',
+        'Driving License ' => 'Giấy Phép Lái Xe',
+        'Profile' => 'Thông Tin Tài Khoản',
+        'Recruit' => 'Đăng Tuyển Dụng',
+        'Logout' => 'Đăng Xuất',
+        'User Name' => 'Tài Khoản',
+        'Full Name English' => 'Tên Tiếng Anh',
+        'Birth Of Date' => 'Ngày Sinh',
+        'Sex' => 'Giới Tính',
+        'Company' => 'Tên Công Ty',
+        'Position' => 'Chức Vụ',
+        'Submit_' => 'Gởi',
+        'Cancel_' => 'Hủy',
+        'Password_' => 'Mật Khẩu',
+        'Change-Password' => 'Đổi Mật Khẩu',
+        'Male' => 'Nam',
+        'Female' => 'Nữ',
+        'Old-Password' => 'Mật Khẩu Hiện Tại',
+        'New-Password' => 'Mật Khẩu Mới',
+        'Confirm-Password' => 'Xác Nhận Mật Khẩu',
+        'Login' => 'Đăng Nhập',
+        'Forget Password' => 'Quên Mật Khẩu',
+        'The E-mail Address is Incorrect' => 'E-mail không Đúng !',
+        'The Account is Incorrect' => 'Tài khoản không Đúng !',
+        'Resume' => 'Lý Lịch',
+        'Add New' => 'Thêm Mới',
+        'Active' => 'Kích Hoạt',
+        'Title_' => 'Tiêu Đề',
+        'Height and weight' => 'Chiều Cao Và Cân Nặng',
+        'Education' => 'Trình Độ Văn Hóa',
+        'School Department' => 'Ngành Học',
+        'Work Experiences' => 'Kinh Nghiệm',
+        'The fastest working day' => 'Ngày Đi Làm Sớm Nhất',
+        'Job Objective' => 'Chức Vụ Mong Muốn',
+        'Expected Salary' => 'Mức Lương Mong Muốn',
+        'The industry wants to work' => 'Nghề Nghiệp Mong Muốn',
+        'Languages Proficiency' => 'Ngôn Ngữ',
+        'Certificates or Licenses' => 'Văn Bằng',
+        'Skills' => 'Sử Dụng Tốt Phần Mềm',
+        'Autobiography' => 'kỷ Năng Khác',
+        'Edit_' => 'Chỉnh Sửa',
+        'Delete_' => 'Xóa',
+
+
+
+
+
+    );
+    return array_merge($data, $dataNew, $mapBranch, $tuyendung);
 }

@@ -20,14 +20,14 @@ function uploadFile($name, $File)
         if ($file_size > 2097152) {
             $errors[] = '上傳檔案容量不可大於 2 MB';
         }
-        $path = WP_CONTENT_DIR . DS . 'themes' . DS . '2020' . DS . 'images' . DS . 'apply' . DS; /* get function path upload img dc khai bao tai file hepler */
+        //$path = WP_CONTENT_DIR . DS . 'themes' . DS . '2020' . DS . 'images' . DS . 'apply' . DS; /* get function path upload img dc khai bao tai file hepler */
 
         if (empty($errors) == true) {
 
             if (is_file(DIR_IMAGES_APPLY . $name)) {
                 unlink(DIR_IMAGES_APPLY . $name);
             }
-            move_uploaded_file($file_tmp, ($path . $cus_name));
+            move_uploaded_file($file_tmp, (DIR_IMAGES_APPLY . $cus_name));
             return $cus_name;
         } else {
             return $errors;
@@ -55,14 +55,14 @@ function uploadImg($File, $name)
         if ($file_size > 2097152) {
             $errors[] = '上傳檔案容量不可大於 2 MB';
         }
-        $path = WP_CONTENT_DIR . DS . 'themes' . DS . '2020' . DS . 'images' . DS . 'download' . DS; /* get function path upload img dc khai bao tai file hepler */
+        //$path = WP_CONTENT_DIR . DS . 'themes' . DS . '2020' . DS . 'images' . DS . 'download' . DS; /* get function path upload img dc khai bao tai file hepler */
 
         if (empty($errors) == true) {
 
             if (is_file(DIR_IMAGES_DOWNLOAD . $name)) {
                 unlink(DIR_IMAGES_DOWNLOAD . $name);
             }
-            move_uploaded_file($file_tmp, ($path . $cus_name));
+            move_uploaded_file($file_tmp, (DIR_IMAGES_DOWNLOAD . $cus_name));
             return $cus_name;
         } else {
             return $errors;
@@ -87,7 +87,7 @@ function uploadFileDownLoad($File, $name)
         if ($file_size > 100097152) {
             $errors[] = '上傳檔案容量不可大於 100 MB';
         }
-        $path = WP_CONTENT_DIR . DS . 'themes' . DS . '2020' . DS . 'file' . DS; /* get function path upload img dc khai bao tai file hepler */
+        //$path = WP_CONTENT_DIR . DS . 'themes' . DS . '2020' . DS . 'file' . DS; /* get function path upload img dc khai bao tai file hepler */
 
         if (empty($errors) == true) {
 
@@ -95,7 +95,7 @@ function uploadFileDownLoad($File, $name)
                 unlink(DIR_FILE . $name);
             }
 
-            move_uploaded_file($file_tmp, ($path . $cus_name));
+            move_uploaded_file($file_tmp, (DIR_FILE . $cus_name));
             return $cus_name;
         } else {
             return $errors;

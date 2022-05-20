@@ -1,9 +1,6 @@
 <div>
-    <?php get_template_part('templates/template', 'login'); ?>
-</div>
+    <?php get_template_part('templates/template', 'friendlink'); ?>
 
-<div>
-    <?php get_template_part('templates/template', 'supervisor'); ?>
 </div>
 
 <div>

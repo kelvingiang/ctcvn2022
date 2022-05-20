@@ -51,6 +51,13 @@ function recruitMetaBox($recMeta, $_post)
 function recruitmentMetaBox($recMeta, $_post)
 {
 
+    // echo '<pre>';
+    // print_r($_FILES);
+    // echo '</pre>';
+
+    // die();
+
+
     if (!empty($_FILES['file_upload']['name'])) {
         $loginID = $_SESSION['login_id'];
         $uploadReturn = uploadFile($loginID, $_FILES);

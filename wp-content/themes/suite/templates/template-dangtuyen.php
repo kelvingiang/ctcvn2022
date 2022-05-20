@@ -16,6 +16,11 @@ $arrRec = array(
     )
 );
 $myQuery = new WP_Query($arrRec);
+
+// echo "<pre>";
+// print_r($myQuery);
+// echo "</pre>";
+
 // LAY GIA TRI CUA BAI DANG GAN NHAT GAN VO BAI VIET MOI =====================================
 $metaID = $myQuery->posts[0]->ID;
 $com_company_tw = get_post_meta($metaID, '_recruit_company_tw', true);
@@ -142,7 +147,7 @@ if ($_POST & !isset($_GET['id'])) {
             $contact_email = "";
             wp_redirect(esc_url(remove_query_arg('id', $uri))); // PHAN NAY XOA ID TREN THANH URL TAI DAY AP DUNG CHO VIEC CHAN INSERT DATA KHI REFRESH
         } else {
-            $err_com_editor = __('There are special words', 'suite');
+            $err_com_editor = __('There are special words');
         }
     }
 }
@@ -169,114 +174,111 @@ if (!$_GET['del'] == '') {
     wp_redirect(esc_url(remove_query_arg('del', $uri)));
 }
 ?>
-<style>
-    #add_new {
-        cursor: pointer;
-        color: #005082;
-        font-size: 18px;
-        border: 1px #999 solid;
-        border-radius: 3px;
-        padding: 7px 0px;
-        text-align: center;
-        width: 100px;
-        height: 38px;
-        margin-bottom: 10px;
-        font-weight: bold;
-        background-color: #ddd;
-        opacity: 0.7;
-    }
-
-    #add_new:hover {
-        opacity: 1;
-    }
-
-    .add_new_space {
-        display: none;
-    }
-</style>
-<div class='head-title'>
-    <div class="title">
-        <h2 class="head"> <?php _e('求才資料表', 'suite'); ?> </h2>
-    </div>
-</div>
 
 <div>
-    <?php if (!isset($_GET['id'])) { ?>
-        <div id="add_new">新 增</div>
-    <?php } ?>
-    <div class="add_new_space">
+    <div class='head-title'>
+        <h2 class="head"> <?php _e('求才資料表'); ?> </h2>
+    </div>
+
+    <div>
+        <?php if (!isset($_GET['id'])) { ?>
+            <button id="add_new" class="btn btn-primary">新 增</button>
+        <?php } ?>
         <form id="f_recruit_dangtuyen" method="post" action="#">
-            <div id="tab-2">
+            <div class="add_new_space">
+
                 <input type="hidden" id="hid_id" name="hid_id" value="<?php echo $getID ?>" />
-                <div class="row">
+
+                <div class="row row-modify">
                     <div class="col-md-12 col-sm-12 col-xs-12">
-                        <lable for="status" style="margin-right: 30px; font-weight: bold" class="label-title">
-                            <?php _e('Active', 'suite') ?></lable>
+                        <label for="status" style="margin-right: 30px; font-weight: bold" class="label-title">
+                            <?php _e('Active') ?></label>
                         <input type="checkbox" name="chk_status" id=" chk_status" <?php echo $status === 'on' ? 'checked' : ""; ?> />
                     </div>
-                    <div class='col-md-12 col-sm-12 col-xs-12 error-text'> <label></label></div>
-                </div> <!-- active -->
-                <div class="row">
-                    <div class='col-md-3 col-sm-3 col-xs-12'><label for="com_title" class="label-title"><?php _e('Title', 'suite'); ?></label></div>
-                    <div class='col-md-9 col-sm-9 col-xs-12'>
+                </div>
+
+                <!-- active -->
+                <div class="row row-modify">
+                    <div class='col-md-12 col-sm-12 col-xs-12'>
+                        <label class="label-title"><?php _e('Title'); ?></label>
+                        <label id="error_title" class="error-mess"><?php echo $_error['title']; ?></label>
+                    </div>
+                    <div class='col-md-12 col-sm-12 col-xs-12'>
                         <input type="text" class="form-control" name="txt_title" id="txt_title" value="<?php echo $com_title ?>">
-                        <div class='col-md-12 col-sm-12 col-xs-12 error-text'> <label id="error_title">
-                                <?php echo $_error['title']; ?></label></div>
                     </div>
                 </div> <!-- title -->
-                <div class="row">
-                    <div class="col-md-3 col-sm-3 col-xs-12"><label class="label-title"><?php _e('Company Tw', 'suite'); ?></label></div>
-                    <div class="col-md-9 col-sm-9 col-xs-12">
+
+                <div class="row row-modify">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <label class="label-title"><?php _e('Company Tw'); ?></label>
+                        <label class=" error-mess"><?php echo $err_com_company_tw ?></label>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
                         <input type="text" class="form-control" required name="txt_company_tw" id="txt_company_tw" value="<?php echo $com_company_tw ?>">
                     </div>
-                    <div class='col-md-12 col-sm-12 col-xs-12 error-text'> <label>
-                            <?php echo $err_com_company_tw ?></label></div>
                 </div> <!-- tw company -->
-                <div class="row">
-                    <div class="col-md-3 col-sm-3 col-xs-12"><label class="label-title"><?php _e('Company Vn', 'suite'); ?></label></div>
-                    <div class="col-md-9 col-sm-9 col-xs-12">
+
+                <div class="row row-modify">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <label class="label-title"><?php _e('Company Vn'); ?></label>
+                        <label><?php echo $err_com_company ?></label>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
                         <input type="text" class="form-control" name="txt_company_vn" id="txt_company_vn" value="<?php echo $com_company_vn ?>">
                     </div>
-                    <div class='col-md-12 col-sm-12 col-xs-12 error-text'> <label>
-                            <?php echo $err_com_company ?></label></div>
                 </div> <!-- vn Company -->
-                <div class="row">
-                    <div class="col-md-3 col-sm-3 col-xs-12"><label class="label-title"><?php _e('Company En', 'suite'); ?></label></div>
-                    <div class="col-md-9 col-sm-9 col-xs-12">
+
+                <div class="row row-modify">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <label class="label-title"><?php _e('Company En'); ?></label>
+                        <label class=" error-mess"> <?php echo $err_com_company_en ?></label>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
                         <input type="text" class="form-control" name="txt_company_en" id="txt_company_en" value="<?php echo $com_company_en ?>">
                     </div>
-                    <div class='col-md-12 col-sm-12 col-xs-12 error-text'> <label>
-                            <?php echo $err_com_company_en ?></label></div>
                 </div> <!-- en Company -->
-                <div class="row">
-                    <div class="col-md-3 col-sm-3 col-xs-12"><label class="label-title"><?php _e('Address', 'suite'); ?></label></div>
-                    <div class="col-md-9 col-sm-9 col-xs-12">
+
+                <div class="row row-modify">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <label class="label-title"><?php _e('Address'); ?></label>
+                        <label class=" error-mess"><?php echo $err_com_address ?></label>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
                         <input type="text" class="form-control" name="txt_address" id="txt_address" value="<?php echo $com_address ?>">
                     </div>
-                    <div class="col-md-12 col-sm-12 col-xs-12 error-text"><label> <?php echo $err_com_address ?></label>
-                    </div>
                 </div> <!-- dia chi -->
-                <div class="row">
-                    <div class="col-md-3 col-sm-3 col-xs-12"><label class="label-title"><?php _e('Phone', 'suite'); ?></label></div>
-                    <div class="col-md-9 col-sm-9 col-xs-12  row-modify">
+
+                <div class="row row-modify">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <label class="label-title"><?php _e('Phone'); ?></label>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12 ">
                         <input type="text" class="type-phone" name="txt_phone" id="txt_phone" value="<?php echo $com_phone ?>">
                     </div>
-                    <div class="col-md-3 col-sm-3 col-xs-12 ">
-                        <label class="label-title"><?php _e('Email', 'suite'); ?></label>
+                </div>
+
+                <div class="row row-modify">
+                    <div class="col-md-12 col-sm-12 col-xs-12 ">
+                        <label class="label-title"><?php _e('Email'); ?></label>
                     </div>
-                    <div class="col-md-9 col-sm-9 col-xs-12 row-modify">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
                         <input type="email" class="form-control" name="txt_email" id="txt_email" value="<?php echo $com_email ?>">
                     </div>
-                    <div class="col-md-3 col-sm-3 col-xs-12 ">
-                        <label class="label-title"><?php _e('number of employees of the company', 'suite'); ?></label>
+                </div>
+
+                <div class="row row-modify">
+                    <div class="col-md-12 col-sm-12 col-xs-12 ">
+                        <label class="label-title"><?php _e('number of employees of the company'); ?></label>
                     </div>
-                    <div class="col-md-9 col-sm-9 col-xs-12  row-modify">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
                         <input type="text" class="type-phone" name="txt_count" id="txt_count" value="<?php echo $com_count ?>">
                     </div>
-                </div> <!-- thong tin  lien lac cty  -->
-                <div class="row">
+                </div>
+
+
+                <div class="row row-modify">
                     <div class="col-md-12 col-sm-12 col-xs-12">
-                        <label class="label-title"><?php _e('Company Summary', 'suite'); ?></label> <label style="color: red;"><?php echo $err_summary ?></label>
+                        <label class="label-title"><?php _e('Company Summary'); ?></label> <label style="color: red;"><?php echo $err_summary ?></label>
                         <textarea id="editor" name="editor" class="" style="min-height: 300px">
                             <?php echo $summary ?>
                         </textarea>
@@ -293,118 +295,127 @@ if (!$_GET['del'] == '') {
                 </div>
 
 
-                <div class="row">
-                    <div class="col-md-3 col-sm-3 col-xs-12"><label class="label-title"><?php _e('職缺名稱', 'suite'); ?></label></div>
-                    <div class="col-md-9 col-sm-9 col-xs-12">
-                        <input type="text" class="form-control" name="txt_lack_job" id="txt_lack_job" value="<?php echo $lack_job ?>">
+                <div class="row row-modify">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <label class="label-title"><?php _e('職缺名稱'); ?></label>
+                        <label class=" error-mess"> <?php echo $err_com_career ?></label>
                     </div>
-                    <div class="col-md-12 col-sm-12 col-xs-12 error-text"><label> <?php echo $err_com_career ?></label>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <input type="text" class="form-control" name="txt_lack_job" id="txt_lack_job" value="<?php echo $lack_job ?>">
                     </div>
                 </div> <!-- nganh nghe kinh doanh -->
 
-                <div class="row">
-                    <div class="col-md-3 col-sm-3 col-xs-12"><label class="label-title"><?php _e('職缺人數', 'suite'); ?></label></div>
-                    <div class="col-md-9 col-sm-9 col-xs-12">
-                        <input type="text" class="form-control type-number" maxlength="3" name="txt_lack_count" id="txt_lack_count" value="<?php echo $lack_count ?>">
+                <div class="row row-modify">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <label class="label-title"><?php _e('職缺人數'); ?></label>
+                        <label class=" error-mess"> <?php echo $err_com_count ?></label>
                     </div>
-                    <div class="col-md-12 col-sm-12 col-xs-12 error-text"><label> <?php echo $err_com_count ?></label>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <input type="text" class="form-control type-number" maxlength="3" name="txt_lack_count" id="txt_lack_count" value="<?php echo $lack_count ?>">
                     </div>
                 </div>
                 <!--so nguoi can tuyen -->
                 <!-- <div class="row">
                     <div class="col-md-3 col-sm-3 col-xs-12"> <label for="sex"
-                            class="label-title"><?php //_e('Sex', 'suite'); 
+                            class="label-title"><?php //_e('Sex'); 
                                                 ?></label></div>
                     <div class="col-md-9 col-sm-9 col-xs-12">
                         <select id="sel_sex" name="sel_sex" style="width: 180px">
                             <option value="3" <?php //echo $com_sex == 3 ? 'selected="selected"' : '' 
                                                 ?>>
-                                <?php //_e('Male/Female', 'suite'); 
+                                <?php //_e('Male/Female'); 
                                 ?></option>
                             <option value="1" <?php //echo $com_sex == 1 ? 'selected="selected"' : '' 
                                                 ?>>
-                                <?php //_e('Male', 'suite'); 
+                                <?php //_e('Male'); 
                                 ?></option>
                             <option value="2" <?php //echo $com_sex == 2 ? 'selected="selected"' : '' 
                                                 ?>>
-                                <?php // _e('Female', 'suite'); 
+                                <?php // _e('Female'); 
                                 ?></option>
                         </select>
                     </div>
                     <div class="col-md-12 col-sm-12 col-xs-12 error-text"><label></label></div>
                 </div> -->
                 <!-- gioi tinh -->
-                <div class="row">
-                    <div class="col-md-3 col-sm-3 col-xs-4"> <label class="label-title"><?php _e('有效日期', 'suite'); ?></label></div>
+                <div class="row row-modify">
+                    <div class="col-md-12 col-sm-12 col-xs-4">
+                        <label class="label-title"><?php _e('有效日期'); ?></label>
+                        <label class=" error-mess"> <?php echo $err_com_date ?></label>
+                    </div>
                     <div class="col-md-4 col-sm-4 col-xs-8">
                         <input type="text" class="MyDate" style="width: 88%" maxlength="10" name="txt_date_from" id="txt_date_from" value="<?php echo $date_from ?>">
                     </div>
-                    <div class="col-md-1 col-sm-1 col-xs-4"> <label class="label-title"><?php _e('To', 'suite'); ?></label></div>
+                    <div class="col-md-1 col-sm-1 col-xs-4"> <label class="label-title"><?php _e('To'); ?></label></div>
                     <div class="col-md-4 col-sm-4 col-xs-8">
                         <input type="text" class="MyDate" style="width: 88%" maxlength="10" name="txt_date_to" id="txt_date_to" value="<?php echo $date_to ?>">
                     </div>
-                    <div class="col-md-12 col-sm-12 col-xs-12 error-text"><label> <?php echo $err_com_date ?></label>
-                    </div>
                 </div>
+
                 <?php
-                require_once DIR_CODES . 'my_list.php';
+                require_once DIR_CODES . 'my-list.php';
                 $myList = new Codes_My_List();
                 $placeList = $myList->PlaceList();
                 $careerList = $myList->CareerList();
                 ?>
-                <div class="row">
-                    <div class="col-md-3 col-sm-3 col-xs-4"> <label class="label-title"><?php _e('上班地區', 'suite'); ?></label></div>
+                <div class="row row-modify">
+                    <div class="col-md-12 col-sm-12 col-xs-4">
+                        <label class="label-title"><?php _e('上班地區'); ?></label>
+                        <label id="error_place" class=' error-mess'> <?php echo $err_place ?> </label>
+                    </div>
                     <div class="col-md-4 col-sm-4 col-xs-8">
-                        <select id="sel_place" name="sel_place">
+                        <select id="sel_place" name="sel_place" class="selectmenu">
                             <?php foreach ($placeList as $key => $val) { ?>
-                                <option value="<?php echo $key ?>" <?php echo $sel_place == $key ? 'selected="selected"' : '' ?>><?php echo $val ?>
+                                <option value="<?php echo $key ?>" <?php echo $sel_place == $key ? 'selected="selected"' : '' ?>>
+                                    <?php echo $val ?>
                                 </option>
                             <?php } ?>
                         </select>
                     </div>
-                    <div class="col-md-5 col-sm-5 col-xs-12"><label id="error_place" style=" color: red; font-size: 12px; font-style:  italic"> <?php echo $err_place ?></label>
-                    </div>
-                    <div class="col-md-12 col-sm-12 col-xs-12 error-text"><label> </label></div>
                 </div>
 
-                <div class="row">
-                    <div class="col-md-3 col-sm-3 col-xs-4"> <label class="label-title"><?php _e('職務類別', 'suite'); ?></label></div>
-                    <div class="col-md-4 col-sm-4 col-xs-8">
-                        <select id="sel_career" name="sel_career">
+                <div class="row row-modify">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <label class="label-title"><?php _e('職務類別'); ?></label>
+                        <label id="error_career" class=" error-mess"> <?php echo $err_career ?></label>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <select id="sel_career" name="sel_career" class="selectmenu">
                             <?php foreach ($careerList as $key => $val) { ?>
                                 <option value="<?php echo $key ?>" <?php echo $sel_career == $key ? 'selected="selected"' : '' ?>><?php echo $val ?>
                                 </option>
                             <?php } ?>
                         </select>
                     </div>
-                    <div class="col-md-5 col-sm-5 col-xs-12"><label id="error_career" style=" color: red; font-size: 12px; font-style:  italic"> <?php echo $err_career ?></label>
-                    </div>
-                    <div class="col-md-12 col-sm-12 col-xs-12 error-text"><label> </label></div>
                 </div>
 
                 <!-- ngay co hien luc -->
-                <div class="row">
-                    <div class="col-md-3 col-sm-3 col-xs-12"><label class="label-title"><?php _e('Level', 'suite'); ?></label></div>
-                    <div class="col-md-9 col-sm-9 col-xs-12">
+                <div class="row row-modify">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <label class="label-title"><?php _e('Level'); ?></label>
+                        <label class=" error-mess"> <?php echo $err_com_level ?></label>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
                         <input type="text" class="form-control" name="txt_level" id="txt_level" value="<?php echo $level ?>">
                     </div>
-                    <div class="col-md-12 col-sm-12 col-xs-12 error-text"><label> <?php echo $err_com_level ?></label>
+                </div>
+
+                <!-- trinh do -->
+                <div class="row  row-modify ">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <label class="label-title"><?php _e('Experiences'); ?></label>
+                        <label class=" error-mess"><?php echo $err_com_experience ?></label>
                     </div>
-                </div> <!-- trinh do -->
-                <div class="row">
-                    <div class="col-md-3 col-sm-3 col-xs-12"><label class="label-title"><?php _e('Experiences', 'suite'); ?></label></div>
-                    <div class="col-md-9 col-sm-9 col-xs-12">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
                         <input type="text" class="form-control" name="txt_experience" id="txt_experience" value="<?php echo $experience ?>">
                     </div>
-                    <div class="col-md-12 col-sm-12 col-xs-12 error-text"><label>
-                            <?php echo $err_com_experience ?></label></div>
                 </div> <!-- kinh nghiem -->
                 <!-- <div class="row">
-                    <div class="col-md-3 col-sm-3 col-xs-4"> <label class="label-title"><?php //_e('Age', 'suite'); 
+                    <div class="col-md-3 col-sm-3 col-xs-4"> <label class="label-title"><?php //_e('Age'); 
                                                                                         ?></label></div>
                     <div class="col-md-4 col-sm-4 col-xs-8"><input type="text" style="width: 88%" class="type-number" maxlength="2" name="txt_age_from" id="txt_age_from" value="<?php //echo $age_from 
                                                                                                                                                                                     ?>"></div>
-                    <div class="col-md-1 col-sm-1 col-xs-4"><label class="label-title"><?php //_e('To', 'suite'); 
+                    <div class="col-md-1 col-sm-1 col-xs-4"><label class="label-title"><?php //_e('To'); 
                                                                                         ?></label></div>
                     <div class="col-md-4 col-sm-4 col-xs-8"><input type="text" style="width: 88%" class="type-number " maxlength="2" name="txt_age_to" id="txt_age_to" value="<?php //echo $age_to 
                                                                                                                                                                                 ?>"> </div>
@@ -412,27 +423,42 @@ if (!$_GET['del'] == '') {
                             <?php //echo $err_com_age 
                             ?></label></div>
                 </div> gioi han do tuoi -->
-                <div class="row">
-                    <div class="col-md-3 col-sm-3 col-xs-12"><label class="label-title"><?php _e('Foreign Languages', 'suite'); ?></label></div>
-                    <div class="col-md-9 col-sm-9 col-xs-12"><input type="text" class="form-control" name="txt_language" id="txt_language" value="<?php echo $language ?>"></div>
-                    <div class="col-md-12 col-sm-12 col-xs-12 error-text"><label class="mess">
-                            <?php echo $err_com_age ?></label></div>
-                </div> <!-- ngoai ngu -->
-                <div class="row">
-                    <div class="col-md-3 col-sm-3 col-xs-12"><label class="label-title"><?php _e('Work Space', 'suite'); ?></label></div>
-                    <div class="col-md-9 col-sm-9 col-xs-12"><input type="text" class="form-control" name="txt_word_space" id="txt_word_space" value="<?php echo $work_space ?>"></div>
-                    <div class="col-md-12 col-sm-12 col-xs-12 error-text"><label class="mess">
-                            <?php echo $err_com_age ?></label></div>
-                </div> <!-- noi lam viec -->
-                <div class="row">
-                    <div class="col-md-3 col-sm-3 col-xs-12"><label class="label-title"><?php _e('Salary', 'suite'); ?></label></div>
-                    <div class="col-md-9 col-sm-9 col-xs-12"><input type="text" class="form-control" name="txt_salary" id="txt_salary" value="<?php echo $salary ?>"></div>
-                    <div class="col-md-12 col-sm-12 col-xs-12 error-text"><label class="mess">
-                            <?php echo $err_com_age ?></label></div>
-                </div> <!-- noi lam viec -->
-                <div class="row">
+                <div class="row row-modify">
                     <div class="col-md-12 col-sm-12 col-xs-12">
-                        <label class="label-title"><?php _e('Another', 'suite'); ?></label>
+                        <label class="label-title"><?php _e('Foreign Languages'); ?></label>
+                        <label class="error-mess"><?php echo $err_com_age ?></label>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <input type="text" class="form-control" name="txt_language" id="txt_language" value="<?php echo $language ?>">
+                    </div>
+                </div> <!-- ngoai ngu -->
+
+                <div class="row row-modify">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <label class="label-title"><?php _e('Work Space'); ?></label>
+                        <label class=" error-mess"><?php echo $err_com_age ?></label>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <input type="text" class="form-control" name="txt_word_space" id="txt_word_space" value="<?php echo $work_space ?>">
+                    </div>
+                </div> <!-- noi lam viec -->
+
+
+                <div class="row row-modify">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <label class="label-title"><?php _e('Salary'); ?></label>
+                        <label class=" error-mess"><?php echo $err_com_age ?></label>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <input type="text" class="form-control" name="txt_salary" id="txt_salary" value="<?php echo $salary ?>">
+                    </div>
+                </div> <!-- noi lam viec -->
+
+                <div class="row row-modify ">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <label class="label-title"><?php _e('Another'); ?></label>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
                         <textarea id="another" name="another" style="min-height: 200px">
                             <?php echo $orther ?>
                         </textarea>
@@ -443,43 +469,55 @@ if (!$_GET['del'] == '') {
                             CKFinder.setupCKEditor(another, '<?php echo PART_CLASS . 'ckfinder' ?>');
                         </script>
                     </div>
-                </div> <!-- khac -->
+                </div>
+                <!-- khac -->
 
-                <div class="row">
-                    <div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 10px; margin-top: 30px"> <label class="label-title"><?php _e('人事聯絡室', 'suite'); ?></label></div>
-                    <div class="row" style="margin-left: 10px">
-                        <div class="col-md-3 col-sm-3 col-xs-12"><label class="label-title"><?php _e('Name', 'suite'); ?></label></div>
-                        <div class="col-md-9 col-sm-9 col-xs-12 row-modify">
-                            <input type="text" class="form-control" name="txt_contact_name" id="txt_contact_name" value="<?php echo $contact_name ?>">
-                        </div>
-
-                        <div class="col-md-3 col-sm-3 col-xs-12"><label class="label-title"><?php _e('Phone', 'suite'); ?></label></div>
-                        <div class="col-md-9 col-sm-9 col-xs-12 row-modify">
-                            <input type="text" class="type-phone" name="txt_contact_phone" id="txt_contact_phone" value="<?php echo $contact_phone ?>">
-                        </div>
-
-                        <div class="col-md-3 col-sm-3 col-xs-12"><label class="label-title"><?php _e('Email', 'suite'); ?></label></div>
-                        <div class="col-md-9 col-sm-9 col-xs-12 row-modify">
-                            <input type="email" class="form-control" name="txt_contact_email" id="txt_contact_email" value="<?php echo $contact_email ?>">
-                        </div>
+                <div class="row row-modify">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <label class="label-title"><?php _e('人事聯絡室'); ?></label>
                     </div>
-                </div> <!-- thong tin lien nguoi quan ly -->
-                <div style=" text-align: center; margin: 15px; ">
-                    <input id="btn-submit" type="button" class="btn btn-primary" value="<?php echo isset($_GET['id']) ? _e('Update', 'suite') : _e('Submit', 'suite'); ?>" />
+                </div>
+
+                <div class="row  row-modify">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <label class="label-title"><?php _e('Name'); ?></label>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <input type="text" class="form-control" name="txt_contact_name" id="txt_contact_name" value="<?php echo $contact_name ?>">
+                    </div>
+                </div>
+
+                <div class="row row-modify">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <label class="label-title"><?php _e('Phone'); ?></label>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <input type="text" class="type-phone" name="txt_contact_phone" id="txt_contact_phone" value="<?php echo $contact_phone ?>">
+                    </div>
+                </div>
+
+                <div class="row row-modify">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <label class="label-title"><?php _e('Email'); ?></label>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <input type="email" class="form-control" name="txt_contact_email" id="txt_contact_email" value="<?php echo $contact_email ?>">
+                    </div>
+                </div>
+                <!-- thong tin lien nguoi quan ly -->
+
+                <div class="btn-space" style="margin-top: 2rem">
+                    <input id="btn-submit" type="button" class="btn-my" value="<?php echo isset($_GET['id']) ? _e('Update') : _e('Submit'); ?>" />
                     <?php if (isset($_GET['id'])) { ?>
-                        <input id="btn_reset" type="reset" class="btn btn-primary" value="<?php _e('Cancel', 'suite'); ?>" onclick="javascript:window.location = '<?php echo home_url('recruit/?dt=4') ?>';" />
+                        <input id="btn_reset" type="reset" class="btn-my" value="<?php _e('Cancel'); ?>" onclick="javascript:window.location = '<?php echo home_url('recruit/?dt=4') ?>';" />
                     <?php } else { ?>
-                        <input id="btn-reset" type="reset" class="btn btn-primary" value='<?php _e('Reset', 'suite'); ?>' />
+                        <input id="btn-reset" type="reset" class="btn-my" value='<?php _e('Reset'); ?>' />
                     <?php } ?>
                 </div> <!-- button -->
             </div>
         </form>
     </div>
 </div>
-<hr style="border: 5px solid #666">
-
-<!-- lay cac bai post da dang truoc do -->
-
 
 <?php
 if ($myQuery->have_posts()) :
@@ -488,19 +526,16 @@ if ($myQuery->have_posts()) :
         $myQuery->the_post();
 ?>
         <div class="row-item">
-            <?php // echo $active == 'on' ? 'active' : 'inactive';        
-            ?>
             <span>
-                <label><?php the_title() ?></label>
+                <a href="<?php the_permalink() ?>" target="_blank" class="my-link">
+                    <?php the_title() ?>
+                </a>
             </span>
-            <!-- <label>Post at : <?php // echo $post->post_date                                                                           
-                                    ?></label>-->
             <span style="float: right">
-                <a href="<?php the_permalink() ?>" target="_blank"><?php _e('View', 'suite'); ?></a> |
-                <a class="edit_space" href="<?php echo esc_attr(add_query_arg('id', $post->ID)) ?>">
-                    <?php _e('Edit', 'suite'); ?> </a> |
-                <a href="#" class="del" data-id="del-<?php echo $post->ID ?>" data-href="<?php echo esc_attr(add_query_arg('del', $post->ID)) ?>" data-title=" <?php echo get_the_title($post->ID); ?>" data-toggle="modal" data-target="#confirm-delete">
-                    <?php _e('Delete', 'suite'); ?></a>
+                <a class="my-link" href="<?php echo esc_attr(add_query_arg('id', $post->ID)) ?>">
+                    <?php _e('Edit'); ?> </a> |
+                <a href="#" class="my-link" data-id="del-<?php echo $post->ID ?>" data-href="<?php echo esc_attr(add_query_arg('del', $post->ID)) ?>" data-title=" <?php echo get_the_title($post->ID); ?>" data-toggle="modal" data-target="#confirm-delete">
+                    <?php _e('Delete'); ?></a>
             </span>
         </div>
 <?php
@@ -558,9 +593,6 @@ if (isset($_GET['id'])) {
             }
         });
 
-
-
-
         if ('<?php echo $getID ?>' !== '') {
             jQuery(".add_new_space").slideDown('slow');
         }
@@ -576,11 +608,12 @@ if (isset($_GET['id'])) {
             }
         });
         // LAY GIA TRI ID TAO HIEU UNG CUON
-        var id = <?php echo $getid ?>;
-        if (id !== '' && id !== 1) {
-            jQuery('body,html').stop(false, false).animate({
-                scrollTop: 790
-            }, 1000);
-        };
+        // var id = <?php // echo $getid 
+                    ?>;
+        // if (id !== '' && id !== 1) {
+        //     jQuery('body,html').stop(false, false).animate({
+        //         scrollTop: 790
+        //     }, 1000);
+        // };
     });
 </script>

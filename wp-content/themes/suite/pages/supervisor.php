@@ -3,35 +3,8 @@
   Template Name:  Supervisor  Page
  */
 get_header();
-
-//===1  phan trang E ==========
 ?>
-<style>
-    .border_box {
-        margin: 0;
-    }
 
-    .box_skitter_large {
-        height: 600px;
-    }
-
-    .container_skitter img {
-        text-align: center;
-    }
-
-    .box_skitter {
-        width: 100%;
-    }
-
-    .label_skitter {
-        background-color: transparent !important;
-    }
-
-    .image_main {
-        height: 600px;
-        width: 100%;
-    }
-</style>
 
 <div>
     <?php mySlider('supervisors'); ?>
@@ -40,7 +13,7 @@ get_header();
 <div class="row">
     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
         <div class='head-title'>
-            <h2> <?php _e('The Council of Taiwanese Chambers Regulation') ?> </h2>
+            <h2> <?php __('The Council of Taiwanese Chambers Regulation') ?> </h2>
         </div>
         <div class="supervisor-incumbent">
             <?php
@@ -75,7 +48,7 @@ get_header();
 
     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
         <div class='head-title'>
-            <h2> <?php _e('The Council of Taiwanese Chambers Regulation') ?> </h2>
+            <h2> <?php __('The Council of Taiwanese Chambers Regulation') ?> </h2>
         </div>
         <div id='past-presidents' class="past-presidents">
             <?php
@@ -108,16 +81,12 @@ get_header();
         </div>
     </div>
 
-
     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
         <?php get_template_part('templates/template', 'presidents');
         ?>
     </div>
 </div>
-<?php
-get_footer();
-ob_flush();   // neu bao loi PHP Warning: Cannot modify header information – headers already sent by
-?>
+
 
 
 <script>
@@ -143,3 +112,6 @@ ob_flush();   // neu bao loi PHP Warning: Cannot modify header information – h
         });
     }
 </script>
+
+<?php
+get_footer();

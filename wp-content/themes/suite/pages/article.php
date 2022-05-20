@@ -2,7 +2,7 @@
 /*
   Template Name: Article  Page
  */
-ob_start();  // neu bao loi PHP Warning: Cannot modify header information – headers already sent by
+// neu bao loi PHP Warning: Cannot modify header information – headers already sent by
 get_header();
 $uri = $_SERVER['REQUEST_URI'];  // lay url tai trang hien hanh
 // ====== phan lay ID user thong qua $_SESSION['login']==============;
@@ -112,7 +112,7 @@ if (!$_GET['del'] == '') {
     <div class="col-xl-9 col-lg-9 col-md-8 col-sm-8 col-12">
         <div class='head-title'>
             <div class="title">
-                <h2 class="head"> <?php _e('在留言區已發表', 'suite'); ?> </h2>
+                <h2 class="head"> <?php _e('在留言區已發表'); ?> </h2>
             </div>
         </div>
 
@@ -121,8 +121,8 @@ if (!$_GET['del'] == '') {
             <form id="f_article" method="post" action="#">
                 <div style="width: 98%; margin-left: 20px">
                     <!-- phan lay category  -->
-                    <div class='row'>
-                        <div class='col-md-3'> <label class="label-title"><?php echo _e('Category', 'suite') ?></label>
+                    <div class='row row-modify'>
+                        <div class='col-md-3'> <label class="label-title"><?php echo _e('Category') ?></label>
                         </div>
                         <?php
                         $argsCate = array(
@@ -138,29 +138,34 @@ if (!$_GET['del'] == '') {
                         <div class='col-md-9'>
                             <select id="cate" name="cate" class="selectmenu" style="width: 180px">
                                 <?php foreach ($categories as $cate) { ?>
-                                    <option value="<?php echo $cate->term_id ?>" <?php
-                                                                                    if ($txt_cate == $cate->term_id) {
-                                                                                        echo 'selected';
-                                                                                    }
-                                                                                    ?>><?php echo $cate->name ?>
+                                    <option value="<?php echo $cate->term_id ?>" <?php echo $txt_cate == $cate->term_id ? 'selected' : '' ?>>
+                                        <?php echo $cate->name ?>
                                     </option>
                                 <?php } ?>
                             </select>
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class='col-md-3'><label for="txt_title" class="label-title"><?php echo _e('Title', 'suite') ?></label></br></div>
-                        <div class='col-md-9'><input type="text" id="txt_title" name="txt_title" class="form-control" value="<?php echo $txt_title ?>" /></div>
-                        <div class='col-md-12 error-text'> <label><?php echo $err_new_title ?></label></div>
+                    <div class="row row-modify">
+                        <div class='col-md-12'>
+                            <label class="label-title"><?php echo _e('Title') ?></label>
+                            <label class="error-mess"><?php echo $err_new_title ?></label>
+                        </div>
+                        <div class='col-md-12'>
+                            <input type="text" id="txt_title" name="txt_title" class="form-control" value="<?php echo $txt_title ?>" />
+                        </div>
                     </div>
 
-                    <div class="row">
-                        <div class='col-md-3'><label class="label-title"><?php echo _e('Content', 'suite') ?></label></div>
-                        <div class='col-md-9'><label style='color:red'> <?php echo $err_new_content; ?></label></div>
+                    <div class="row row-modify">
+                        <div class='col-md-3'>
+                            <label class="label-title"><?php echo _e('Content') ?></label>
+                            <label class="error-mess"'> <?php echo $err_new_content; ?></label>
+                        </div>
+                        <div class=' col-md-9'>
+                        </div>
                         <!--  phan su dung ckeditor chua duoc      -->
-                        <div class='col-md-12'>
-                            <textarea id="editor" name="editor" required style="min-height: 300px">
+                        <div class=' col-md-12'>
+                            <textarea id="editor" name="editor" required style="min-height: 300px, padding-top: 2rem ">
                                 <?php echo $txt_content ?>
                             </textarea>
                             <script>
@@ -172,8 +177,14 @@ if (!$_GET['del'] == '') {
                         </div>
                     </div>
                     <div style=" margin-top: 15px;  text-align: center">
-                        <input id="btn-submit" type="submit" class="btn btn-primary" value="<?php _e('新增', 'suite'); ?>" />
-                        <input id="btn_reset_new" type="reset" class="btn btn-primary" value="<?php _e('Cancel', 'suite'); ?>" onclick="javascript:window.location = '<?php echo home_url('/article/') ?>';" />
+                        <div class="btn-space" style="margin-top: 2rem"">
+                        <button type=" submit" id=" btn-submit" class="btn-my">
+                            <?php _e('New'); ?>
+                            </button>
+                            <button type="reset" id="btn_reset_new" class="btn-my" onclick="javascript:window.location = '<?php echo home_url('/article/') ?>';">
+                                <?php _e('Cancel'); ?>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </form>
@@ -197,161 +208,146 @@ if (!$_GET['del'] == '') {
                 <!-- giu link hien tai -->
                 <div>
                     <!-- phan lay category  -->
-                    <div class="content" style="display: none">
-                        <?php echo $errUpdate; ?>
-                        <label class="label-title"><?php echo _e('category', 'suite') ?></label><br>
-                        <?php
-                        $argsCate2 = array(
-                            'type' => 'forum',
-                            'orderby' => 'meta_value',
-                            'order' => 'ASC',
-                            'taxonomy' => 'forum_category',
-                            'hide_empty' => 0,
-                            'parent' => 0,
-                        );
-                        $categories2 = get_categories($argsCate2);
-                        ?>
-                        <select id="update_cate" name="update_cate" class="selectmenu" style="width:150px">
-                            <?php foreach ($categories2 as $cate2) { ?>
-                                <option value="<?php echo $cate2->term_id ?>" <?php
-                                                                                if ($cateID == $cate2->term_id) {
-                                                                                    echo 'selected';
-                                                                                }
-                                                                                ?>><?php echo $cate2->name ?></option>
-                            <?php } ?>
-                        </select>
-                    </div>
-                    <div class="content">
-                        <label class="label-title"><?php echo _e('title', 'suite') ?></label><br>
-                        <input type="hidden" id="update_id" name="update_id" value="<?php echo $objArticle->ID ?>" />
-                        <input type="text" id="update_title" name="update_title" class="form-control" value="<?php echo $updateTitle; ?>" />
-                        <label class="mess"><?php echo $err_update_title ?></label>
-                    </div>
-                    <div class="content">
-                        <label class="label-title">content</label>
-                        <label class="mess"> <?php echo $err_update_content ?></label>
-                        <?php // wp_editor($p_description_vi, 'editor1', $editor_settings);                 
-                        ?>
-                        <!--  phan su dung ckeditor chua duoc      -->
 
-                        <textarea id="update_editor" name="update_editor">
-                            <?php echo $updateContent ?> 
-                        </textarea>
-                        <script>
-                            var editor = CKEDITOR.replace('update_editor', {
-                                customConfig: 'custom-config.js'
-                            });
-                            CKFinder.setupCKEditor(editor, '<?php echo  PART_CLASS . 'ckfinder/' ?>');
-                        </script>
+
+                    <div class="row row-modify">
+                        <div class='col-md-12'>
+                            <label class="label-title"><?php echo _e('Title') ?></label>
+                            <label class="error-mess"><?php echo $err_update_title ?></label>
+                        </div>
+                        <div class="col-md-12">
+                            <input type="hidden" id="update_id" name="update_id" value="<?php echo $objArticle->ID ?>" />
+                            <input type="text" id="update_title" name="update_title" class="form-control" value="<?php echo $updateTitle; ?>" />
+                        </div>
                     </div>
-                    <div style="text-align: center; margin-top: 20px">
-                        <input id="btn-update" class="btn btn-primary" type="submit" value="<?php _e('Update', 'suite'); ?>" />
-                        <input id="btn_reset" class="btn btn-primary" type="reset" value="<?php _e('Cancel', 'suite'); ?>" onclick="javascript:window.location = '<?php echo home_url('/article/') ?>';" />
+
+                    <div class="row row-modify">
+                        <div class="col-md-12">
+                            <label class="label-title"><?php echo _e('Content') ?></label>
+                            <label class="mess"> <?php echo $err_update_content ?></label>
+                        </div>
+                        <div class="col-md-12">
+                            <textarea id="update_editor" name="update_editor">
+                                <?php echo $updateContent ?> 
+                            </textarea>
+                            <script>
+                                var editor = CKEDITOR.replace('update_editor', {
+                                    customConfig: 'custom-config.js'
+                                });
+                                CKFinder.setupCKEditor(editor, '<?php echo  PART_CLASS . 'ckfinder/' ?>');
+                            </script>
+                        </div>
                     </div>
+                    <div class="btn-space" style="margin-top: 2rem"">
+                        <input id=" btn-update" class="btn-my" type="submit" value="<?php _e('Update'); ?>" />
+                    <input id="btn_reset" class="btn-my" type="reset" value="<?php _e('Cancel'); ?>" onclick="javascript:window.location = '<?php echo home_url('/article/') ?>';" />
                 </div>
-            </form>
-        <?php } ?>
+    </div>
+    </form>
+<?php } ?>
 
-        <hr>
+<hr>
 
 
 
+<?php
+$arrpost = array(
+    'post_type' => 'forum',
+    'author' => $objMember->ID,
+    'posts_per_page' => -1,
+    'post_status' => 'publish',
+    'meta_query' => array(
+        array(
+            'key' => 'f_active',
+            'value' => 'on',
+        )
+    )
+);
+$myQuery = new WP_Query($arrpost);
+if ($myQuery->have_posts()) :
+?>
+    <!-- phan post bai cua member -->
+    <div class="list-item">
         <?php
-        $arrpost = array(
-            'post_type' => 'forum',
-            'author' => $objMember->ID,
-            'posts_per_page' => -1,
-            'post_status' => 'publish',
-            'meta_query' => array(
-                array(
-                    'key' => 'f_active',
-                    'value' => 'on',
-                )
-            )
-        );
-        $myQuery = new WP_Query($arrpost);
-        if ($myQuery->have_posts()) :
+        while ($myQuery->have_posts()) :
+            $myQuery->the_post();
         ?>
-            <!-- phan post bai cua member -->
-            <div class="list-item">
-                <?php
-                while ($myQuery->have_posts()) :
-                    $myQuery->the_post();
-                ?>
-                    <div class="row-item row">
-                        <span class="col-8">
-                            <a href="<?php the_permalink() ?>"><?php the_title() ?></a>
-                            <label style="font-size: 8px; color: #666666"> <?php _e('發表日期 ', 'suite'); ?> :
-                                <?php echo $post->post_date ?></label>
-                        </span>
-                        <span class="col-4" style=" float: right">
-                            <a class="edit-item" href="<?php echo esc_attr(add_query_arg(array('id' => $post->ID), home_url('article'))); ?>">
-                                <?php _e('Edit', 'suite'); ?> </a> |
-                            <a href="#" class="del" data-id="del-<?php echo $post->ID ?>" data-href="<?php echo esc_attr(add_query_arg(array('del' => $post->ID), home_url('article'))) ?>" data-title=" <?php echo get_the_title($post->ID); ?>" data-toggle="modal" data-target="#confirm-delete"><?php _e('Delete', 'suite'); ?> </a>
-                        </span>
-                    </div>
-                <?php endwhile; ?>
+            <div class="row-item row">
+                <span class="col-8">
+                    <a class="my-link" href="<?php the_permalink() ?>"><?php the_title() ?></a>
+                    <label style="font-size: 8px; color: #666666"> <?php _e('發表日期 '); ?> :
+                        <?php echo $post->post_date ?></label>
+                </span>
+                <span class="col-4" style=" float: right">
+                    <a class="my-link" href="<?php echo esc_attr(add_query_arg(array('id' => $post->ID), home_url('article'))); ?>">
+                        <?php _e('Edit'); ?> </a> |
+                    <a href="#" class="my-link" data-id="del-<?php echo $post->ID ?>" data-href="<?php echo esc_attr(add_query_arg(array('del' => $post->ID), home_url('article'))) ?>" data-title=" <?php echo get_the_title($post->ID); ?>" data-toggle="modal" data-target="#confirm-delete"><?php _e('Delete'); ?> </a>
+                </span>
             </div>
-        <?php
-        endif;
-        wp_reset_postdata();
-        ?>
-        <!-------------add new article----------------------------------------------->
-        <hr>
-
+        <?php endwhile; ?>
     </div>
-    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4 col-12">
-        <?php get_sidebar() ?>
-    </div>
-    <!--// POPUP CO PHAI MUON XOA DU LIEU-->
-    <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel"><?php _e('刪除資料', 'suite'); ?></h4>
-                    <div class="clear"></div>
-                </div>
+<?php
+endif;
+wp_reset_postdata();
+?>
+<!-------------add new article----------------------------------------------->
+<hr>
 
-                <div class="modal-body">
-                    <p> <?php _e('您是否要刪除這行資料', 'suite'); ?></p>
-                    <p class="debug-url"></p>
-                </div>
+</div>
+<div class="col-xl-3 col-lg-3 col-md-4 col-sm-4 col-12">
+    <?php get_sidebar() ?>
+</div>
 
-                <div class="modal-footer">
-                    <a class="btn btn-primary" data-dismiss="modal"><?php _e('Cancel', 'suite'); ?></a>
-                    <a class="btn  btn-ok"><?php _e('Delete', 'suite'); ?></a>
-                </div>
+<!--// POPUP CO PHAI MUON XOA DU LIEU-->
+<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel"><?php _e('刪除資料'); ?></h4>
+                <div class="clear"></div>
+            </div>
+
+            <div class="modal-body">
+                <p> <?php _e('您是否要刪除這行資料'); ?></p>
+                <p class="debug-url"></p>
+            </div>
+
+            <div class="modal-footer">
+                <a class="btn btn-primary" data-dismiss="modal"><?php _e('Cancel'); ?></a>
+                <a class="btn btn-danger    "><?php _e('Delete'); ?></a>
             </div>
         </div>
     </div>
-    <?php
-    // PHAN LAY PARAM CUA URL CHUYEN CHO JAVASCRIPT DE TAO HIEU UNG SCROLL
-    if (isset($_GET['id'])) {
-        $getid = $_GET['id'];
-    } else {
-        $getid = 001;
-    }
-    ?>
-    <script>
-        jQuery(document).ready(function() {
+</div>
 
-            // CONG ITEM
-            jQuery('#confirm-delete').on('show.bs.modal', function(e) {
-                jQuery(this).find('.btn-ok').attr('href', jQuery(e.relatedTarget).data('href'));
-                //        $('.debug-url').html(' <strong>' + $(this).find('.btn-ok').attr('data-title') + '</strong>');
-            });
+<?php
+// PHAN LAY PARAM CUA URL CHUYEN CHO JAVASCRIPT DE TAO HIEU UNG SCROLL
+if (isset($_GET['id'])) {
+    $getid = $_GET['id'];
+} else {
+    $getid = 001;
+}
+?>
+<script>
+    jQuery(document).ready(function() {
 
-            // LAY GIA TRI ID TAO HIEU UNG CUON
-            //            if (id !== '' && id !== 1) {
-            //                jQuery('body,html').stop(false, false).animate({
-            //                    scrollTop: 1000
-            //                }, 1000);
-            //            };
+        // CONG ITEM
+        jQuery('#confirm-delete').on('show.bs.modal', function(e) {
+            jQuery(this).find('.btn-ok').attr('href', jQuery(e.relatedTarget).data('href'));
+            //        $('.debug-url').html(' <strong>' + $(this).find('.btn-ok').attr('data-title') + '</strong>');
         });
-    </script>
+
+        // LAY GIA TRI ID TAO HIEU UNG CUON
+        //            if (id !== '' && id !== 1) {
+        //                jQuery('body,html').stop(false, false).animate({
+        //                    scrollTop: 1000
+        //                }, 1000);
+        //            };
+    });
+</script>
 </div>
 <div style="height: 40px;"></div>
 <?php
 get_footer();
-ob_flush();   // neu bao loi PHP Warning: Cannot modify header information – headers already sent by
+ // neu bao loi PHP Warning: Cannot modify header information – headers already sent by

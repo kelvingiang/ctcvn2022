@@ -323,11 +323,11 @@ if (isset($suite['intNumArticlePerPage'])) {
         var cc = "<?php echo $career_url ?>";
         var pp = "<?php echo $place_url ?>";
         var my_url = '';
-        if (window.location.origin === 'http://localhost') {
-            my_url = window.location.origin + '/ctcvn.vn/';
-        } else {
-            my_url = 'http://ctcvn.vn/';
-        }
+        // if (window.location.origin === 'http://localhost') {
+        //     my_url = window.location.origin + '/ctcvn.vn/';
+        // } else {
+        my_url = '<?php echo HOME_LINK ?>';
+        // }
 
         jQuery('#sel_place').on('change', function() {
             //            alert(window.location.origin);

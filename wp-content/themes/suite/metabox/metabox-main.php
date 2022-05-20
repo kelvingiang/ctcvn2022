@@ -16,9 +16,9 @@ class Admin_metabox_Main
             'metabox_recruitment' => TRUE,
             'metabox_website' => TRUE,
             'metabox_special' => TRUE,
+            'metabox_friend_link' => TRUE,
 
             'metabox_president' => TRUE,
-            'metabox_friend_link' => TRUE,
             'metabox_member' => TRUE,
             'metabox_seo' => TRUE,
             'metabox_language' => TRUE,
@@ -108,7 +108,7 @@ class Admin_metabox_Main
     public function recruitment()
     {
         if ($this->_metabox_options['metabox_recruitment'] == true) {
-            require_once(DIR_METABOX . 'recruitment.php');
+            require_once(DIR_METABOX . 'metabox-recruitment.php');
             new Admin_Metabox_Recruitment();
         }
     }
@@ -126,7 +126,7 @@ class Admin_metabox_Main
     public function friendLink()
     {
         if ($this->_metabox_options['metabox_friend_link'] == true) {
-            require_once(DIR_METABOX . 'friendlink.php');
+            require_once(DIR_METABOX . 'metabox-friendlink.php');
             new Admin_Metabox_Friend_link();
         }
     }
@@ -142,7 +142,7 @@ class Admin_metabox_Main
     public function website()
     {
         if ($this->_metabox_options['metabox_website'] == true) {
-            require_once(DIR_METABOX . 'website.php');
+            require_once(DIR_METABOX . 'metabox-website.php');
             new Admin_Metabox_website();
         }
     }
@@ -150,7 +150,7 @@ class Admin_metabox_Main
     public function SpecialShow()
     {
         if ($this->_metabox_options['metabox_special'] == true) {
-            require_once(DIR_METABOX . 'special.php');
+            require_once(DIR_METABOX . 'metabox-special.php');
             new Admin_Metabox_Special();
         }
     }

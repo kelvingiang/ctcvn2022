@@ -1,12 +1,45 @@
 @keyframes example {
     0% {
-        color: rgb(4, 103, 253);
+        color: rgb(3, 46, 95);
     }
     50% {
-        color: #ccc;
+        color: rgb(4, 99, 143);
     }
     100% {
-        color: rgb(255, 154, 2);
+        color: rgb(201, 201, 201);
+    }
+}
+
+@keyframes img_show {
+    0% {
+        transform: scale(0, 0);
+        transform-origin: center center;
+        opacity: 0;
+    }
+    90% {
+        transform: scale(1.1, 1.1);
+        transform-origin: center center;
+    }
+    95% {
+        transform: scale(0.9, 0.9);
+        transform-origin: center center;
+    }
+    100% {
+        transform: scale(1, 1);
+        transform-origin: center center;
+    }
+}
+
+@keyframes img_close {
+    0% {
+        transform: scale(1, 1);
+        transform-origin: center center;
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0, 0);
+        transform-origin: center center;
+        opacity: 0;
     }
 }
 
@@ -14,10 +47,12 @@
     0% {
         transform: scale(0, 0);
         transform-origin: bottom right;
+        opacity: 0;
     }
     100% {
         transform: scale(1, 1);
         transform-origin: bottom right;
+        opacity: 1;
     }
 }
 
@@ -25,10 +60,12 @@
     0% {
         transform: scale(1.1, 1.1);
         transform-origin: bottom right;
+        opacity: 1;
     }
     100% {
         transform: scale(0, 0);
         transform-origin: bottom right;
+        opacity: 0;
     }
 }
 
@@ -36,21 +73,25 @@
     0% {
         transform: scale(0, 0);
         transform-origin: bottom left;
+        opacity: 0;
     }
     100% {
         transform: scale(1, 1);
         transform-origin: bottom left;
+        opacity: 1;
     }
 }
 
 @keyframes zoomScaleOut2 {
     0% {
-        transform: scale(1.1, 1.1);
+        transform: scale(1, 1);
         transform-origin: bottom left;
+        opacity: 1;
     }
     100% {
-        transform: scale(0, 0);
+        transform: scale(0.5, 0.5);
         transform-origin: bottom left;
+        opacity: 0;
     }
 }
 
@@ -68,6 +109,8 @@
         position: absolute;
         top: $linkTop;
         left: $linkLeft;
+        display: block;
+        padding: 0rem 2rem;
 
         font-size: 1.5rem;
         font-weight: bold;
@@ -75,37 +118,37 @@
         text-decoration: none;
 
         animation-name: example;
-        animation-duration: 2s;
+        animation-duration: 7s;
         animation-delay: $textDelay;
         animation-iteration-count: infinite;
 
         &:hover {
             color: red;
-            //transition-duration: 1s;
-            //font-size: 1.8rem;
+            transition-duration: 1s;
             animation-name: on-animation;
             font-weight: bold;
 
-            & + .branch-img {
-                position: relative;
-                z-index: 10;
-                opacity: 1;
-                transition: transform 1s;
-                transform: scale(1, 1);
-            }
+            // & + .branch-img {
+            //     position: relative;
+            //     z-index: 10;
+            //     // opacity: 1;
+            //     // transition: transform 1s;
+            //     // // transform: scale(1, 1);
+            //     animation-name: zoomScaleIn;
+            // }
         }
     }
 
     .branch-img {
         opacity: 0;
-        transform: scale(0.4, 0.4);
+        //transform: scale(0.4, 0.4);
         @include Respond(xs) {
             width: 77%;
         }
     }
 
     .branch-content {
-        // opacity: 0;
+        opacity: 0;
         position: absolute;
         left: -180px;
         top: -120px;
@@ -123,12 +166,13 @@
     }
 
     .show {
-        animation-name: zoomScaleIn;
+        animation-name: img_show;
         animation-duration: 1s;
+        opacity: 1 !important;
     }
 
     .close {
-        animation-name: zoomScaleOut;
+        animation-name: img_close;
         animation-duration: 0.5s;
     }
 
@@ -158,59 +202,86 @@
         }
 
         .bac-ninh {
-            @include branch(9%, 34%, 37%, 180%, 18.2%, 40.5%, 2.5s);
+            //branch parameter $imgTop, $imgLeft, $linkTop, $linkLeft, $respondTop, $respondLeft, $textDelay
+            @include branch(9%, 33.5%, 37%, 150%, 18.2%, 40.5%, 2.5s);
         }
 
         .ha-noi {
-            @include branch(10%, 29.5%, 50%, 150%, 11.6%, 30%, 1s);
+            //branch parameter $imgTop, $imgLeft, $linkTop, $linkLeft, $respondTop, $respondLeft, $textDelay
+            @include branch(10%, 29.5%, 52%, 150%, 11.6%, 30%, 1s);
         }
 
         .hai-phong {
-            @include branch(14%, 37%, 42%, 88%, 11.6%, 30%, 1.5s);
+            //branch parameter $imgTop, $imgLeft, $linkTop, $linkLeft, $respondTop, $respondLeft, $textDelay
+            @include branch(10.8%, 34.5%, 52%, 85%, 11.6%, 30%, 1.5s);
         }
 
         .thai-binh {
-            @include branch(15%, 34%, 50%, 80%, 18.2%, 40.5%, 2s);
+            //branch parameter $imgTop, $imgLeft, $linkTop, $linkLeft, $respondTop, $respondLeft, $textDelay
+            @include branch(14.5%, 34%, 50%, 80%, 18.2%, 40.5%, 2s);
         }
 
         .ha-tinh {
-            @include branch(30%, 27%, 25.2%, 71%, 18.2%, 40.5%, 2.5s);
+            //branch parameter $imgTop, $imgLeft, $linkTop, $linkLeft, $respondTop, $respondLeft, $textDelay
+            @include branch(28.5%, 24.5%, 25.2%, 71%, 18.2%, 40.5%, 2.5s);
         }
 
         .da-nang {
-            @include branch(45%, 53%, 34%, 76%, 18.2%, 40.5%, 3s);
+            //branch parameter $imgTop, $imgLeft, $linkTop, $linkLeft, $respondTop, $respondLeft, $textDelay
+            @include branch(44%, 50%, 34%, 76%, 18.2%, 40.5%, 3s);
         }
 
         .lam-dong {
-            @include branch(72%, 51%, 43.2%, 139.5%, 18.2%, 40.5%, 3.5s);
+            //branch parameter $imgTop, $imgLeft, $linkTop, $linkLeft, $respondTop, $respondLeft, $textDelay
+            @include branch(69%, 45%, 47%, 92%, 13%, 40.5%, 3.5s);
         }
 
         .dong-nai {
-            @include branch(76%, 45.5%, 38.2%, 163%, 18.2%, 40.5%, 4s);
+            //branch parameter $imgTop, $imgLeft, $linkTop, $linkLeft, $respondTop, $respondLeft, $textDelay
+            @include branch(76%, 44%, 36%, 150%, 18.2%, 40.5%, 4s);
         }
 
         .binh-duong {
-            @include branch(77%, 41%, 33.2%, -210%, 18.2%, 40.5%, 4.5s);
+            //branch parameter $imgTop, $imgLeft, $linkTop, $linkLeft, $respondTop, $respondLeft, $textDelay
+            @include branch(75%, 39%, 39%, -100%, 18.2%, 40.5%, 4.5s);
+        }
+        .binh-duong-vn {
+            //branch parameter $imgTop, $imgLeft, $linkTop, $linkLeft, $respondTop, $respondLeft, $textDelay
+            @include branch(75%, 39%, 39%, -180%, 18.2%, 40.5%, 4.5s);
         }
 
         .tay-ninh {
-            @include branch(74%, 36%, 18.2%, -155.5%, 18.2%, 40.5%, 5s);
+            //branch parameter $imgTop, $imgLeft, $linkTop, $linkLeft, $respondTop, $respondLeft, $textDelay
+            @include branch(71.5%, 32.5%, 33%, -60%, 18.2%, 40.5%, 5s);
+        }
+
+        .tay-ninh-vn {
+            //branch parameter $imgTop, $imgLeft, $linkTop, $linkLeft, $respondTop, $respondLeft, $textDelay
+            @include branch(71.5%, 32.5%, 33%, -120%, 18.2%, 40.5%, 5s);
         }
 
         .ho-chi-minh {
-            @include branch(77%, 40%, 41%, 159%, 18.2%, 40.5%, 5.5s);
+            //branch parameter $imgTop, $imgLeft, $linkTop, $linkLeft, $respondTop, $respondLeft, $textDelay
+            @include branch(75%, 37.5%, 41%, 120%, 18.2%, 40.5%, 5.5s);
         }
 
         .tan-thuan {
-            @include branch(77%, 40%, 57%, 128%, 18.2%, 40.5%, 7s);
+            //branch parameter $imgTop, $imgLeft, $linkTop, $linkLeft, $respondTop, $respondLeft, $textDelay
+            @include branch(75%, 37.5%, 57%, 100%, 18.2%, 40.5%, 7s);
         }
 
         .vung-tau {
-            @include branch(81%, 45.5%, 80.2%, 64.2%, 60%, 40.5%, 6s);
+            //branch parameter $imgTop, $imgLeft, $linkTop, $linkLeft, $respondTop, $respondLeft, $textDelay
+            @include branch(79.5%, 43.5%, 80.2%, 64.2%, 60%, 40.5%, 6s);
         }
 
         .long-an {
-            @include branch(80%, 33.5%, 28.2%, -130.2%, 60%, 40.5%, 6.5s);
+            //branch parameter $imgTop, $imgLeft, $linkTop, $linkLeft, $respondTop, $respondLeft, $textDelay
+            @include branch(79.5%, 30%, 18%, -47%, 60%, 40.5%, 6.5s);
+        }
+        .long-an-vn {
+            //branch parameter $imgTop, $imgLeft, $linkTop, $linkLeft, $respondTop, $respondLeft, $textDelay
+            @include branch(79.5%, 30%, 18%, -100%, 60%, 40.5%, 6.5s);
         }
     }
 }

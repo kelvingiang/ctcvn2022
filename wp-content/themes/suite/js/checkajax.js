@@ -18,7 +18,7 @@ jQuery(document).ready(function () {
         if (data.status === "done") {
           // window.location.reload();
           //     window.location.replace("<?php ?>");
-          window.location = "http://localhost/ctcvn.vn/" + data.site;
+          window.location = data.URL + data.site;
           //window.location="http://ctcvn.vn/" + data.site;
         } else if (data.status === "error") {
           jQuery("#strMessageLogin").text(data.message);

@@ -29,10 +29,18 @@ $arrForget = array(
 );
 
 $objEmail = current(get_posts($arrEmail));
-if(!$objEmail){$errEmail = '電郵信箱不正確!';}else{$errEmail='';}
+if (!$objEmail) {
+    $errEmail =  __('The E-mail Address is Incorrect');
+} else {
+    $errEmail = '';
+}
 
 $objPassport = current(get_posts($arrPassport));
-if(!$objPassport){$errPassport = '帳號不正確';}else{$errPassport = '';}
+if (!$objPassport) {
+    $errPassport = __('The Account is Incorrect');
+} else {
+    $errPassport = '';
+}
 
 $objForget = current(get_posts($arrForget));
 if ($objForget) {
@@ -40,34 +48,38 @@ if ($objForget) {
     $newPass     = myramdom(); // tao password moi
     $newmd5     = md5($newPass); // tao password moi
 
-  //UPDATE LAI PASSWORD
-    update_post_meta($objEmail->ID,'m_password', $newmd5);
-  // SEND PASSWORD MOI CHO USER
-        $to = $email;
-        $subject = 'GET PASSWORD FORM TAIWAN WEB SITE';
-        $message  =  '<h4>' . $getMeta['m_user'][0] .' 您好 ! </h4>'; 
-        $message .=  '<p> 您的越南台灣商會聯合總會網站的新密碼是 '.  $newPass .'</p>';
-// kieu data show trong mail
-        add_filter('wp_mail_content_type', create_function('', 'return "text/html"; '));
-        wp_mail($to, $subject, $message);
+    //UPDATE LAI PASSWORD
+    update_post_meta($objEmail->ID, 'm_password', $newmd5);
+    // SEND PASSWORD MOI CHO USER
+    $to = $email;
+    $subject = 'GET PASSWORD FORM TAIWAN WEB SITE';
+    $message  =  '<h4>' . $getMeta['m_user'][0] . ' 您好 ! </h4>';
+    $message .=  '<p> 您的越南台灣商會聯合總會網站的新密碼是 ' .  $newPass . '</p>';
+    // kieu data show trong mail
+    add_filter('wp_mail_content_type', create_function('', 'return "text/html"; '));
+    wp_mail($to, $subject, $message);
     $response = array(
         'status' => 'done',
         'message' => __('請檢查郵箱取得新密碼'),
         'md5' => $newmd5,
     );
 } else {
-    if($errEmail==''){$errEmail='電郵信箱和戶照編號不匹配';}
-    if($errPassport==''){$errPassport='帳號和電郵信箱不匹配';}
+    if ($errEmail == '') {
+        $errEmail = '電郵信箱和戶照編號不匹配';
+    }
+    if ($errPassport == '') {
+        $errPassport = '帳號和電郵信箱不匹配';
+    }
     $response = array(
         'status'      => 'error',
         'email' => $errEmail,
         'passport'  => $errPassport,
-    ); 
+    );
 }
-function myramdom(){
-        $length = 8;
-        $randomString = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length);
-        return $randomString;
+function myramdom()
+{
+    $length = 8;
+    $randomString = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length);
+    return $randomString;
 }
 echo json_encode($response);
-?>

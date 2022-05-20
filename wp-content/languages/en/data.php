@@ -82,5 +82,19 @@ function getTranslate()
         'Online' => 'Online',
         'Visitor' => 'Visitor',
     );
-    return array_merge($data, $dataNew, $dataOnline);
+
+    $tuyendung = array(
+        'Upload Image' => '照片上傳',
+        'Driving License ' => '具備駕駛執照',
+        'The fastest working day' => '最快可上班日',
+        'Job Objective' => '希望職務類別',
+        'Expected Salary' => '希望薪資待遇',
+        'The industry wants to work' => '希望從事的產業別',
+        'Languages Proficiency' => '語言能力',
+        'Certificates or Licenses' => '證照資格',
+        'Skills' => '擅長軟體',
+        'Autobiography' => '自傳',
+        'Profile' => 'Thông Tin Tài Khoản',
+    );
+    return array_merge($data, $dataNew, $dataOnline, $tuyendung);
 }

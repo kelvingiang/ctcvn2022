@@ -40,6 +40,10 @@ class Codes_Rewrite_Url
     $redirect5 = 'index.php?pagename=$matches[1]&cat=$matches[2]';
     add_rewrite_rule($regex5, $redirect5, 'top');
 
+    $regex6 = '([^/]*)/?/b/([^/]*)/?';
+    $redirect6 = 'index.php?pagename=$matches[1]&b=$matches[2]';
+    add_rewrite_rule($regex6, $redirect6, 'top');
+
     /* $regex6 = '([^/]*)/?/place/([^/]*)/?/cat/([^/]*)/?';
           $redirect6 = 'index.php?pagename=$matches[1]&place=$matches[2]&cat=$matches[3]';
           add_rewrite_rule($regex6, $redirect6, 'top'); */
@@ -71,6 +75,7 @@ class Codes_Rewrite_Url
   {
     $vars[] = 'cate';
     $vars[] = 'place';
+    $vars[] = 'b';
 
     return $vars;
   }

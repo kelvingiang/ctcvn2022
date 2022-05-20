@@ -21,6 +21,7 @@ require_once(DIR_CODES . 'forum-cmd-ui.php');
 require_once(DIR_CODES . 'function-post-list.php');
 require_once(DIR_CODES . 'function-vote.php');
 require_once(DIR_CODES . 'function-upload.php');
+require_once(DIR_CODES . 'function-download.php');
 
 //=====2022=====================
 require_once(DIR_CODES . 'function-menu.php');

@@ -10,36 +10,51 @@ $arr = array(
 <!--  
     phan nay kiem tra bang ajax, code xu ky ajax dc viet tai file js va dc add vao o dau trang (checkajax.js)
 -->
-<div style="padding-top: 10px; margin-bottom: 20px;">
+<div>
     <?php if (!isset($_SESSION['login'])) { ?>
-        <div class="blue-group">
-            <div class="blue-title">
-                <label>媒合帳號 <i>Đăng Nhập Tuyển Dụng</i></label>
-            </div>
-            <div style=" margin-top: 20px">
+        <div class="login-space">
+            <div class="login-from">
                 <form id="f_login" name="f_login" method="post" action="">
-                    <div id="row">
-                        <div class="col-md-12"><label class='label-title'><?php _e('User Name or Full Name', 'suite'); ?><i style='color: #666'> Tài Khoản</i></label></div>
-                        <div class="col-md-12"><input type="text" required placeholder="Username" id="l_user" name="l_user" autocomplete="off" /></div>
-                        <div class='col-md-12' style='height: 10px'></div>
-                        <div class="col-md-12"><label class='label-title'><?php _e('Password', 'suite') ?><i style="color: #666"> Mật Khẩu</i></label></div>
-                        <div class="col-md-12"><input type="password" required placeholder="Password" id="l_pass" name="l_pass" autocomplete="off" /></div>
+                    <div class="row">
                         <div class=' col-md-12'>
-                            <p id="strMessageLogin" style=" margin-top:5px; color: red; font-weight: bold"></p>
+                            <p id="strMessageLogin" class="error-mess"></p>
                         </div>
-                        <div style='text-align: center; margin: 10px 20px '>
-                            <button type="submit" class="btn-my" name="btn_login" id="btn_submit" style=" margin-right: 10px">
-                                <?php _e('Login', 'suite'); ?><br><i>Đăng Nhập</i>
-                            </button>
 
-                            <button type="button" class="btn-my" data-toggle="modal" data-target="#ForgetPass">
-                                <?php _e('Forget Password', 'suite'); ?><br> <i>Quên Mật Khẩu</i>
-                            </button>
+                        <div class="col-md-12">
+                            <label class='label-title'>
+                                <?php _e('User Name'); ?></label>
                         </div>
+
+                        <div class="col-md-12">
+                            <input type="text" required placeholder="Username" id="l_user" name="l_user" autocomplete="off" />
+                        </div>
+
+                        <div class='col-md-12' style='height: 20px'></div>
+
+                        <div class="col-md-12">
+                            <label class='label-title'>
+                                <?php _e('Password') ?>
+                            </label>
+                        </div>
+
+                        <div class="col-md-12">
+                            <input type="password" required placeholder="Password" id="l_pass" name="l_pass" autocomplete="off" />
+                        </div>
+
+                    </div>
+                    <div class="btn-space" style="margin-top: 2rem">
+                        <button type=" submit" class="btn-my" name="btn_login" id="btn_submit">
+                            <?php _e('Login', 'suite'); ?>
+                        </button>
+
+                        <button type="button" class="btn-my" data-toggle="modal" data-target="#ForgetPass">
+                            <?php _e('Forget Password', 'suite'); ?>
+                        </button>
                     </div>
                 </form>
             </div>
         </div>
+
         <?php
     } else {
         if ($_SESSION['login']) {
@@ -149,47 +164,61 @@ $arr = array(
 <!--FORGET PASSWORD-->
 <!--  B----------- hien thi popup lay lai password khi bi quen -->
 <div class="modal fade" id="ForgetPass" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <form name="f-getPass" id="f-getPass" action="" method="post">
+    <form name="f-getPass" id="f-getPass" action="" method="post">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                         &times;
                     </button>
-                    <h4 class="modal-title" id="myModalLabel"> <?php _e('取回新密碼', 'suite'); ?></h4>
+                    <h4 class="modal-title" id="myModalLabel">
+                        <?php //_e('Get New Password'); 
+                        ?>
+                    </h4>
                     <image id="waiting-img" name="waiting-img" src="<?php echo PART_IMAGES . 'loading.gif' ?>" />
                     <div style=" clear: both"></div>
                 </div>
-                <div class="modal-body">
-                    <div>
-                        <label class="label-title" style="margin-right: 29px;"><?php _e('帳號 :', 'suite') ?></label>
-                        <input type="text" style="width:250px" maxlength="9" placeholder="<?php _e('帳號', 'suite'); ?>" id="g-passport" name="g-passport" />
-                        <label id="passportMess" style="margin-left: 10px" class="error-mess"></label>
+                <div class="modal-body row">
+                    <div class="col-12">
+                        <label class="label-title"><?php _e('User Name') ?></label>
+                        <label id="passportMess" class="error-mess"></label>
                     </div>
-                    <div style=" margin-top: 5px">
-                        <label class="label-title"><?php _e('電郵信箱 :', 'suite') ?></label>
-                        <input type="text" style="width:250px" placeholder="<?php _e('電郵信箱', 'suite'); ?>" id="g-email" name="g-email" />
-                        <label id="emailMess" style="margin-left: 10px" class="error-mess"></label>
+                    <div class="col-12">
+                        <input type="text" placeholder="<?php _e('User Name'); ?>" id="g-passport" name="g-passport" />
                     </div>
-                    <div style=" text-align: center; margin-top: 5px;"><label id="forgetPassMess" style=" font-size: 20px; color: blue" class="error-mess"></label></div>
+                    <div class="col-12" style="height: 2rem;"></div>
+                    <div class="col-12">
+                        <label class="label-title"><?php _e('E-mail') ?></label>
+                        <label id="emailMess" class="error-mess"></label>
+                        <label id="forgetPassMess" class="error-mess"></label>
+                    </div>
+                    <div class="col-12">
+                        <input type="text" placeholder="<?php _e('E-mail'); ?>" id="g-email" name="g-email" />
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="submit" id="submit-getPass" class="btn btn-primary"><?php _e('Submit', 'suite'); ?></button>
-                    <button type="reset" id="cancel-getPass" class="btn btn-primary"><?php _e('Cancel', 'suite'); ?></button>
-                </div>
-            </div><!-- /.modal-content -->
-        </form>
-    </div><!-- /.modal -->
 
-</div>
+
+
+                <div class="modal-footer">
+                    <div class="btn-space">
+                        <button type="submit" id="submit-getPass" class="btn-my"><label>
+                                <?php _e('Submit_'); ?>
+                        </button>
+                        <button type="reset" id="cancel-getPass" class="btn-my">
+                            <?php _e('Cancel_'); ?>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div><!-- /.modal-content -->
+
+
+
 
 <!--  E----------- hien thi popup lay lai password khi bi quen -->
 
-<style>
-    .my_i {
-        font-size: 12px;
-    }
-</style>
 <script type="text/javascript">
     // show hinh anh truoc khi up len
     jQuery(function() {

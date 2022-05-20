@@ -7,13 +7,13 @@ if (!empty(getParams('id'))) {
 $page = getParams('page');
 ?>
 <div class=" wrap">
-    <h2><?php echo $lbl ?></h2>
-    <?php echo $msg ?>
+    <h2><?php _e('會刊') ?></h2>
     <form action="" method="post" enctype="multipart/form-data" id="<?php $page ?>" name="<?php $page ?>">
         <input type="hidden" name="hid_ID" id="hid_ID" value="<?php echo $item['ID']; ?>">
         <input type="hidden" name="hid_file" id="hid_file" value="<?php echo $item['file']; ?>">
         <input type="hidden" name="hid_img" id="hid_img" value="<?php echo $item['img']; ?>">
-        <?php wp_nonce_field($action, 'security_code', true); ?>
+        <?php //wp_nonce_field($action, 'security_code', true); 
+        ?>
         <table class="form-table" style=" width: 100%">
             <tbody>
                 <tr>

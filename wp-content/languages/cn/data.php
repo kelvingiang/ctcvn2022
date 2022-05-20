@@ -112,7 +112,20 @@ function getTranslate()
         'Page of' => '頁, 的第',
         'Page' => '頁',
         'Can not find any data' => '搜集不到任何資料',
-        'The Council of Taiwanese Chambers Regulation' => '越南台灣商會聯合總會章程',
+        'The Council of Taiwanese Chambers Regulation' => '總會章程',
+        'The Council of Taiwanese Chambers introduction' => '總會簡介',
+        'Event Review' => '精彩回顧',
+        'Event Upcoming' => '活動預告',
+        'Vietnam Finance' => '越南財經',
+        'News Soft Wear' => '軟體服務',
+        'News Health' => '醫療信息',
+        'News Restaurant' => '特約餐廳',
+        'News Travel' => '越南旅遊',
+        'Chamber of Commerce Bulletin' => '總會會刊',
+        'Person Interview' => '人物專訪',
+        'More' => '更多'
+
+
     );
 
 
@@ -159,5 +172,24 @@ function getTranslate()
         'Branch Long An' => '隆安分會',
     );
 
-    return array_merge($data, $dataNew, $dataOnline, $mapBranch);
+    $tuyendung = array(
+        'Upload Image' => '照片上傳',
+        'Driving License ' => '具備駕駛執照',
+        'The fastest working day' => '最快可上班日',
+        'Job Objective' => '希望職務類別',
+        'Expected Salary' => '希望薪資待遇',
+        'The industry wants to work' => '希望從事的產業別',
+        'Languages Proficiency' => '語言能力',
+        'Certificates or Licenses' => '證照資格',
+        'Skills' => '擅長軟體',
+        'Autobiography' => '自傳',
+        'Profile' => '資料管理',
+        'Recruit' => '招聘管理',
+        'User Name' => '賬號',
+        'Full Name English' => '英文姓名',
+        'Birth Of Date' => '出生日期',
+        'Sex' => '性別',
+    );
+
+    return array_merge($data, $dataNew, $dataOnline, $mapBranch, $tuyendung);
 }

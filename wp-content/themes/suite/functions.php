@@ -64,6 +64,14 @@ function change_translate_text($translated)
 
 add_filter('gettext', 'change_translate_text', 20);
 
+// post more style
+function blankslate_read_more_link()
+{
+    if (!is_admin()) {
+        return '<div class="more-read"><a class="more-link" href="'  . esc_url(get_permalink()) .  '">' . __('More') . '</a></div>';
+    }
+}
+add_filter('the_content_more_link', 'blankslate_read_more_link');
 
 
 /* thiet lap chieu rong cua noi dung */

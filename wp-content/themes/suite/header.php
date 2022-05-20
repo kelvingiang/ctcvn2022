@@ -56,5 +56,5 @@
         <img src="<?php echo PART_IMAGES . 'loading_pr2.gif' ?>" style=" width: 150px" />
     </div>
 
-    <div>
+    <div style="min-height: 700px;">
         <?php get_template_part('templates/template', 'head-logo') ?>

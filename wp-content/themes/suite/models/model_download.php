@@ -2,7 +2,8 @@
 
 // KIEM TRA  WP_List_Table CO TON TAI CHUA NEU CHUA SE INCLUSE VAO
 if (!class_exists('WP_List_Table')) {
-    require_once ABSPATH . 'wp-admin/includes/class-wp-list-table.php ';
+    require_once ABSPATH . 'wp-admin/includes/class-wp-list-table.php';
+    //echo ABSPATH . 'wp-admin/includes/class-wp-list-table.php';
 }
 
 class Admin_Model_Download extends WP_List_Table
@@ -189,7 +190,7 @@ class Admin_Model_Download extends WP_List_Table
     // CAC ITEM TRONG SELECT BOX CHUC NANG 'UNG DUNG'
     public function get_bulk_actions()
     {
-        if ($_GET['customvar'] == 'trash') {
+        if (!empty($_GET['customvar']) && $_GET['customvar'] == 'trash') {
             $actions = array(
                 'restore' => __('Restore'),
                 'delete' => __('Delete Permanently'),
@@ -225,7 +226,8 @@ class Admin_Model_Download extends WP_List_Table
         //        $action = 'delete_id' . $item['id'];
         //        $linkDelete = wp_nonce_url($linkDelete, $action, $name);
 
-        if ($_GET['customvar'] == 'trash') {
+
+        if (!empty($_GET['customvar']) && $_GET['customvar'] == 'trash') {
             $actions = array(
                 'restore' => '<a href=" ?page=' . $page . '&action=restore&id=' . $item['ID'] . ' " >' . __('Restore') . '</a>',
                 'delete' => '<a href=" ?page=' . $page . '&action=delete&id=' . $item['ID'] . ' " >' . __('Delete Permanently') . '</a>',
@@ -238,7 +240,6 @@ class Admin_Model_Download extends WP_List_Table
                 // 'view' => '<a href ="#">View</a>'
             );
         }
-
         $html = '<strong> <a href="?page=' . $page . '&action=edit&id=' . $item['ID'] . ' ">' . $item['title'] . '</a> </strong>' . $this->row_actions($actions);
         return $html;
     }

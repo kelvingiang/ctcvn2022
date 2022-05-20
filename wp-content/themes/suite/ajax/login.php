@@ -40,15 +40,16 @@ if ($objMember || $objName) {
     $_SESSION['login'] = $getMeta['m_user'][0];    //  lay user trong metabox ra de tao gia tri cho session
     $_SESSION['login_type'] = $getMeta['m_member'][0];
     $_SESSION['email'] = $getMeta['m_email'][0];
-      
-    if($getMeta['m_member'][0] == "apply"){
+
+    if ($getMeta['m_member'][0] == "apply") {
         $site = "recruiter";
-    }elseif($getMeta['m_member'][0] == "recruit" || $getMeta['m_member'][0] == "on" ){
-        $site ="recruitments";
+    } elseif ($getMeta['m_member'][0] == "recruit" || $getMeta['m_member'][0] == "on") {
+        $site = "recruitments";
     }
     $response = array(
         'status' => 'done',
         'site' => $site,
+        'URL' => HOME_LINK,
         'message' => ' ',
     );
 } else {
@@ -60,4 +61,3 @@ if ($objMember || $objName) {
 }
 
 echo json_encode($response);
-
