@@ -15,33 +15,33 @@ $arr = array(
         <div class="login-space">
             <div class="login-from">
                 <form id="f_login" name="f_login" method="post" action="">
-                    <div class="row">
-                        <div class=' col-md-12'>
-                            <p id="strMessageLogin" class="error-mess"></p>
-                        </div>
-
-                        <div class="col-md-12">
-                            <label class='label-title'>
-                                <?php _e('User Name'); ?></label>
-                        </div>
-
-                        <div class="col-md-12">
-                            <input type="text" required placeholder="Username" id="l_user" name="l_user" autocomplete="off" />
-                        </div>
-
-                        <div class='col-md-12' style='height: 20px'></div>
-
-                        <div class="col-md-12">
-                            <label class='label-title'>
-                                <?php _e('Password') ?>
-                            </label>
-                        </div>
-
-                        <div class="col-md-12">
-                            <input type="password" required placeholder="Password" id="l_pass" name="l_pass" autocomplete="off" />
-                        </div>
-
+                    <div>
+                        <p id="strMessageLogin" class="error-mess"></p>
                     </div>
+
+                    <div>
+                        <label class='label-title'>
+                            <?php _e('User Name'); ?>
+                        </label>
+                    </div>
+
+                    <div>
+                        <input type="text" required placeholder="Username" id="l_user" name="l_user" autocomplete="off" />
+                    </div>
+
+                    <div style='height: 20px'></div>
+
+                    <div>
+                        <label class='label-title'>
+                            <?php _e('Password') ?>
+                        </label>
+                    </div>
+
+                    <div>
+                        <input type="password" required placeholder="Password" id="l_pass" name="l_pass" autocomplete="off" />
+                    </div>
+
+
                     <div class="btn-space" style="margin-top: 2rem">
                         <button type=" submit" class="btn-my" name="btn_login" id="btn_submit">
                             <?php _e('Login', 'suite'); ?>

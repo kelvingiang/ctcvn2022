@@ -4,8 +4,10 @@ get_header();
 ?>
 <!-- phan noi dung of trang index --------------------------------------- -->
 <div>
-    <?php // get_template_part('templates/template', 'slider'); 
-    ?>
+    <?php mySlider('home') ?>
+</div>
+<div>
+    <?php get_template_part('templates/template', 'presidents-current'); ?>
 </div>
 
 <div>

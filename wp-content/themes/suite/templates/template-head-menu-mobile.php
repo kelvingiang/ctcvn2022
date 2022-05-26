@@ -15,46 +15,47 @@ if (isset($_SESSION['login'])) {
         display: none;
     }
 </style>
-
-<!--MAIN MENU FOR COMPUTER-->
-
-<div id="menu-computer">
-    <div class="menu-computer-additional" title="<?php _e('Home') ?>">
-        <a href="<?php echo HOME_LINK ?>">
-            <i class="fa fa-home" aria-hidden="true"></i>
-        </a>
+<!--MAIN MENU FOR MOBILE-->
+<div id="menu-mobile">
+    <div id="mobile-menu-icon">
+        <i class="fa fa-bars" aria-hidden="true"></i>
     </div>
-    <div>
+
+    <div id="mobile-menu-content">
+        <div class="ex-mobile-menu">
+            <a href="<?php echo HOME_LINK ?>">
+                <i class="fa fa-home" aria-hidden="true"></i>
+            </a>
+        </div>
         <?php
         switch ($_SESSION['languages']) {
             case 'cn':
-                suite_menu('company-menu-cn');
+                mobile_menu('mobile-menu-cn');
                 break;
             case 'en':
-                suite_menu('company-menu-en');
+                mobile_menu('mobile-menu-en');
                 break;
             case 'vn':
-                suite_menu('company-menu-vn');
+                mobile_menu('mobile-menu-vn');
                 break;
         }
         ?>
-    </div>
-    <div class="menu-computer-additional">
-        <?php if (empty($_SESSION['login_id'])) { ?>
-            <a href="<?php echo HOME_LINK . '/login' ?>" title="<?php _e('Login') ?>">
-                <i class="fa fa-user" aria-hidden="true"></i>
-            </a>
-        <?php } else { ?>
-            <div class="login-success">
-                <label> <?php echo $_SESSION['login'] ?>
-                    <i style="font-size: 1.6rem;" class="fa fa-caret-down" aria-hidden="true"></i>
-                </label>
-                <?php get_template_part('templates/template', 'login-success') ?>
-            </div>
-        <?php } ?>
+        <div class="ex-mobile-menu">
+            <?php if (empty($_SESSION['login_id'])) { ?>
+                <a href="<?php echo HOME_LINK . '/login' ?>" title="<?php _e('Login') ?>">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                </a>
+            <?php } else { ?>
+                <div class="login-success">
+                    <label> <?php echo $_SESSION['login'] ?>
+                        <i style="font-size: 1.6rem;" class="fa fa-caret-down" aria-hidden="true"></i>
+                    </label>
+                    <?php get_template_part('templates/template', 'login-success') ?>
+                </div>
+            <?php } ?>
+        </div>
     </div>
 </div>
-
 
 <script>
     jQuery(document).ready(function() {

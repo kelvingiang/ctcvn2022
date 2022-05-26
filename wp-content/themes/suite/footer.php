@@ -71,7 +71,12 @@
                            }
                        });
                    });
+
+                   //Upscroll HIEN MENU TOP HEADER , DOWNSCROLL AN MENU TOP
+                   // PHAI CHEN THEM A CALSS BOOSTREP
+                   // jQuery('.navbar-fixed-top').autoHidingNavbar();
                })
+
 
 
                // back to top
@@ -93,6 +98,23 @@
                        return false;
                    });
                });
+
+               // HIEN THI MOBILE MENU ========================
+               jQuery('#mobile-menu-icon').on('click', function(e) {
+                   var ss = jQuery('#mobile-menu-content').hasClass('show-nav');
+                   if (!ss) {
+                       jQuery('#mobile-menu-content').addClass('show-nav');
+                       jQuery('#mobile-menu-content').removeClass('close-nav');
+                   } else {
+                       jQuery('#mobile-menu-content').addClass('close-nav');
+                       jQuery('#mobile-menu-content').removeClass('show-nav');
+                   }
+               })
+
+               jQuery('.menu-item-has-children a').on('click', function(e) {
+                   jQuery(this).siblings('.sub-menu').slideToggle('slow');
+
+               });
            </script>
 
 
@@ -113,12 +135,28 @@
                });
 
 
-
+               var prevScrollpos = window.pageYOffset;
                window.onscroll = function() {
-                   menuAnimation();
+                   // PHAN AN HIEN MENU 
+                   // KIEM TRA HEADER KHAC NONE MOI THUC HIEN
+                   if (jQuery('#header').css('display') !== 'none') {
+                       menuAnimation();
+                   }
+
+                   // PHAN SHOW HINH ANH KHI RE CHUOT XUONG TOI
                    if (document.querySelector('.img-item')) {
                        presidentAnimation();
                    }
+
+
+                   // PHAN AN HIEN HEADER TRONG MOBILE STYLE
+                   var currentScrollPos = window.pageYOffset;
+                   if (prevScrollpos > currentScrollPos) {
+                       document.getElementById("mobile-header").style.top = "0";
+                   } else {
+                       document.getElementById("mobile-header").style.top = "-320px";
+                   }
+                   prevScrollpos = currentScrollPos;
                }
            </script>
 

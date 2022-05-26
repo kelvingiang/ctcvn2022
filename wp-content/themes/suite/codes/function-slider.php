@@ -3,7 +3,7 @@
 function mySlider($cate)
 {
 ?>
-    <div class="border_box" style="background-color: red;">
+    <div class="border_box">
         <div class="box_skitter box_skitter_large">
             <ul>
                 <?php
@@ -26,8 +26,7 @@ function mySlider($cate)
                         <li>
                             <?php the_post_thumbnail('', array('class' => $a[$random_keys], 'title' => the_title_attribute('echo=0'))); ?>
                             <div class="label_text">
-                                <h2 style=" color: white ; margin-left: 20px; font-size: 20px"><?php // the_title(); 
-                                                                                                ?></h2>
+                                <h2><?php the_title(); ?></h2>
                             </div>
                         </li>
                 <?php

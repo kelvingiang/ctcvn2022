@@ -155,54 +155,6 @@ root {
   display: none;
 }
 
-/*PHAN CUA SLIDER*/
-.box_skitter_large {
-  @include Respond(big-desktop) {
-    height: 800px !important;
-  }
-
-  @include Respond(tab-land) {
-    height: 300px !important;
-  }
-  @include Respond(tab-port) {
-    height: 300px !important;
-  }
-  @include Respond(phone) {
-    height: 200px !important;
-  }
-}
-
-.container_skitter {
-  @include Respond(big-desktop) {
-    height: 500px !important;
-  }
-
-  @include Respond(tab-land) {
-    height: 300px !important;
-  }
-  @include Respond(tab-port) {
-    height: 300px !important;
-  }
-  @include Respond(phone) {
-    height: 200px !important;
-  }
-}
-box_skitter {
-  @include Respond(big-desktop) {
-    height: 500px !important;
-  }
-
-  @include Respond(tab-land) {
-    height: 300px !important;
-  }
-  @include Respond(tab-port) {
-    height: 300px !important;
-  }
-  @include Respond(phone) {
-    height: 200px !important;
-  }
-}
-
 .info-bg {
   // background-color: #ededed;
   padding: 3px 10px 10px;
@@ -279,7 +231,7 @@ box_skitter {
     margin-left: 580px;
     display: none;
     i {
-      font-size: 3rem;
+      font-size: 2rem;
       opacity: 0.3;
       color: #cc6804;
       cursor: pointer;
@@ -431,7 +383,8 @@ ul.brach-list {
   letter-spacing: 0.2rem;
   color: #286090;
   line-height: 2;
-  font-size: 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
   margin-bottom: -1.5rem;
 }
 
@@ -447,11 +400,18 @@ input[type="text"],
 input[type="email"],
 input[type="password"] {
   width: 90%;
-  height: 3.5rem;
-  border-radius: 0.5rem;
+  height: 2.5rem;
+  border-radius: 0.3rem;
   border: 1px solid rgb(224, 224, 224);
 }
 
+input::placeholder {
+  color: #999;
+}
+
+input:focus::placeholder {
+  color: transparent;
+}
 //================================================
 
 //==================================================================

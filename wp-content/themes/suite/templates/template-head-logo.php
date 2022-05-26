@@ -2,15 +2,13 @@
     <a href="<?php echo home_url() ?>">
         <img src="<?php echo PART_IMAGES . 'logoctcvn.png' ?>" alt="ctcvn_logo" title="ctcvn_logo" />
     </a>
-    <label class="company-name-cn"><?php _e('THE COUNCIL OF TAIWANSE CHAMBERS OF COMMERCE IN VIETNAM') ?></label>
-    <label class="company-name-en">THE COUNCIL OF TAIWANESE CHAMBERS OF COMMERCE IN VIETNAM</label>
-
-    <?php get_template_part('templates/template', 'head-language') ?>
-    <?php get_template_part('templates/template', 'head-menu')
-    ?>
+    <label class="company-name-cn">
+        <?php _e('THE COUNCIL OF TAIWANSE CHAMBERS OF COMMERCE IN VIETNAM') ?>
+    </label>
+    <label class="company-name-en">
+        THE COUNCIL OF TAIWANESE CHAMBERS OF COMMERCE IN VIETNAM
+    </label>
 </div>
-
-<?php get_template_part('templates/template', 'head-scroll') ?>
 
 <script>
     var animationElements = document.querySelectorAll("#header-logo");
@@ -35,6 +33,7 @@
         animationElements.forEach((el) => {
             myCheck(el);
         });
+        // animationElements.myCheck();
     }
 
     //window.onscroll = checkAnimation;

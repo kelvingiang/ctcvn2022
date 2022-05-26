@@ -57,4 +57,4 @@
     </div>
 
     <div style="min-height: 700px;">
-        <?php get_template_part('templates/template', 'head-logo') ?>
+        <?php get_template_part('templates/template', 'head') ?>

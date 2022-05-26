@@ -1,10 +1,18 @@
 .login-space {
     width: 50%;
-    margin: 0 auto;
+    margin: 2rem auto 2rem;
     padding: 5rem 1rem;
 
+    @include Respond(md) {
+        width: 80%;
+    }
+    @include Respond(sm) {
+        width: 100%;
+        padding: 2rem 1rem;
+    }
+
     .login-from {
-        margin: 1rem 5rem;
+        //margin: 1rem 5rem;
     }
 }
 
@@ -19,9 +27,12 @@
         color: #ebebeb;
         letter-spacing: 0.3rem;
         margin-right: 2rem;
-        font-size: 1.4rem;
+        font-size: 1rem;
         font-weight: bold;
         padding: 1rem 2rem;
+        @include Respond(md) {
+            padding: 0.5rem 1rem;
+        }
         &:hover {
             color: #ffffff;
             border: 1px solid #999;

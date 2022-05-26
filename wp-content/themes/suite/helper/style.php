@@ -14,9 +14,19 @@ function style_header_scripts()
         //=======================================================================================
 
 
-
-        wp_register_style('bootstrap', THEME_PART . '/style/bootstrap.min.css', 'all');
+        /// add boottrap style ===================================================
+        wp_register_style('bootstrap', THEME_PART . '/style/bootstrap/bootstrap.min.css', 'all');
         wp_enqueue_style('bootstrap');
+
+        wp_register_style('bootstrap-grid', THEME_PART . '/style/bootstrap/bootstrap-grid.min.css', 'all');
+        wp_enqueue_style('bootstrap-grid');
+
+        wp_register_style('bootstrap-reboot', THEME_PART . '/style/bootstrap/bootstrap-reboot.min.css', 'all');
+        wp_enqueue_style('bootstrap-reboot');
+
+        wp_register_style('bootstrap-utilities', THEME_PART . '/style/bootstrap/bootstrap-utilities.min.css', 'all');
+        wp_enqueue_style('bootstrap-utilities');
+        /// end ===================================================
 
         wp_register_style('main-style', THEME_PART . '/style.css', 'all');
         wp_enqueue_style('main-style');
@@ -49,8 +59,21 @@ function style_header_scripts()
         wp_register_script('ajax-script', THEME_PART . '/js/checkajax.js', array('jquery'));
         wp_enqueue_script('ajax-script');
 
-        wp_register_script('bootstrap-script', THEME_PART . '/js/bootstrap.js', array('jquery'));
+        // add bootstrap js =====================================================================
+        wp_register_script('bootstrap-script', THEME_PART . '/js/bootstrap/bootstrap.min.js', array('jquery'));
         wp_enqueue_script('bootstrap-script');
+
+        // wp_register_script('bootstrap-script-esm', THEME_PART . '/js/bootstrap/bootstrap.esm.min.js', array('jquery'));
+        // wp_enqueue_script('bootstrap-script-esm');
+
+        wp_register_script('bootstrap-script-bundle', THEME_PART . '/js/bootstrap/bootstrap.bundle.min.js', array('jquery'));
+        wp_enqueue_script('bootstrap-script-bundle');
+
+        //end ======================================================================================
+        // wp_register_script('jquery-autohidingnavbar', THEME_PART . '/js/jquery.bootstrap-autohidingnavbar.js', array('jquery'));
+        // wp_enqueue_script('jquery-autohidingnavbar');
+
+
 
         wp_register_script('ckeditor-script', THEME_PART . '/class/ckeditor/ckeditor.js', array('jquery'));
         wp_enqueue_script('ckeditor-script');

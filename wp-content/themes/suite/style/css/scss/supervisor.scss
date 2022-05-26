@@ -15,17 +15,18 @@ $labelColor: #666;
 .supervisor-incumbent {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
 
     &-item {
         display: flex;
         flex-direction: column;
-        border: 1px solid rgb(199, 198, 198);
-        border-radius: 1rem;
+        //border: 1px solid rgb(199, 198, 198);
+        border-radius: 0.5rem;
         padding: 0rem;
+        margin: 0 1.5rem;
         align-items: center;
-        background-color: rgb(243, 241, 241);
-        width: 30%;
+        // background-color: rgb(243, 241, 241);
+        width: 15%;
 
         // animation-name: supervisor-show;
         // animation-duration: 1s;
@@ -34,19 +35,21 @@ $labelColor: #666;
 
         h3 {
             color: $titleColor;
+            padding: 1rem;
             font : {
-                size: 1.8rem;
+                size: 1rem;
                 weight: bold;
             }
         }
         img {
             width: 95%;
-            border-radius: 0.5rem;
+            border-radius: 0.2rem;
         }
 
         label {
-            padding: 2rem;
-            font-size: 1.8rem;
+            padding: 0.5rem;
+            font-size: 1rem;
+            font-weight: bold;
             color: $labelColor;
         }
     }
