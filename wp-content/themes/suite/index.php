@@ -6,14 +6,10 @@ get_header();
 <div>
     <?php mySlider('home') ?>
 </div>
-<div>
-    <?php get_template_part('templates/template', 'presidents-current'); ?>
-</div>
-
-<div>
-    <?php get_template_part('templates/template', 'home-map') ?>
-</div>
-
+<div> <?php get_template_part('templates/template', 'home-map-small'); ?> </div>
+<div> <?php get_template_part('templates/template', 'home-current-presidents'); ?></div>
+<div> <?php get_template_part('templates/template', 'home-event'); ?> </div>
+<div> <?php get_template_part('templates/template', 'footer') ?></div>
 <?php
 // lay phan footer
 get_footer();

@@ -23,7 +23,7 @@ if ($myQuery->have_posts()) :
             $myQuery->the_post();
         ?>
             <li data-id="<?php echo $stt ?>">
-                <a href="<?php the_permalink(); ?>">
+                <a class="link-style" href="<?php the_permalink(); ?>">
                     <?php the_title(); ?>
                 </a>
             </li>

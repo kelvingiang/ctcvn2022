@@ -43,7 +43,7 @@ $mainPostID = $post->ID;
                     }
                 ?>
                     <li data-id="<?php echo $stt ?>">
-                        <a href="<?php the_permalink(); ?>?wp=<?php echo $_GET['wp'] == '' ? 1 : $_GET['wp']; ?>">
+                        <a class="link-style" href="<?php the_permalink(); ?>?wp=<?php echo $_GET['wp'] == '' ? 1 : $_GET['wp']; ?>">
                             <?php the_title(); ?>
                         </a>
                     </li>

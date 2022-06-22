@@ -135,36 +135,39 @@ if (isset($suite['intNumArticlePerPage'])) {
 
         //===== 2 phan trang xac dinh so trang E========
         ?>
+        <div class="my-loading">
+            <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+            <span class="sr-only">Loading...</span>
+        </div>
 
         <div class='head-title'>
             <div class="title">
                 <h2 class="head"> <?php _e('recruit', 'suite'); ?></h2>
             </div>
         </div>
-        <div class="my-waiting-2">
-            <img src="<?php echo PART_IMAGES . 'loading_pr2.gif' ?>" style=" width: 150px" />
-        </div>
-        <div style="min-height: 70px; padding-left: 50px; padding: 8px 1px; margin-left: 10px; margin-bottom: 10px; background-color: #ccc; border-radius: 3px" class="row">
+
+        <div style="min-height: 70px; padding-left: 50px; padding: 8px 1px; margin-left: 10px; margin-bottom: 10px; background-color: #fff; border-radius: 3px" class="row">
             <?php
             require_once DIR_CODES . 'my-list.php';
             $myList = new Codes_My_List;
             $placeList = $myList->PlaceList();
             $careerList = $myList->CareerList();
             ?>
-            <div class="col-lg-6" style="border-right: 1px #fff solid; margin-bottom: 5px">
-                <label style="color: #666; font-size: 2rem">
-                    <?php _e('Search By Area', 'suite') ?>
+            <div class="col-lg-6 form-group">
+                <label style="color: #666; font-size: 1rem; font-weight: bold ">
+                    <?php _e('Search By Area') ?>
                 </label>
                 <select id="sel_place" name="sel_place" class="form-control">
                     <?php foreach ($placeList as $key => $val) { ?>
                         <option value="<?php echo $key ?>" <?php echo $place_url == $key ? 'selected="selected"' : '' ?>>
-                            <?php echo $val ?></option>
+                            <?php echo $val ?>
+                        </option>
                     <?php } ?>
                 </select>
             </div>
 
             <div class="col-lg-6">
-                <label style="color: #666; font-size: 2rem">
+                <label style="color: #666; font-size: 1rem; font-weight: bold ; ">
                     <?php _e('Search By Job Title') ?>
                 </label>
                 <select id="sel_career" name="sel_career" class="form-control">
@@ -175,7 +178,7 @@ if (isset($suite['intNumArticlePerPage'])) {
                 </select>
             </div>
         </div>
-        <ul class="article-list" style=" padding-left: 10px; width: 100%">
+        <ul class="recruiter-list" style=" padding-left: 10px; width: 100%">
             <?php
             if ($myQuery->have_posts()) {
                 while ($myQuery->have_posts()) :
@@ -183,9 +186,12 @@ if (isset($suite['intNumArticlePerPage'])) {
                     $placeMeta = get_post_meta($post->ID, '_recruit_place', TRUE);
             ?>
                     <li>
-                        <a href="<?php the_permalink() ?>"><?php the_title() ?>
-                            <label><?php echo __('Post Date') . ':' .  substr($post->post_date, 0, 10); ?></label>
+                        <a href="<?php the_permalink() ?>">
+                            <?php the_title() ?>
                         </a>
+                        <label>
+                            <?php echo __('Post Date') . ' : ' .  substr($post->post_date, 0, 10); ?>
+                        </label>
                     </li>
                 <?php
                 endwhile;
@@ -202,7 +208,7 @@ if (isset($suite['intNumArticlePerPage'])) {
 
                     /* << */
                     if ($intCurrentPage >= 1) {
-                        echo '<li> <a href="' . $strUrlArticle . '"> << </a> </li> ';
+                        echo '<li> <a href="' . $strUrlArticle . '"> <i class="fa fa-step-backward" aria-hidden="true"></i></a> </li> ';
                     } else {
                         echo ' ';
                     }
@@ -211,7 +217,7 @@ if (isset($suite['intNumArticlePerPage'])) {
                     if ($intPage > 1) {
                         if ($intCurrentPage >= 1) {
                             if ($intCurrentPage == 1) {
-                                echo '<li><a href="' . $strUrlArticle . '"><</a></li> ';
+                                echo '<li><a href="' . $strUrlArticle . '"><i class="fa fa-chevron-left" aria-hidden="true"></i></a></li> ';
                             } else {
                                 echo '<li><a href="' . $strUrlArticle . '?wp=' . $intCurrentPage . '"><</a> </li>';
                             }
@@ -262,7 +268,7 @@ if (isset($suite['intNumArticlePerPage'])) {
                     /* > */
                     if ($intPage > 1) {
                         if ($intCurrentPage < $intPage - 1) {
-                            echo '<li><a href="' . $strUrlArticle . '?wp=' . ($intCurrentPage + 2) . '">></a></li> ';
+                            echo '<li><a href="' . $strUrlArticle . '?wp=' . ($intCurrentPage + 2) . '"><i class="fa fa-chevron-right" aria-hidden="true"></i></a></li> ';
                         } else {
                             echo '';
                         }
@@ -270,7 +276,7 @@ if (isset($suite['intNumArticlePerPage'])) {
 
                     /* >> */
                     if ($intCurrentPage < $intPage - 1) {
-                        echo '<li><a href="' . $strUrlArticle . '?wp=' . $intPage . '">>></a> </li>';
+                        echo '<li><a href="' . $strUrlArticle . '?wp=' . $intPage . '"><i class="fa fa-step-forward" aria-hidden="true"></i></a> </li>';
                     } else {
                         echo ' ';
                     }
@@ -282,10 +288,10 @@ if (isset($suite['intNumArticlePerPage'])) {
         ?>
         <div style="float: right">
             <?php
-                echo $intPage;
-                _e('Page of', 'suite');
-                echo $intCurrentPage + 1;
-                _e('Page', 'suite');
+                // echo $intPage . '&nbsp;';
+                //_e('Page of');
+                // echo $intCurrentPage + 1;
+                // _e('Page');
             ?>
         </div>
     <?php } else {
@@ -304,20 +310,7 @@ if (isset($suite['intNumArticlePerPage'])) {
     </div>
 
 </div>
-<style>
-    .my-waiting-2 {
-        display: none;
-        background-color: rgba(0, 0, 0, 0.7);
-        position: absolute;
-        /*
-         top: 0px;*/
-        width: 100%;
-        height: 100vh;
-        text-align: center;
-        padding-top: 20%;
-        z-index: 5000000;
-    }
-</style>
+
 <script>
     jQuery('document').ready(function() {
         var cc = "<?php echo $career_url ?>";
@@ -331,7 +324,7 @@ if (isset($suite['intNumArticlePerPage'])) {
 
         jQuery('#sel_place').on('change', function() {
             //            alert(window.location.origin);
-            jQuery('.my-waiting-2').css('display', 'block');
+            jQuery('.my-loading').css('display', 'block');
             var pageURL = '';
             if (cc === ' ') {
                 pageURL = my_url + 'recruiter?place=' + jQuery(this).val();
@@ -347,7 +340,7 @@ if (isset($suite['intNumArticlePerPage'])) {
         });
 
         jQuery('#sel_career').on('change', function() {
-            jQuery('.my-waiting-2').css('display', 'block');
+            jQuery('.my-loading').css('display', 'block');
             var pageURL = '';
             if (pp === ' ') {
                 pageURL = my_url + 'recruiter?cat=' + jQuery(this).val();

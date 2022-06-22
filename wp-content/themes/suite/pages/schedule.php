@@ -53,7 +53,7 @@ global $wpdb;
                             <div class="col-md-12 my-hide schedule-hide">
                                 <div>
                                     <label>地點:</label> <?php echo $item['place']; ?></br>
-                                    <label>分會:</label> <?php echo $item['branch']; ?>
+                                    <label>商會:</label> <?php echo $item['branch']; ?>
                                 </div>
                                 <div>
                                     <label>備註:</label> <?php echo $item['note']; ?>

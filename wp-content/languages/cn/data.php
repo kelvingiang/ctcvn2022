@@ -123,7 +123,8 @@ function getTranslate()
         'News Travel' => '越南旅遊',
         'Chamber of Commerce Bulletin' => '總會會刊',
         'Person Interview' => '人物專訪',
-        'More' => '更多'
+        'More' => '更多',
+        'Friend Link' => '友誼連結',
 
 
     );

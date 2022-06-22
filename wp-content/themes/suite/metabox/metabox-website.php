@@ -58,17 +58,17 @@ class Admin_Metabox_website
     {
         // kiem thanh phan an bao mat cua wp
         // NEU HAM NAY TRA VE GIA TRI  LA TRUE THUC HIEN TIEP CAC PHAN DUOI , CON TRA VE FLASE return VE $post_id
-        if (!isset($_POST['tw-metabox-data-nonce']))
-            return $post_id;
+        // if (!isset($_POST['tw-metabox-data-nonce']))
+        //     return $post_id;
         // NEU HAM NAY TRA VE GIA TRI  LA TRUE THUC HIEN TIEP CAC PHAN DUOI , CON TRA VE FLASE return VE $post_id 
-        if (wp_verify_nonce('tw-metabox-data-nonce', 'tw-metabox-data'))
-            return $post_id;
+        // if (wp_verify_nonce('tw-metabox-data-nonce', 'tw-metabox-data'))
+        //     return $post_id;
         // HAM TU DONG LUU KHI DE QUA LAU NEU TRA VE FLASE return $post_id
-        if (define('DOING_AUTOSAVE') && DOING_AUTOSAVE)
-            return $post_id;
+        // if (define('DOING_AUTOSAVE') && DOING_AUTOSAVE)
+        //     return $post_id;
 
-        if (!current_user_can('edit_post', $post_id))
-            return $post_id;
+        // if (!current_user_can('edit_post', $post_id))
+        //     return $post_id;
         // 4 BON PHAN TREN DUNG DE BAO MAT KHI LUU METABOX TRONG WP 
         if (!empty($_POST['tw-metabox-email'])) {
             update_post_meta($post_id, '_tw_metabox_email', sanitize_text_field($_POST['tw-metabox-email']));

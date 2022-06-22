@@ -8,7 +8,7 @@ $mainPostID = $post->ID;
 ?>
 <!-- phan noi dung of trang index --------------------------------------- -->
 <div class="row">
-    <div class="col-xl-9 col-lg-9 col-md-8 col-sm-8 col-12">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
         <!-- lay cac bai post  -->
         <div>
             <?php
@@ -18,7 +18,7 @@ $mainPostID = $post->ID;
 
             ?>
                     <div class="single-space">
-                        <label class="single-space-title"><?php the_title(); ?></label>
+                        <label class="single-space-title"><?php the_title(); ?>ss</label>
                         <div class="single-space-content"><?php echo $post->post_content ?></div>
                     </div>
 
@@ -28,7 +28,8 @@ $mainPostID = $post->ID;
             endif;
             ?>
         </div>
-        <div style="margin-top: 2rem; border-top: 2rem #04366c solid">
+
+        <div style="margin-top: 2rem;">
             <ul id="data-list" class="article-list">
                 <?php
                 // LAY CAC THONG TIN TRONG POST TYPE FORUM VA VI TRI LAY DONG THONG TIN
@@ -63,8 +64,8 @@ $mainPostID = $post->ID;
                         }
                 ?>
 
-                        <a href="<?php the_permalink(); ?>">
-                            <?php the_title(); ?>ssss
+                        <a class="link-style" href="<?php the_permalink(); ?>">
+                            <?php the_title(); ?>
                         </a>
                         </li>
                     <?php
@@ -81,10 +82,7 @@ $mainPostID = $post->ID;
         ?>
         </div>
     </div>
-    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4 col-12">
-        <?php get_sidebar('single')
-        ?>
-    </div>
+
 </div>
 <script>
     jQuery(document).ready(function() {

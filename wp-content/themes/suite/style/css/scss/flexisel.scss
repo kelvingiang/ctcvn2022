@@ -43,6 +43,7 @@
           align-items: center;
 
           img {
+            opacity: 0.8;
             width: 60%;
             object-fit: contain;
             margin: 0 auto;
@@ -52,14 +53,24 @@
         .box-text {
           position: absolute;
           bottom: 0;
-          height: 50px;
           width: 100%;
           text-align: center;
           h3 {
+            color: $linkNormal;
             font: {
-              size: 1.2rem;
+              size: 1rem;
               weight: bold;
+              padding: 0rem 1rem;
             }
+          }
+        }
+
+        &:hover {
+          img {
+            opacity: 1;
+          }
+          h3 {
+            color: $linkHover;
           }
         }
       }
@@ -70,26 +81,28 @@
 
   .nbs-flexisel-nav-left,
   .nbs-flexisel-nav-right {
-    width: 30px;
-    height: 30px;
     position: absolute;
     cursor: pointer;
     opacity: 0.2;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 2rem;
+    color: #666;
+    font-size: 1.5rem;
     margin: 0rem;
     &:hover {
       opacity: 1;
     }
+    font-family: FontAwesome;
   }
   .nbs-flexisel-nav-left {
-    left: 10px;
-    background-image: url(../images/button-previous.png);
+    left: 0.5rem;
+    &::after {
+      content: "\f053";
+    }
   }
 
   .nbs-flexisel-nav-right {
-    right: 5px;
-    background-image: url(../images/button-next.png);
+    right: 0.5rem;
+    &::after {
+      content: "\f054";
+    }
   }
 }

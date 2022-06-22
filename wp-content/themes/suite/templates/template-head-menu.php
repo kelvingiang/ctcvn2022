@@ -47,7 +47,7 @@ if (isset($_SESSION['login'])) {
         <?php } else { ?>
             <div class="login-success">
                 <label> <?php echo $_SESSION['login'] ?>
-                    <i style="font-size: 1.6rem;" class="fa fa-caret-down" aria-hidden="true"></i>
+                    <i class="fa fa-caret-down" aria-hidden="true"></i>
                 </label>
                 <?php get_template_part('templates/template', 'login-success') ?>
             </div>

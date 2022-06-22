@@ -14,10 +14,11 @@ $myQuery1 = new WP_Query($arr);
 <!--  
     phan nay kiem tra bang ajax, code xu ky ajax dc viet tai file js va dc add vao o dau trang (checkajax.js)
 -->
-<div style="padding-top: 30px">
-    <div class="blue-group">
-        <h3><?php _e('友 情 連 接') ?> </h3>
-    </div>
+<div>
+    <!-- <div class='head-title'>
+        <h2 class="head"><?php // _e('Friend Link') 
+                            ?> </h2>
+    </div> -->
     <div>
         <ul class="link-list">
             <?php
@@ -28,7 +29,9 @@ $myQuery1 = new WP_Query($arr);
                     $postMeta = get_post_meta($post->ID);
             ?>
                     <li>
-                        <a href="<?php echo $postMeta['p_web'][0]; ?>" target="_blank" rel="nofollow" style="text-decoration: none;"><?php echo $postMeta['p_name'][0] ?></a>
+                        <a href="<?php echo $postMeta['p_web'][0]; ?>" target="_blank" rel="nofollow" class="link-style">
+                            <?php echo $postMeta['p_name'][0] ?>
+                        </a>
                     </li>
             <?php
                 endwhile;

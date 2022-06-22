@@ -3,7 +3,7 @@
 function mySlider($cate)
 {
 ?>
-    <div class="border_box">
+    <div class="border_box" style="margin-bottom: 2rem;">
         <div class="box_skitter box_skitter_large">
             <ul>
                 <?php

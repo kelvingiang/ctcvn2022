@@ -35,7 +35,7 @@ if ($wp_query->have_posts()) {
         } else {
             $html .= "<li data-id = '" . $stt . "'>";
         }
-        $html .= "<a href = '" . get_the_permalink() . "'>" . get_the_title() . "</a>";
+        $html .= "<a class='link-style' href = '" . get_the_permalink() . "'>" . get_the_title() . "</a>";
         $html .= "</li>";
         $stt += 1;
     endwhile;

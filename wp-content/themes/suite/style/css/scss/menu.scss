@@ -13,8 +13,8 @@ $textHoverColor: rgba(53, 52, 52, 1);
 
     .menu-computer-additional {
         i {
-            margin-top: 1.2rem;
-            margin-left: 1rem;
+            margin-top: 1rem;
+            margin-left: 0.4rem;
             margin-right: 1rem;
             font-size: 1.1rem;
             color: rgba(0, 0, 0, 0.5);
@@ -51,7 +51,7 @@ $textHoverColor: rgba(53, 52, 52, 1);
                     width: 200%;
                     background-color: rgb(252, 251, 251);
                     border-bottom: 0.01rem solid rgb(231, 231, 231);
-                    padding: 1.3rem 1.5rem;
+                    padding: 0.7rem 1rem;
                     &:hover {
                         a {
                             color: #000;

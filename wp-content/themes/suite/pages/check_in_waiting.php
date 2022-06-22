@@ -28,22 +28,21 @@
 </head>
 
 <body>
-    <div class="my-waiting">
-        <img src="<?php echo PART_IMAGES . 'loading_pr2.gif' ?>" style=" width: 150px" />
-    </div>
-    <div class="container-fluid" style="background-color: white; height: 100vh; padding: 0px 20px">
-        <div id="loggo" style="margin: 2px 0">
-            <a style=" float: left" href="<?php echo home_url() ?>">
-                <img src="<?php echo PART_IMAGES . 'logo.jpg' ?>" alt="ctcvn_logo" title="ctcvn_logo" />
-            </a>
-            <h1 style=" float: left; font-size: 10px; color: white">越南台灣商會聯合總</h1>
-        </div>
-        <div class="row" style="padding-top:  75px">
-            <div class="col-lg-12"
-                style="height: 70px; background-color:  #FC9105; border-radius: 5px;  margin-bottom: 10px ">
-                <h1 style="font-weight:  bold; color: white; letter-spacing: 3px">
-                    <?php echo get_option('Title_text'); ?></h1>
+
+    <div class="check-in-space">
+        <div class="header">
+            <div class="logo">
+                <img src="<?php echo PART_IMAGES . 'logoctcvn.png' ?>" alt="ctcvn_logo" title="ctcvn_logo" />
+                <div>
+                    <h2>越南台灣商會聯合總</h2>
+                    <h3>THE COUNCIL OF TAIWANESE CHAMBERS OF COMMERCE IN VIETNAM </h3>
+                </div>
             </div>
+            <div class="title">
+                <h1><?php echo get_option('Title_text'); ?></h1>
+            </div>
+        </div>
+        <div>
             <div class=" col-lg-12" style="text-align: center; height:300px; line-height: 300px;">
                 <label ID="waiting_txt"><?php echo get_option('Waiting_text'); ?></label>
             </div>
@@ -53,106 +52,86 @@
 </body>
 
 <style>
-#waiting_txt {
-    font-size: 50px;
-    font-weight: bold;
-    letter-spacing: 10px;
-    -webkit-animation-name: example;
+    #waiting_txt {
+        text-shadow: 2px 2px 8px #000000;
+        padding-top: 8%;
+        font-weight: bold;
+        letter-spacing: 10px;
+        -webkit-animation-name: example;
+        /* Safari 4.0 - 8.0 */
+        -webkit-animation-duration: 5s;
+        /* Safari 4.0 - 8.0 */
+        -webkit-animation-iteration-count: infinite;
+        /* Safari 4.0 - 8.0 */
+        animation-name: example;
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+
+    }
+
+
     /* Safari 4.0 - 8.0 */
-    -webkit-animation-duration: 10s;
-    /* Safari 4.0 - 8.0 */
-    -webkit-animation-iteration-count: infinite;
-    /* Safari 4.0 - 8.0 */
-    animation-name: example;
-    animation-duration: 10s;
-    animation-iteration-count: infinite;
-
-}
+    @-webkit-keyframes example {
+        0% {
+            color: #fff;
+            font-size: 10rem
+        }
 
 
-/* Safari 4.0 - 8.0 */
-@-webkit-keyframes example {
-    0% {
-        color: #333;
-        font-size: 60px
+
+        50% {
+            color: #057cfc;
+            font-size: 15rem
+        }
+
+
+
+        100% {
+            color: #fff;
+            font-size: 10rem
+        }
     }
 
-    20% {
-        color: #333;
-        font-size: 60px
-    }
+    /* Standard syntax */
+    /* @keyframes example {
+        0% {
+            color: #333;
+            font-size: 60px
+        }
 
-    40% {
-        color: #FC9105;
-        font-size: 72px
-    }
+        20% {
+            color: #333;
+            font-size: 60px
+        }
 
-    41% {
-        color: #FC9105;
-        font-size: 70px
-    }
+        40% {
+            color: #FC9105;
+            font-size: 72px
+        }
 
-    42% {
-        color: #FC9105;
-        font-size: 71px
-    }
+        41% {
+            color: #FC9105;
+            font-size: 70px
+        }
 
-    50% {
-        color: #FC9105;
-        font-size: 70px
-    }
+        42% {
+            color: #FC9105;
+            font-size: 71px
+        }
 
-    70% {
-        color: #FC9105;
-        font-size: 70px
-    }
+        50% {
+            color: #FC9105;
+            font-size: 70px
+        }
 
-    100% {
-        color: #333;
-        font-size: 60px;
-    }
-}
+        70% {
+            color: #FC9105;
+            font-size: 70px
+        }
 
-/* Standard syntax */
-@keyframes example {
-    0% {
-        color: #333;
-        font-size: 60px
-    }
-
-    20% {
-        color: #333;
-        font-size: 60px
-    }
-
-    40% {
-        color: #FC9105;
-        font-size: 72px
-    }
-
-    41% {
-        color: #FC9105;
-        font-size: 70px
-    }
-
-    42% {
-        color: #FC9105;
-        font-size: 71px
-    }
-
-    50% {
-        color: #FC9105;
-        font-size: 70px
-    }
-
-    70% {
-        color: #FC9105;
-        font-size: 70px
-    }
-
-    100% {
-        color: #333;
-        font-size: 60px;
-    }
-}
+        100% {
+            color: #333;
+            font-size: 60px;
+        }
+    } */
 </style>

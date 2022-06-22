@@ -86,16 +86,16 @@ class Admin_Metabox_Seo
             return;
         }
 
-        if (isset($_POST['seo_title'])) {
-            update_post_meta($post_id, 'seo_title', $_POST['seo_title']);
-        }
+        //if (isset($_POST['seo_title'])) {
+        update_post_meta($post_id, 'seo_title', $_POST['seo_title']);
+        // }
 
-        if (isset($_POST['seo_description'])) {
-            update_post_meta($post_id, 'seo_description', $_POST['seo_description']);
-        }
+        // if (isset($_POST['seo_description'])) {
+        update_post_meta($post_id, 'seo_description', $_POST['seo_description']);
+        // }
 
-        if (isset($_POST['seo_keywords'])) {
-            update_post_meta($post_id, 'seo_keywords', $_POST['seo_keywords']);
-        }
+        // if (isset($_POST['seo_keywords'])) {
+        update_post_meta($post_id, 'seo_keywords', $_POST['seo_keywords']);
+        // }
     }
 }

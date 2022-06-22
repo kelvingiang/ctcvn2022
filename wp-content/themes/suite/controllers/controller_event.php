@@ -56,6 +56,7 @@ class Admin_Controller_Event
 
         $columns['cate'] = __('Category');
         $columns['language'] = __('Language');
+        $columns['home'] = __('Home');
         $columns['postdate'] = __('Date');
 
         return $columns;
@@ -73,6 +74,17 @@ class Admin_Controller_Event
                         echo '<a href=' . custom_redirect($term->slug) . '&' . $term->taxonomy . '=' . $term->slug . '>' . $term->name . '</a></br>';
                     }
                 }
+                break;
+
+            case 'home':
+                $status = get_post_meta($post->ID, '_admin_metabox_special', true);
+
+                if ($status == 'on') {
+                    $class = 'active_style';
+                } else {
+                    $class = 'inactive_style';
+                }
+                echo "<div class='" . $class . "'></div>";
                 break;
 
             default:

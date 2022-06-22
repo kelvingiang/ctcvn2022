@@ -1,23 +1,22 @@
 $scheduleMainColor: #286090;
 
 .schedule_month {
-    height: 30px;
+    height: 2.5rem;
     background-color: $scheduleMainColor;
     color: white;
     margin-top: 20px;
-    padding: 5px;
+    padding: 5px 20px 10px;
     font-weight: bold;
     border-radius: 0.3rem 0.3rem 0 0;
 }
 
 .schedule-item {
     color: #515151;
-    font-size: 15px;
     background-color: #fff;
     letter-spacing: 2px;
     border-bottom: 1px #d8d8d8 solid;
 
-    padding: 5px 2px;
+    padding: 10px 5px;
     margin-bottom: 2px;
     margin-left: -1px !important;
     width: 100%;
@@ -33,15 +32,17 @@ $scheduleMainColor: #286090;
 
         label {
             color: $scheduleMainColor;
-            font-size: 2rem;
+            font-size: 1.1rem;
+            font-weight: bold;
         }
         i {
-            color: rgb(239, 239, 239);
-            font-size: 2rem;
+            color: rgb(214, 212, 212);
+            font-size: 1rem;
             margin-top: 0.5rem;
         }
     }
     .schedule-text {
+        font-size: 0.9rem;
     }
 
     .schedule-hide {

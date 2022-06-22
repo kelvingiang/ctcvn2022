@@ -14,6 +14,9 @@ get_header();
         </div>
     </div>
 </div>
+<div>
+    <?php get_template_part('templates/template', 'footer') ?>
+</div>
 <?php
 get_footer();
 ob_flush();   // neu bao loi PHP Warning: Cannot modify header information ??headers already sent by

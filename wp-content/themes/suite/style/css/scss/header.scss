@@ -39,8 +39,9 @@
 
         .company-name-cn {
             font : {
-                size: 1rem;
+                size: 1.3rem;
                 weight: bold;
+                family: "DFKai-SB", Microsoft YaHei, Arial, sans-serif;
             }
             letter-spacing: 1rem;
             @include Respond(md) {
@@ -51,6 +52,7 @@
         .company-name-en {
             font-size: 0.7rem;
             letter-spacing: 0rem;
+            font-family: times new roman, Arial, sans-serif;
             @include Respond(md) {
                 display: none;
             }

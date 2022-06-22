@@ -1,8 +1,8 @@
-$linkColor: #036481;
-$linkNormal: rgba($linkColor, 0.8);
-$linkHover: rgba($linkColor, 1);
-
-$titleColor: #286090;
+$linkNormal: #05688f;
+$linkHover: #012d47;
+$titleColor: #646668;
+$labelColor: #666;
+$fontColor: #666;
 
 @mixin box-link() {
     li {

@@ -11,10 +11,14 @@ $category = 'health';
 
 ?>
 <div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <?php get_template_part('templates/template', 'advertising'); ?>
+    </div>
     <div class="col-xl-9 col-lg-9 col-md-8 col-sm-8 col-12">
-        <div class='head-title'>
-            <h2 class="head"> <?php _e('News Health'); ?> </h2>
-        </div>
+        <!-- <div class='head-title'>
+            <h2 class="head"> <?php // _e('News Health'); 
+                                ?> </h2>
+        </div> -->
         <?php Post_list_style($category, COUNT_POST_NEWEST) ?>
     </div>
 

@@ -23,7 +23,6 @@
     <meta name="geo.region" content="VN" />
     <meta name="geo.position" content="10.725377;106.720064" />
     <meta name="ICBM" content="10.725377, 106.720064" />
-    <?php suite_seo(); ?>
     <?php wp_head(); ?>
 </head>
 
@@ -31,79 +30,77 @@
     <div class="my-waiting">
         <img src="<?php echo PART_IMAGES . 'loading_pr2.gif' ?>" style=" width: 150px" />
     </div>
-    <div class="container-fluid" style="background-color: white; height: 100vh; padding: 0px 20px">
-        <div id="loggo" style="margin: 2px 0">
-            <a style=" float: left" href="<?php echo home_url() ?>">
-                <img src="<?php echo PART_IMAGES . 'logo.jpg' ?>" alt="ctcvn_logo" title="ctcvn_logo" />
-            </a>
-            <h1 style=" float: left; font-size: 10px; color: white">越南台灣商會聯合總</h1>
-        </div>
-        <div class="row" style="padding-top:  75px">
-            <div class="col-lg-12"
-                style="height: 70px; background-color:  #FC9105; border-radius: 5px;  margin-bottom: 10px ">
-                <h1 style="font-weight:  bold; color: white; letter-spacing: 3px">
-                    <?php echo get_option('Title_text'); ?></h1>
+
+
+    <div class="check-in-space">
+        <div class="header">
+            <div class="logo">
+                <img src="<?php echo PART_IMAGES . 'logoctcvn.png' ?>" alt="ctcvn_logo" title="ctcvn_logo" />
+                <div>
+                    <h2>越南台灣商會聯合總</h2>
+                    <h3>THE COUNCIL OF TAIWANESE CHAMBERS OF COMMERCE IN VIETNAM </h3>
+                </div>
             </div>
-            <div class=" col-lg-3">
-                <div style="background-color:  #D1D4D6;  height: 45px; padding: 5px 0 0 8px">
+            <div class="title">
+                <h1><?php echo get_option('Title_text'); ?></h1>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="content-form">
+                <div>
                     <form name="check-form" id="check-form" method="post" action="">
-                        <input type="text" id="txt-barcode" name="txt-barcode" placeholder="輸入條碼"
-                            style="width: 70%;  height: 33px" />
-                        <input type="submit" id="btn-submit" name="btn-submitbarcode" value="<?php _e('Submit'); ?>"
-                            class="btn" />
+                        <input type="text" id="txt-barcode" name="txt-barcode" placeholder="輸入條碼" required />
+                        <input type="submit" id="btn-submit" name="btn-submit" value="<?php _e('Submit'); ?>" />
                     </form>
                 </div>
-                <div style="margin-top:5px">
-                    <?php get_template_part("templates/template", "ad-logo"); ?>
+                <div>
+                    <?php get_template_part("templates/template", "ad-logo");
+                    ?>
                 </div>
             </div>
-            <div class="col-lg-9" style="border-left: 1px #D1D4D6 solid">
-                <div class='col-lg-12'
-                    style=' margin-bottom: 20px;min-height: 80px; color: #666;  border-bottom: 2px #666 dotted; float: left'>
-                    <div class="col-lg-6" style="float: left; width: 350px">
-                        <h2 style="font-weight:bold;  color: #FC9105"> 歡 迎 光 臨 </h2>
+            <div class="content-info">
+                <div class="content-welcome">
+                    <div>
+                        <h2>歡迎光臨</h2>
                         <div id="last-check-in"> </div>
                     </div>
-                    <div class="col-lg-6" style="padding-top: 10px; float: right">
+                    <div>
                         <img src="<?php echo PART_IMAGES . 'digiwin_logo.png'; ?>" /> </br>
-                        <label style="font-size: 25px; font-weight: bold; padding-left: 10px;color: #FC9105">鼎 捷 軟 件 維 護
-                            製 作</label>
+                        <h3>鼎捷軟件(越南)維護製作</h3>
                     </div>
-
                 </div>
-                <div class="col-lg-12" id="barcode-error">條 碼 不 正 確 ! </div>
-                <div class="col-lg-12" id="barcode-unactive">您的帳號還沒啟用 ! </div>
-                <div class="col-lg-12" id="guest-main">
-                    <div class="col-lg-5">
-                        <div id="guest-pictrue"> </div>
+                <div id="barcode-error">條 碼 不 正 確 ! </div>
+                <div id="barcode-unactive">您 的 帳 號 還 沒 啟 用! </div>
+                <div id="guest-main">
+                    <div class="guest-img">
+                        <div id="guest-picture"> </div>
                     </div>
 
-                    <div class="col-lg-7" style="padding-left: 70px; float:  left ; font-size: 15px">
-                        <div class="guest-info guest-name">
-                            <div><label>姓 名 :</label></div>
-                            <div><label id="guest_name">&nbsp;</label></div>
+                    <div class="guest-info">
+                        <div>
+                            <label>姓 名 : </label>
+                            <label id="guest_name">&nbsp;</label>
                         </div>
-                        <div class="guest-info">
-                            <div><label>職 稱 :</label></div>
-                            <div><label id="guest_position">&nbsp;</label></div>
+                        <div>
+                            <label>職 稱 : </label>
+                            <label id="guest_position">&nbsp;</label>
                         </div>
-                        <div class="guest-info">
-                            <div><label>所 屬 商 會 : </label></div>
-                            <div><label id="guest_country">&nbsp;</label></div>
+                        <div>
+                            <label>分 會 : </label>
+                            <label id="guest_country">&nbsp;</label>
                         </div>
-                        <div class="guest-info">
-                            <div><label>E-mail :</label></div>
-                            <div><label id="guest_email">&nbsp;</label></div>
+                        <div>
+                            <label>電 郵 : </label>
+                            <label id="guest_email">&nbsp; </label>
                         </div>
-
-                        <div class="guest-info">
-                            <div><label>聯 絡 電 話 :</label></div>
-                            <div><label id="guest_phone">&nbsp;</label></div>
+                        <div>
+                            <label>電 話 : </label>
+                            <label id="guest_phone">&nbsp;</label>
                         </div>
-
-                        <div class="guest-info">
-                            <div><label>備 註 :</label></div>
-                            <div><label class="guest_note">&nbsp;</label></div>
+                        <div>
+                            <label>備 註 :</label>
+                            <label class="guest_note">&nbsp;</label>
                         </div>
                     </div>
                 </div>
@@ -113,113 +110,73 @@
 </body>
 
 
-<style type="text/css">
-.guest-info {
-    clear: both;
-}
-
-.guest-info div:first-child {
-    min-width: 100px;
-}
-
-.guest-info div {
-    float: left;
-}
-
-.guest-name {
-    font-size: 20px;
-    font-weight: bold;
-    color: #FC9105
-}
-
-#guest-pic {
-    width: 350px;
-    margin-left: -20px;
-    margin-top: 5px;
-    border: 1px solid #999999;
-    border-radius: 3px;
-}
-
-#last-check-in h5 {
-    font-weight: bold
-}
-
-#barcode-error,
-#barcode-unactive {
-    display: none;
-    font-size: 30px;
-    font-weight: bold;
-    color: red;
-}
-</style>
-
 <script type="text/javascript">
-jQuery(document).ready(function() {
-    jQuery("#txt-barcode").focus();
+    jQuery(document).ready(function() {
+        jQuery("#txt-barcode").focus();
 
-    jQuery('#check-form').submit(function(e) { //     console.log(objInfo);
-        var barcode = jQuery('#txt-barcode').val();
-        jQuery('.my-waiting').css('display', 'block');
+        jQuery('#check-form').submit(function(e) { //     console.log(objInfo);
+            var barcode = jQuery('#txt-barcode').val();
+            jQuery('.my-waiting').css('display', 'block');
 
 
-        jQuery.ajax({
-            url: '<?php echo get_template_directory_uri() . '/ajax/updata-checkin.php' ?>', // lay doi tuong chuyen sang dang array
-            type: 'post', //                data: $(this).serialize(),
-            data: {
-                id: barcode
-            },
-            dataType: 'json',
-            success: function(
-                data) { // set ket qua tra ve  data tra ve co thanh phan status va message
-                if (data.status === 'done') {
-                    jQuery("#txt-barcode").val('');
-                    //window.location.reload();  
-                    jQuery('#barcode-error, #barcode-unactive').css('display', 'none');
-                    jQuery('#guest-main, #last-check-in').css('display', 'block');
-                    jQuery('#last-check-in').children().remove();
-                    if (data.info.TotalTimes !== null) {
-                        jQuery('#last-check-in').append("<h5>登入次數 : " + data.info
-                            .TotalTimes + " 次  </h5>");
-                        jQuery('#last-check-in').append("<h5>上次登入 : " + data.info
-                            .LastCheckIn + "</h5>");
+            jQuery.ajax({
+                url: '<?php echo get_template_directory_uri() . '/ajax/updata-checkin.php' ?>', // lay doi tuong chuyen sang dang array
+                type: 'post', //                data: $(this).serialize(),
+                data: {
+                    id: barcode
+                },
+                dataType: 'json',
+                success: function(
+                    data) { // set ket qua tra ve  data tra ve co thanh phan status va message
+                    if (data.status === 'done') {
+                        jQuery("#txt-barcode").val('');
+                        //window.location.reload();  
+                        jQuery('#barcode-error, #barcode-unactive').css('display', 'none');
+                        jQuery('#last-check-in, #guest-main').css('display', 'flex');
+                        jQuery('#last-check-in').children().remove();
+                        if (data.info.TotalTimes !== null) {
+                            jQuery('#last-check-in').append("<label>登入次數 : " + data.info
+                                .TotalTimes + " 次  </label>");
+                            jQuery('#last-check-in').append("<label>上次登入 : " + data.info
+                                .LastCheckIn + "</label>");
+                        }
+                        jQuery('#guest_name').text(data.info.FullName);
+                        jQuery('#guest_position').text(data.info.Position);
+                        jQuery('#guest_country').text(data.info.Country);
+                        jQuery('#guest_email').text(data.info.Email);
+                        jQuery('#guest_phone').text(data.info.Phone);
+                        jQuery('#guest_note').text(data.info.Note);
+                        jQuery('#guest-pic').remove();
+                        jQuery('#guest-picture').append(data.info.Img);
+                        //window.location.reload();
+                        window.setTimeout(function() {
+                            jQuery('.my-waiting').css('display', 'none');
+                        }, 100);
+
+                    } else if (data.status === 'error') {
+                        jQuery("#txt-barcode").val('');
+                        jQuery('#guest-main, #last-check-in, #barcode-unactive').css('display',
+                            'none');
+                        jQuery('#barcode-error').css('display', 'block');
+                        window.setTimeout(function() {
+                            jQuery('.my-waiting').css('display', 'none');
+                        }, 100);
+                    } else if (data.status === "unactive") {
+                        jQuery("#txt-barcode").val('');
+                        jQuery('#guest-main, #last-check-in, #barcode-error').css('display',
+                            'none');
+                        jQuery('#barcode-unactive').css('display', 'block');
+                        window.setTimeout(function() {
+                            jQuery('.my-waiting').css('display', 'none');
+                        }, 100);
                     }
-                    jQuery('#guest_name').text(data.info.FullName);
-                    jQuery('#guest_position').text(data.info.Position);
-                    jQuery('#guest_country').text(data.info.Country);
-                    jQuery('#guest_email').text(data.info.Email);
-                    jQuery('#guest_phone').text(data.info.Phone);
-                    jQuery('#guest_note').text(data.info.Note);
-                    jQuery('#guest-pic').remove();
-                    jQuery('#guest-pictrue').append(data.info.Img);
-                    //window.location.reload();
-                    window.setTimeout(function() {
-                        jQuery('.my-waiting').css('display', 'none');
-                    }, 100);
-
-                } else if (data.status === 'error') {
-                    jQuery("#txt-barcode").val('');
-                    jQuery('#guest-main, #last-check-in, #barcode-unactive').css('display',
-                        'none');
-                    jQuery('#barcode-error').css('display', 'block');
-                    window.setTimeout(function() {
-                        jQuery('.my-waiting').css('display', 'none');
-                    }, 100);
-                } else if (data.status === "unactive") {
-                    jQuery("#txt-barcode").val('');
-                    jQuery('#guest-main, #last-check-in, #barcode-error').css('display',
-                        'none');
-                    jQuery('#barcode-unactive').css('display', 'block');
-                    window.setTimeout(function() {
-                        jQuery('.my-waiting').css('display', 'none');
-                    }, 100);
+                },
+                error: function(xhr) {
+                    console.log(xhr.reponseText);
+                    //console.log(data.status);
                 }
-            },
-            error: function(xhr) {
-                console.log(xhr.reponseText);
-                //console.log(data.status);
-            }
+            });
+            e.preventDefault();
         });
-        e.preventDefault();
     });
-});
 </script>

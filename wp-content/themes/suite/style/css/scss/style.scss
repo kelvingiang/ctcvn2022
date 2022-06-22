@@ -2,12 +2,6 @@
 root {
   display: block;
 }
-#moblie {
-  display: none;
-}
-.row {
-  margin: 0 !important;
-}
 
 .mai-space {
   position: absolute;
@@ -94,6 +88,7 @@ root {
   color: #aaaaaa !important;
   border: 1px solid #ffffff !important;
 }
+
 .memberInfo {
   width: 50%;
 }
@@ -127,6 +122,7 @@ root {
   border-radius: 5px;
   transition: all 0.5s ease 0s;
 }
+
 #alert-title {
   height: 40px;
   margin-top: 0px;
@@ -145,6 +141,7 @@ root {
   width: 45px;
   color: red;
 }
+
 #alert-content {
   text-align: center;
   padding-top: 20px;
@@ -161,48 +158,10 @@ root {
   border-radius: 0 0 5px 5px;
   word-break: break-all;
   word-wrap: break-word;
-  color: #333;
-  letter-spacing: 0.2rem;
-  font-size: 1.5rem;
-}
-
-.president-list {
-  border: {
-    radius: 0.5rem;
-  }
-
-  margin-bottom: 1rem;
-  border: #b0b1b1 1px solid;
-  padding: -2px;
-  overflow: hidden;
-
-  h4.branch-name {
-    margin: 0;
-    padding: 1.5rem;
-    background-color: #01415e;
-    color: #f8f3f3dc;
-    cursor: pointer;
-
-    font: {
-      size: 2rem;
-      weight: bold;
-    }
-    &:hover {
-      background-color: #01415ee5;
-      color: #fcfcfc;
-    }
-  }
-
-  &-item {
-    display: none;
-    .my_list {
-      color: #515151;
-      font-size: 15px;
-      letter-spacing: 2px;
-      border-bottom: 1px #969696 solid;
-      width: 100%;
-      padding-top: 8px;
-    }
+  letter-spacing: 0.1rem;
+  color: $fontColor;
+  h3 {
+    font-size: 1.5rem;
   }
 }
 
@@ -231,9 +190,9 @@ root {
     margin-left: 580px;
     display: none;
     i {
-      font-size: 2rem;
+      font-size: 1.5rem;
       opacity: 0.3;
-      color: #cc6804;
+      color: #aaaaaa;
       cursor: pointer;
       &:hover {
         opacity: 1;
@@ -241,13 +200,6 @@ root {
     }
   }
 }
-
-// .my-container {
-//   background-color: #fff;
-//   padding-bottom: 5px;
-//   width: 90%;
-//   margin: 0 auto;
-// }
 
 .my-link {
   color: $linkNormal;
@@ -258,6 +210,19 @@ root {
   &:hover {
     color: $linkHover;
     text-decoration: none;
+  }
+}
+
+.link-style {
+  text-decoration: none;
+  font-family: "DFKai-SB", Microsoft YaHei, Arial, sans-serif;
+  font-size: calc(1rem + 0.5vw);
+  font-weight: bold;
+  color: $linkNormal;
+  display: block;
+
+  &:hover {
+    color: $linkHover;
   }
 }
 
@@ -324,11 +289,9 @@ ul.brach-list {
 .article-title {
   width: 100%;
   margin-top: 1.3rem;
-  background-color: #ff8003;
-  border-radius: 5px;
   label {
     color: #fff;
-    font-size: 2rem;
+    font-size: 1.5rem;
     padding: 2rem;
   }
 }
@@ -337,16 +300,9 @@ ul.brach-list {
   padding: 5px;
   li {
     padding: 10px;
-    border-bottom: 1px #ccc solid;
+    border-bottom: 0.1rem rgb(212, 212, 212) dotted;
     &:hover {
       background-color: #eff3f5;
-    }
-    a {
-      text-decoration: none;
-      display: block;
-      font-weight: bold;
-      letter-spacing: 0.2rem;
-      font-size: 1.5rem;
     }
   }
 }
@@ -355,29 +311,52 @@ ul.brach-list {
   padding-left: 0rem;
 
   li {
-    padding-left: 1.8rem;
+    padding: 0.5rem;
     &:nth-child(odd) {
       border-bottom: 1px #d8d8d8 dotted;
       background-color: #f8f8f8bb;
     }
+  }
+  li:hover {
+    background-color: #eeeff091;
+  }
+}
+
+.recruiter-list {
+  padding-left: 0rem;
+
+  li {
+    padding-left: 1.8rem;
+    display: flex;
+    justify-content: space-between;
+
+    &:nth-child(odd) {
+      border-bottom: 1px #d8d8d8 dotted;
+      background-color: #f8f8f8bb;
+    }
+
+    padding: 1rem;
     a {
       display: block;
-      font-size: 1.7rem;
-      padding: 1rem 0.5rem;
+      font-size: 1.3rem;
       font-weight: bold;
-      color: rgb(155, 155, 155);
-      letter-spacing: 0.1rem;
-      text-decoration: none;
+      color: $linkNormal;
+      font-family: "DFKai-SB", 宋体b8b体, Microsoft YaHei, Arial, sans-serif;
+    }
+    label {
+      display: flex;
+      align-self: flex-end;
+      color: #999;
+      font-size: 0.8rem;
     }
   }
   li:hover {
     background-color: #eeeff091;
     a {
-      color: rgb(102, 102, 102);
+      color: $linkHover;
     }
   }
 }
-
 .label-title {
   margin-bottom: 0px;
   letter-spacing: 0.2rem;
@@ -434,43 +413,30 @@ input:focus::placeholder {
   }
 }
 
-#footer {
-  /*height: 210px;*/
-  width: 100%;
-  height: 80px;
-  //background-image: url("../images/red-footer.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100% 100%;
-  color: rgb(163, 163, 163);
-  padding: 0rem 1rem;
-  display: flex;
-  justify-content: space-between;
+@keyframes slow-show {
+  0% {
+    transform: scale(0.5, 0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1, 1);
+    opacity: 1;
+  }
+}
 
-  a {
-    font-weight: bold;
-    color: rgb(155, 155, 155);
-    opacity: 0.5;
-    text-decoration: none;
-    &:hover {
-      opacity: 1;
-    }
-  }
-  .footer-copyright {
-    display: flex;
-    flex-wrap: wrap;
-    align-content: flex-end;
-  }
-  .footer-counter {
-    padding: 2rem 1rem;
-    > div {
-      display: flex;
-      flex-direction: row;
-      .footer-counter-number {
-        min-width: 50px;
-        text-align: left;
-        font-weight: 400;
-      }
-    }
+.animation-show {
+  animation-name: slow-show;
+  animation-duration: 2s;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.h3-title {
+  color: $titleColor;
+  padding: 0rem;
+  font : {
+    size: calc(1rem + 0.2vw);
+    weight: bold;
   }
 }

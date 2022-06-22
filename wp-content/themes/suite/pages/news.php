@@ -8,30 +8,34 @@ ob_start();  // neu bao loi PHP Warning: Cannot modify header information ??head
 get_header();
 ?>
 <div class="row">
-    <div class="col-xl-9 col-lg-9 col-md-8 col-sm-8 col-12">
-    <div class='head-title'>
-           <div class="title">
-               <h2 class="head"> <?php _e('即 時 新 聞', 'suite'); ?> </h2>
-           </div>
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <?php get_template_part('templates/template', 'advertising'); ?>
     </div>
+    <div class="col-xl-9 col-lg-9 col-md-8 col-sm-8 col-12">
+        <div class='head-title'>
+            <!-- <div class="title">
+                <h2 class="head"> <?php  //_e('即 時 新 聞', 'suite'); 
+                                    ?> </h2>
+            </div> -->
+        </div>
         <ul class="article-list">
-    <?php
-        global  $suite,$postCount;
-    //===1  phan trang B ==========
-        $intNumArticlePerPage = $postCount; // xac dinh so tin 
-        if (isset($suite['intNumArticlePerPage'])) {
-             $intNumArticlePerPage = $suite['intNumArticlePerPage'];
-            }    
-            
-// LAY CAC DU LIEU CO BAN
+            <?php
+            global  $suite, $postCount;
+            //===1  phan trang B ==========
+            $intNumArticlePerPage = $postCount; // xac dinh so tin 
+            if (isset($suite['intNumArticlePerPage'])) {
+                $intNumArticlePerPage = $suite['intNumArticlePerPage'];
+            }
+
+            // LAY CAC DU LIEU CO BAN
             $arr = array(
-             'post_type' => 'post',
-             'post_status' => 'publish',
-             'posts_per_page' => -1,
-             'category_name' => 'news'
+                'post_type' => 'post',
+                'post_status' => 'publish',
+                'posts_per_page' => -1,
+                'category_name' => 'news'
             );
             $myQue = new WP_Query($arr);
-// ===== 2 PHAN TRANG XAC DI SO TRANG  B==============
+            // ===== 2 PHAN TRANG XAC DI SO TRANG  B==============
             $intPage = ceil(count($myQue->posts) / $intNumArticlePerPage);
             if (get_query_var('page')) {
                 $intCurrentPage = get_query_var('page') - 1;
@@ -41,7 +45,7 @@ get_header();
             if ($intCurrentPage >= $intPage) {
                 wp_redirect(get_page_permalink('Forum Page'));
             }
-// LAY CAC THONG TIN TRONG POST TYPE FORUM VA VI TRI LAY DONG THONG TIN
+            // LAY CAC THONG TIN TRONG POST TYPE FORUM VA VI TRI LAY DONG THONG TIN
             $argsforum = array(
                 'post_type' => 'post',
                 'posts_per_page' => $intNumArticlePerPage,
@@ -52,29 +56,29 @@ get_header();
             );
             $myQuery = new WP_Query($argsforum);
 
-//===== 2 phan trang xac dinh so trang E========
+            //===== 2 phan trang xac dinh so trang E========
 
-            if ($myQuery->have_posts()):
-                while ($myQuery->have_posts()):
+            if ($myQuery->have_posts()) :
+                while ($myQuery->have_posts()) :
                     $myQuery->the_post();
-                    ?>
+            ?>
                     <li>
                         <a href="<?php the_permalink(); ?>">
                             <?php the_title(); ?>
                         </a>
                     </li>
-                    <?php
+                <?php
                 endwhile;
             endif;
             wp_reset_query();
 
-// ==== phan cac link cho cac trang va so trang
+            // ==== phan cac link cho cac trang va so trang
             if ($intPage > 1) {
                 ?>
-            </ul>
+        </ul>
 
-            <ul class="pro-pagination">
-                <?php
+        <ul class="pro-pagination">
+            <?php
                 $strUrlArticle = get_page_permalink('Forum Page');
                 /* << */
                 if ($intCurrentPage >= 1) {
@@ -149,15 +153,18 @@ get_header();
                 } else {
                     echo ' ';
                 }
-                ?>
-            </ul>
-            <?php
-            // ==== phan cac link cho cac trang va so trang
-        }
-        ?>
-        <div style="float: right">
-              <?php echo $intPage; _e('頁, 的第', 'suite'); echo  $intCurrentPage + 1;     _e('頁', 'suite'); ?> 
-        </div>
+            ?>
+        </ul>
+    <?php
+                // ==== phan cac link cho cac trang va so trang
+            }
+    ?>
+    <div style="float: right">
+        <?php echo $intPage;
+        _e('頁, 的第', 'suite');
+        echo  $intCurrentPage + 1;
+        _e('頁', 'suite'); ?>
+    </div>
     </div>
 
     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4 col-12">
@@ -166,6 +173,6 @@ get_header();
 </div>
 <?php
 get_footer();
- ob_flush();   // neu bao loi PHP Warning: Cannot modify header information ??headers already sent by
- 
- ?>
+ob_flush();   // neu bao loi PHP Warning: Cannot modify header information ??headers already sent by
+
+?>

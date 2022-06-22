@@ -4,47 +4,41 @@ $arr = array(
     'posts_per_page' => -1,
     'orderby' => 'ID',
     'order' => 'DESC',
-//            'meta_query' => array(array('key' => '_admin_metabox_special', 'value' => 'off',))
+    //            'meta_query' => array(array('key' => '_admin_metabox_special', 'value' => 'off',))
 );
 $my_query = new WP_Query($arr);
 if ($my_query->have_posts()) {
-    ?>
-    <div id ='MyCarousel'>
+?>
+    <div id='checkInCarousel'>
         <ul>
-           
             <?php
             while ($my_query->have_posts()) {
                 $my_query->the_post();
                 $images = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()), 'full');
                 $objImageData = get_post(get_post_thumbnail_id(get_the_ID()));
                 $strAlt = get_post_meta(get_post_thumbnail_id(get_the_ID()), '_wp_attachment_image_alt', true);
-                ?>
-                <li style=" border-bottom:  1px solid #737577 ; margin-top: 10px; height: 130px"> 
-                    <div class="box">
-                        <img src="<?php echo $images[0]; ?>"  alt="<?php echo $strAlt; ?>" title="<?php echo $objImageData->post_title; ?>" style="height: 100px" />
-                        <div class="nbs-flexisel-title">
-                            <label class=' label-title'><?php the_content(); ?></label>
-                            <label style='font-size: 12px' ><?php the_title(); ?></label>
-                        </div>
-                    </div>
+            ?>
+                <li class="ad-list-item">
+                    <img src="<?php echo $images[0]; ?>" alt="<?php echo $strAlt; ?>" title="<?php echo $objImageData->post_title; ?>" />
+                    <label><?php the_title(); ?></label>
                 </li>
-                <?php
+            <?php
             }
             wp_reset_query();
             wp_reset_postdata();
             ?>
-        </ul>         
-    </div>   
-    <?php
+        </ul>
+    </div>
+<?php
 }
 ?>
 
 <script type='text/javascript'>
     jQuery(function() {
-        jQuery("#MyCarousel").jCarouselLite({
+        jQuery("#checkInCarousel").jCarouselLite({
             //        btnNext: ".bounceout .next",
             //        btnPrev: ".bounceout .prev",
-            visible: 4, // so item hien thi
+            visible: 2, // so item hien thi
 
             // CAC HIEU UNG
             //  easing: "easeOutBounce",  // hieu ung khi chuyen dong
@@ -58,5 +52,4 @@ if ($my_query->have_posts()) {
         });
 
     });
-
 </script>
