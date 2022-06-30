@@ -4,6 +4,6 @@ _data/
 _database/
 nbproject/
 
-wp-content/themes/suite/counter/online.log
+wp-content/themes/suite/counter/
 
 //*.log
